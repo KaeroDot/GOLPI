@@ -1,0 +1,155 @@
+`size' is a built-in function
+
+ 
+
+ -- Built-in Function:  size (A)
+ -- Built-in Function:  size (A, DIM)
+     Return the number of rows and columns of A.  With one input
+     argument and one output argument, the result is returned in a
+     row vector.  If there are multiple output arguments, the number
+     of rows is assigned to the first, and the number of columns to
+     the second, etc.  For example: 
+          size ([1, 2; 3, 4; 5, 6])
+              => [ 3, 2 ]
+          
+          [nr, nc] = size ([1, 2; 3, 4; 5, 6])
+              => nr = 3
+              => nc = 2
+      If given a second argument, `size' will return the size of the
+     corresponding dimension.  For example, 
+          size ([1, 2; 3, 4; 5, 6], 2)
+              => 2
+      returns the number of columns in the given matrix.  See
+     also: numel  
+   
+
+
+Additional help for built-in functions and operators is
+available in the on-line version of the manual.  Use the command
+`doc <topic>' to search the manual index.
+
+Help and information about Octave is also available on the WWW
+at http://www.octave.org and via the help@octave.org
+mailing list.
+`size' is a built-in function
+
+ 
+
+ -- Built-in Function:  size (A)
+ -- Built-in Function:  size (A, DIM)
+     Return the number of rows and columns of A.  With one input
+     argument and one output argument, the result is returned in a
+     row vector.  If there are multiple output arguments, the number
+     of rows is assigned to the first, and the number of columns to
+     the second, etc.  For example: 
+          size ([1, 2; 3, 4; 5, 6])
+              => [ 3, 2 ]
+          
+          [nr, nc] = size ([1, 2; 3, 4; 5, 6])
+              => nr = 3
+              => nc = 2
+      If given a second argument, `size' will return the size of the
+     corresponding dimension.  For example, 
+          size ([1, 2; 3, 4; 5, 6], 2)
+              => 2
+      returns the number of columns in the given matrix.  See
+     also: numel  
+   
+
+
+Additional help for built-in functions and operators is
+available in the on-line version of the manual.  Use the command
+`doc <topic>' to search the manual index.
+
+Help and information about Octave is also available on the WWW
+at http://www.octave.org and via the help@octave.org
+mailing list.
+
+warning: function C:\Octave\Octave3.4.3_gcc4.5.2\Octave3.4.3_gcc4.5.2\share\octave\packages\multicore-0.2.15\gethostname.m shadows a built-in function
+`size' is a built-in function
+
+ 
+
+ -- Built-in Function:  size (A)
+ -- Built-in Function:  size (A, DIM)
+     Return the number of rows and columns of A.  With one input
+     argument and one output argument, the result is returned in a
+     row vector.  If there are multiple output arguments, the number
+     of rows is assigned to the first, and the number of columns to
+     the second, etc.  For example: 
+          size ([1, 2; 3, 4; 5, 6])
+              => [ 3, 2 ]
+          
+          [nr, nc] = size ([1, 2; 3, 4; 5, 6])
+              => nr = 3
+              => nc = 2
+      If given a second argument, `size' will return the size of the
+     corresponding dimension.  For example, 
+          size ([1, 2; 3, 4; 5, 6], 2)
+              => 2
+      returns the number of columns in the given matrix.  See
+     also: numel  
+   
+
+
+Additional help for built-in functions and operators is
+available in the on-line version of the manual.  Use the command
+`doc <topic>' to search the manual index.
+
+Help and information about Octave is also available on the WWW
+at http://www.octave.org and via the help@octave.org
+mailing list.
+
+warning: function C:\Octave\Octave3.4.3_gcc4.5.2\Octave3.4.3_gcc4.5.2\share\octave\packages\multicore-0.2.15\gethostname.m shadows a built-in function
+----------------------------------------------------------------------
+GNU Octave Version 3.4.3
+GNU Octave License: GNU General Public License
+Operating System: unknown
+----------------------------------------------------------------------
+Package Name  | Version | Installation directory
+--------------+---------+-----------------------
+   multicore *|  0.2.15 | ...\share\octave\packages\multicore-0.2.15
+----------------------------------------------------------------------
+GNU Octave Version 3.4.3
+GNU Octave License: GNU General Public License
+Operating System: unknown
+----------------------------------------------------------------------
+Package Name  | Version | Installation directory
+--------------+---------+-----------------------
+   multicore *|  0.2.15 | ...\share\octave\packages\multicore-0.2.15
+`size' is a built-in function
+
+ 
+
+ -- Built-in Function:  size (A)
+ -- Built-in Function:  size (A, DIM)
+     Return the number of rows and columns of A.  With one input
+     argument and one output argument, the result is returned in a
+     row vector.  If there are multiple output arguments, the number
+     of rows is assigned to the first, and the number of columns to
+     the second, etc.  For example: 
+          size ([1, 2; 3, 4; 5, 6])
+              => [ 3, 2 ]
+          
+          [nr, nc] = size ([1, 2; 3, 4; 5, 6])
+              => nr = 3
+              => nc = 2
+      If given a second argument, `size' will return the size of the
+     corresponding dimension.  For example, 
+          size ([1, 2; 3, 4; 5, 6], 2)
+              => 2
+      returns the number of columns in the given matrix.  See
+     also: numel  
+   
+
+
+Additional help for built-in functions and operators is
+available in the on-line version of the manual.  Use the command
+`doc <topic>' to search the manual index.
+
+Help and information about Octave is also available on the WWW
+at http://www.octave.org and via the help@octave.org
+mailing list.
+
+warning: function C:\Octave\Octave3.4.3_gcc4.5.2\Octave3.4.3_gcc4.5.2\share\octave\packages\multicore-0.2.15\gethostname.m shadows a built-in function
+warning: function C:\Octave\Octave3.4.3_gcc4.5.2\Octave3.4.3_gcc4.5.2\share\octave\packages\multicore-0.2.15\gethostname.m shadows a built-in function

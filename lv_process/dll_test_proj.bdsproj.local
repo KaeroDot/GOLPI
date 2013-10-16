@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2013.05.08 10:53:57.625.cpp,C:\Documents and Settings\doma\My Documents\Borland Studio Projects\Unit1.cpp=E:\Data\C\DLL\create_process\dll_test.cpp</Transaction>
+    <Transaction>2013.05.08 10:53:57.625.h,C:\Documents and Settings\doma\My Documents\Borland Studio Projects\Unit1.h=E:\Data\C\DLL\create_process\dll_test.h</Transaction>
+    <Transaction>2013.05.08 10:53:57.625.dfm,C:\Documents and Settings\doma\My Documents\Borland Studio Projects\Unit1.dfm=E:\Data\C\DLL\create_process\dll_test.dfm</Transaction>
+    <Transaction>2013.05.08 10:54:17.109.bdsproj,C:\Documents and Settings\doma\My Documents\Borland Studio Projects\Project1.bdsproj=E:\Data\C\DLL\create_process\dll_test_proj.bdsproj</Transaction>
+    <Transaction>2013.05.08 10:55:30.968.dll,E:\Data\C\DLL\create_process\Debug_Build\create_process.dll=</Transaction>
+  </Transactions>
+</BorlandProject>
