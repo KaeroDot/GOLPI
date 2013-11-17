@@ -13,7 +13,10 @@
 		<Property Name="server.vi.callsEnabled" Type="Bool">true</Property>
 		<Property Name="server.vi.propertiesEnabled" Type="Bool">true</Property>
 		<Property Name="specify.custom.address" Type="Bool">false</Property>
-		<Item Name="Globals.vi" Type="VI" URL="../Globals.vi"/>
+		<Item Name="testing" Type="Folder">
+			<Item Name="Demo - Simple Use Testing.vi" Type="VI" URL="../Demo - Simple Use Testing.vi"/>
+			<Item Name="Test RE.vi" Type="VI" URL="../Test RE.vi"/>
+		</Item>
 		<Item Name="GOLPI library.lvlib" Type="Library" URL="../GOLPI library.lvlib"/>
 		<Item Name="LV Process.lvlibp" Type="LVLibp" URL="../LV Process.lvlibp">
 			<Item Name="Application Directory.vi" Type="VI" URL="../LV Process.lvlibp/1abvi3w/vi.lib/Utility/file.llb/Application Directory.vi"/>
@@ -36,7 +39,6 @@
 			<Item Name="whitespace.ctl" Type="VI" URL="../LV Process.lvlibp/1abvi3w/vi.lib/Utility/error.llb/whitespace.ctl"/>
 			<Item Name="Write Stdin.vi" Type="VI" URL="../LV Process.lvlibp/Write Stdin.vi"/>
 		</Item>
-		<Item Name="Test RE.vi" Type="VI" URL="../Test RE.vi"/>
 		<Item Name="Dependencies" Type="Dependencies">
 			<Item Name="vi.lib" Type="Folder">
 				<Item Name="Check if File or Folder Exists.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/libraryn.llb/Check if File or Folder Exists.vi"/>
