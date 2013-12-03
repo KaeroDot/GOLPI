@@ -9,7 +9,6 @@
 </Property>
 	<Item Name="Private" Type="Folder">
 		<Property Name="NI.LibItem.Scope" Type="Int">2</Property>
-		<Property Name="NI.SortType" Type="Int">3</Property>
 		<Item Name="Get Variable - polymorph parts" Type="Folder">
 			<Property Name="NI.SortType" Type="Int">3</Property>
 			<Item Name="Get String.vi" Type="VI" URL="../Private/Get Variable - polymorph parts/Get String.vi"/>
@@ -22,25 +21,27 @@
 			<Item Name="Get 2D Array Double Complex.vi" Type="VI" URL="../Private/Get Variable - polymorph parts/Get 2D Array Double Complex.vi"/>
 		</Item>
 		<Item Name="Set Variable - polymorph parts" Type="Folder">
-			<Item Name="Set String.vi" Type="VI" URL="../Private/Set Variable - polymorph parts/Set String.vi"/>
-			<Item Name="Set Double.vi" Type="VI" URL="../Private/Set Variable - polymorph parts/Set Double.vi"/>
-			<Item Name="Set Double Complex.vi" Type="VI" URL="../Private/Set Variable - polymorph parts/Set Double Complex.vi"/>
-			<Item Name="Set 2D Array Double.vi" Type="VI" URL="../Private/Set Variable - polymorph parts/Set 2D Array Double.vi"/>
 			<Item Name="Set 2D Array Double Complex.vi" Type="VI" URL="../Private/Set Variable - polymorph parts/Set 2D Array Double Complex.vi"/>
+			<Item Name="Set 2D Array Double.vi" Type="VI" URL="../Private/Set Variable - polymorph parts/Set 2D Array Double.vi"/>
+			<Item Name="Set Double Complex.vi" Type="VI" URL="../Private/Set Variable - polymorph parts/Set Double Complex.vi"/>
+			<Item Name="Set Double.vi" Type="VI" URL="../Private/Set Variable - polymorph parts/Set Double.vi"/>
+			<Item Name="Set String.vi" Type="VI" URL="../Private/Set Variable - polymorph parts/Set String.vi"/>
+		</Item>
+		<Item Name="Type Definitions" Type="Folder">
+			<Item Name="Custom Error Codes Enum Type Def.vi" Type="VI" URL="../Private/Type Definitions/Custom Error Codes Enum Type Def.vi"/>
+			<Item Name="GOLPI reference Type Def.ctl" Type="VI" URL="../Private/Type Definitions/GOLPI reference Type Def.ctl"/>
 		</Item>
 		<Item Name="Utilities" Type="Folder">
-			<Item Name="Custom Error Codes Enum Type Def.vi" Type="VI" URL="../Private/Utilities/Custom Error Codes Enum Type Def.vi"/>
 			<Item Name="Generate Custom Error.vi" Type="VI" URL="../Private/Utilities/Generate Custom Error.vi"/>
 			<Item Name="Scalar Vector Matrix Info.vi" Type="VI" URL="../Private/Utilities/Scalar Vector Matrix Info.vi"/>
 			<Item Name="String to Complex.vi" Type="VI" URL="../Private/Utilities/String to Complex.vi"/>
 		</Item>
-		<Item Name="Check and Get Sizes.vi" Type="VI" URL="../Private/Check and Get Sizes.vi"/>
-		<Item Name="Set Matrix - stdin.vi" Type="VI" URL="../Private/Set Matrix - stdin.vi"/>
 		<Item Name="Check and Get Scalar.vi" Type="VI" URL="../Private/Check and Get Scalar.vi"/>
-		<Item Name="Get Vector - stdout.vi" Type="VI" URL="../Private/Get Vector - stdout.vi"/>
+		<Item Name="Check and Get Sizes.vi" Type="VI" URL="../Private/Check and Get Sizes.vi"/>
 		<Item Name="Get Matrix - file.vi" Type="VI" URL="../Private/Get Matrix - file.vi"/>
 		<Item Name="Get Matrix - stdout.vi" Type="VI" URL="../Private/Get Matrix - stdout.vi"/>
-		<Item Name="Globals.vi" Type="VI" URL="../Private/Globals.vi"/>
+		<Item Name="Get Vector - stdout.vi" Type="VI" URL="../Private/Get Vector - stdout.vi"/>
+		<Item Name="Set Matrix - stdin.vi" Type="VI" URL="../Private/Set Matrix - stdin.vi"/>
 	</Item>
 	<Item Name="Public" Type="Folder">
 		<Property Name="NI.LibItem.Scope" Type="Int">1</Property>
