@@ -25,6 +25,7 @@
 		</Item>
 		<Item Name="testing" Type="Folder">
 			<Item Name="Demo - Simple Use Testing.vi" Type="VI" URL="../Demo - Simple Use Testing.vi"/>
+			<Item Name="GOLPI full test.vi" Type="VI" URL="../GOLPI full test.vi"/>
 			<Item Name="Test RE.vi" Type="VI" URL="../Test RE.vi"/>
 		</Item>
 		<Item Name="GOLPI library.lvlib" Type="Library" URL="../GOLPI library.lvlib"/>
