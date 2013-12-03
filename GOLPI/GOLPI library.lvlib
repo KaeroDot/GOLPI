@@ -12,14 +12,20 @@
 		<Property Name="NI.SortType" Type="Int">3</Property>
 		<Item Name="Get Variable - polymorph parts" Type="Folder">
 			<Property Name="NI.SortType" Type="Int">3</Property>
-			<Item Name="Scalar - String.vi" Type="VI" URL="../Get Variable/Scalar - String.vi"/>
-			<Item Name="Scalar - Real.vi" Type="VI" URL="../Get Variable/Scalar - Real.vi"/>
-			<Item Name="Scalar - Complex.vi" Type="VI" URL="../Get Variable/Scalar - Complex.vi"/>
-			<Item Name="Vector - Strings.vi" Type="VI" URL="../Get Variable/Vector - Strings.vi"/>
-			<Item Name="Vector - Reals.vi" Type="VI" URL="../Get Variable/Vector - Reals.vi"/>
-			<Item Name="Vector - Complex.vi" Type="VI" URL="../Get Variable/Vector - Complex.vi"/>
-			<Item Name="Matrix - Reals.vi" Type="VI" URL="../Get Variable/Matrix - Reals.vi"/>
-			<Item Name="Matrix - Complex.vi" Type="VI" URL="../Get Variable/Matrix - Complex.vi"/>
+			<Item Name="Get - Scalar - String.vi" Type="VI" URL="../Get Variable/Get - Scalar - String.vi"/>
+			<Item Name="Get - Scalar - Real.vi" Type="VI" URL="../Get Variable/Get - Scalar - Real.vi"/>
+			<Item Name="Get - Scalar - Complex.vi" Type="VI" URL="../Get Variable/Get - Scalar - Complex.vi"/>
+			<Item Name="Get - Vector - Strings.vi" Type="VI" URL="../Get Variable/Get - Vector - Strings.vi"/>
+			<Item Name="Get - Vector - Reals.vi" Type="VI" URL="../Get Variable/Get - Vector - Reals.vi"/>
+			<Item Name="Get - Vector - Complex.vi" Type="VI" URL="../Get Variable/Get - Vector - Complex.vi"/>
+			<Item Name="Get - Matrix - Reals.vi" Type="VI" URL="../Get Variable/Get - Matrix - Reals.vi"/>
+			<Item Name="Get - Matrix - Complex.vi" Type="VI" URL="../Get Variable/Get - Matrix - Complex.vi"/>
+		</Item>
+		<Item Name="Set Variable - polymorph parts" Type="Folder">
+			<Item Name="Set - Scalar - String.vi" Type="VI" URL="../Set Variable/Set - Scalar - String.vi"/>
+			<Item Name="Set - Scalar - Real.vi" Type="VI" URL="../Set Variable/Set - Scalar - Real.vi"/>
+			<Item Name="Set - Scalar - Complex.vi" Type="VI" URL="../Set Variable/Set - Scalar - Complex.vi"/>
+			<Item Name="Set - Matrix - Real.vi" Type="VI" URL="../Set Variable/Set - Matrix - Real.vi"/>
 		</Item>
 		<Item Name="Utilities" Type="Folder">
 			<Item Name="Custom Error Codes Enum Type Def.vi" Type="VI" URL="../Custom Error Codes Enum Type Def.vi"/>
@@ -28,6 +34,7 @@
 			<Item Name="String to Complex.vi" Type="VI" URL="../String to Complex.vi"/>
 		</Item>
 		<Item Name="Check and Get Sizes.vi" Type="VI" URL="../Get Variable/Check and Get Sizes.vi"/>
+		<Item Name="Set Matrix - stdin.vi" Type="VI" URL="../Set Variable/Set Matrix - stdin.vi"/>
 		<Item Name="Check and Get Scalar.vi" Type="VI" URL="../Get Variable/Check and Get Scalar.vi"/>
 		<Item Name="Get Vector - stdout.vi" Type="VI" URL="../Get Variable/Get Vector - stdout.vi"/>
 		<Item Name="Get Matrix - file.vi" Type="VI" URL="../Get Matrix - file.vi"/>
@@ -38,15 +45,19 @@
 		<Property Name="NI.LibItem.Scope" Type="Int">1</Property>
 		<Item Name="Data" Type="Folder">
 			<Item Name="Get Variable.vi" Type="VI" URL="../Get Variable.vi"/>
-			<Item Name="Read Full Output.vi" Type="VI" URL="../Read Full Output.vi"/>
-			<Item Name="Read Output Till Keyword.vi" Type="VI" URL="../Read Output Till Keyword.vi"/>
-			<Item Name="Read Output Till Settle.vi" Type="VI" URL="../Read Output Till Settle.vi"/>
-			<Item Name="Read Output.vi" Type="VI" URL="../Read Output.vi"/>
-			<Item Name="Write Command.vi" Type="VI" URL="../Write Command.vi"/>
+			<Item Name="Set Variable.vi" Type="VI" URL="../Set Variable/Set Variable.vi"/>
 		</Item>
 		<Item Name="Examples" Type="Folder">
 			<Item Name="Demo - GNU Octave Terminal.vi" Type="VI" URL="../Demo - GNU Octave Terminal.vi"/>
 			<Item Name="Demo - Simple Use.vi" Type="VI" URL="../Demo - Simple Use.vi"/>
+		</Item>
+		<Item Name="Pipes" Type="Folder">
+			<Property Name="NI.SortType" Type="Int">3</Property>
+			<Item Name="Write Command.vi" Type="VI" URL="../Write Command.vi"/>
+			<Item Name="Read Output.vi" Type="VI" URL="../Read Output.vi"/>
+			<Item Name="Read Full Output.vi" Type="VI" URL="../Read Full Output.vi"/>
+			<Item Name="Read Output Till Settle.vi" Type="VI" URL="../Read Output Till Settle.vi"/>
+			<Item Name="Read Output Till Keyword.vi" Type="VI" URL="../Read Output Till Keyword.vi"/>
 		</Item>
 		<Item Name="Utility" Type="Folder">
 			<Item Name="Check Output For Octave Errors.vi" Type="VI" URL="../Check Output For Octave Errors.vi"/>
@@ -54,5 +65,8 @@
 		<Item Name="Quit GNU Octave.vi" Type="VI" URL="../Quit GNU Octave.vi"/>
 		<Item Name="Start GNU Octave.vi" Type="VI" URL="../Start GNU Octave.vi"/>
 		<Item Name="VI Tree.vi" Type="VI" URL="../VI Tree.vi"/>
+	</Item>
+	<Item Name="Set - Matrix - Complex.vi" Type="VI" URL="../Set Variable/Set - Matrix - Complex.vi">
+		<Property Name="NI.LibItem.Scope" Type="Int">2</Property>
 	</Item>
 </Library>
