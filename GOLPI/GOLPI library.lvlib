@@ -8,7 +8,7 @@
 
 </Property>
 	<Item Name="Private" Type="Folder">
-		<Property Name="NI.LibItem.Scope" Type="Int">1</Property>
+		<Property Name="NI.LibItem.Scope" Type="Int">2</Property>
 		<Item Name="Get Variable - auxiliary" Type="Folder">
 			<Item Name="Check and Get Scalar.vi" Type="VI" URL="../Private/Get Variable - auxiliary/Check and Get Scalar.vi"/>
 			<Item Name="Get Matrix - file.vi" Type="VI" URL="../Private/Get Variable - auxiliary/Get Matrix - file.vi"/>
@@ -40,6 +40,11 @@
 			<Item Name="Set 1D Array Double Complex.vi" Type="VI" URL="../Private/Set Variable - polymorph parts/Set 1D Array Double Complex.vi"/>
 			<Item Name="Set 2D Array Double.vi" Type="VI" URL="../Private/Set Variable - polymorph parts/Set 2D Array Double.vi"/>
 			<Item Name="Set 2D Array Double Complex.vi" Type="VI" URL="../Private/Set Variable - polymorph parts/Set 2D Array Double Complex.vi"/>
+		</Item>
+		<Item Name="testing" Type="Folder">
+			<Item Name="GOLPI full test - part test vector complex.vi" Type="VI" URL="../Private/testing/GOLPI full test - part test vector complex.vi"/>
+			<Item Name="GOLPI full test - part test vector double.vi" Type="VI" URL="../Private/testing/GOLPI full test - part test vector double.vi"/>
+			<Item Name="GOLPI full test.vi" Type="VI" URL="../Private/testing/GOLPI full test.vi"/>
 		</Item>
 		<Item Name="Type Definitions" Type="Folder">
 			<Item Name="Custom Error Codes Enum Type Def.vi" Type="VI" URL="../Private/Type Definitions/Custom Error Codes Enum Type Def.vi"/>
