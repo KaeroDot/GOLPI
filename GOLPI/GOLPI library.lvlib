@@ -9,6 +9,12 @@
 </Property>
 	<Item Name="Private" Type="Folder">
 		<Property Name="NI.LibItem.Scope" Type="Int">1</Property>
+		<Item Name="Get Variable - auxiliary" Type="Folder">
+			<Item Name="Check and Get Scalar.vi" Type="VI" URL="../Private/Get Variable - auxiliary/Check and Get Scalar.vi"/>
+			<Item Name="Get Matrix - file.vi" Type="VI" URL="../Private/Get Variable - auxiliary/Get Matrix - file.vi"/>
+			<Item Name="Get Matrix - stdout.vi" Type="VI" URL="../Private/Get Variable - auxiliary/Get Matrix - stdout.vi"/>
+			<Item Name="Get Vector - stdout.vi" Type="VI" URL="../Private/Get Variable - auxiliary/Get Vector - stdout.vi"/>
+		</Item>
 		<Item Name="Get Variable - polymorph parts" Type="Folder">
 			<Property Name="NI.SortType" Type="Int">3</Property>
 			<Item Name="Get String.vi" Type="VI" URL="../Private/Get Variable - polymorph parts/Get String.vi"/>
@@ -20,11 +26,16 @@
 			<Item Name="Get 2D Array Double.vi" Type="VI" URL="../Private/Get Variable - polymorph parts/Get 2D Array Double.vi"/>
 			<Item Name="Get 2D Array Double Complex.vi" Type="VI" URL="../Private/Get Variable - polymorph parts/Get 2D Array Double Complex.vi"/>
 		</Item>
+		<Item Name="Set Variable - auxiliary" Type="Folder">
+			<Item Name="Set Matrix - file.vi" Type="VI" URL="../Private/Set Variable - auxiliary/Set Matrix - file.vi"/>
+			<Item Name="Set Matrix - stdin.vi" Type="VI" URL="../Private/Set Variable - auxiliary/Set Matrix - stdin.vi"/>
+		</Item>
 		<Item Name="Set Variable - polymorph parts" Type="Folder">
 			<Property Name="NI.SortType" Type="Int">3</Property>
 			<Item Name="Set String.vi" Type="VI" URL="../Private/Set Variable - polymorph parts/Set String.vi"/>
 			<Item Name="Set Double.vi" Type="VI" URL="../Private/Set Variable - polymorph parts/Set Double.vi"/>
 			<Item Name="Set Double Complex.vi" Type="VI" URL="../Private/Set Variable - polymorph parts/Set Double Complex.vi"/>
+			<Item Name="Set 1D Array String.vi" Type="VI" URL="../Private/Set Variable - polymorph parts/Set 1D Array String.vi"/>
 			<Item Name="Set 1D Array Double.vi" Type="VI" URL="../Private/Set Variable - polymorph parts/Set 1D Array Double.vi"/>
 			<Item Name="Set 1D Array Double Complex.vi" Type="VI" URL="../Private/Set Variable - polymorph parts/Set 1D Array Double Complex.vi"/>
 			<Item Name="Set 2D Array Double.vi" Type="VI" URL="../Private/Set Variable - polymorph parts/Set 2D Array Double.vi"/>
@@ -36,19 +47,14 @@
 		</Item>
 		<Item Name="Utilities" Type="Folder">
 			<Item Name="Generate Custom Error.vi" Type="VI" URL="../Private/Utilities/Generate Custom Error.vi"/>
-			<Item Name="Scalar Vector Matrix Info.vi" Type="VI" URL="../Private/Utilities/Scalar Vector Matrix Info.vi"/>
+			<Item Name="Is Scalar Vector Matrix.vi" Type="VI" URL="../Private/Utilities/Is Scalar Vector Matrix.vi"/>
 			<Item Name="String to Complex.vi" Type="VI" URL="../Private/Utilities/String to Complex.vi"/>
 		</Item>
-		<Item Name="Check and Get Scalar.vi" Type="VI" URL="../Private/Check and Get Scalar.vi"/>
 		<Item Name="Check and Get Sizes.vi" Type="VI" URL="../Private/Check and Get Sizes.vi"/>
-		<Item Name="Get Matrix - file.vi" Type="VI" URL="../Private/Get Matrix - file.vi"/>
-		<Item Name="Get Matrix - stdout.vi" Type="VI" URL="../Private/Get Matrix - stdout.vi"/>
-		<Item Name="Get Vector - stdout.vi" Type="VI" URL="../Private/Get Vector - stdout.vi"/>
-		<Item Name="Set Matrix - file.vi" Type="VI" URL="../Private/Set Matrix - file.vi"/>
-		<Item Name="Set Matrix - stdin.vi" Type="VI" URL="../Private/Set Matrix - stdin.vi"/>
 	</Item>
 	<Item Name="Public" Type="Folder">
 		<Property Name="NI.LibItem.Scope" Type="Int">1</Property>
+		<Property Name="NI.SortType" Type="Int">3</Property>
 		<Item Name="Data" Type="Folder">
 			<Item Name="Get Variable.vi" Type="VI" URL="../Public/Data/Get Variable.vi"/>
 			<Item Name="Set Variable.vi" Type="VI" URL="../Public/Data/Set Variable.vi"/>
@@ -67,9 +73,9 @@
 		</Item>
 		<Item Name="Utility" Type="Folder">
 			<Item Name="Check Output For Octave Errors.vi" Type="VI" URL="../Public/Utility/Check Output For Octave Errors.vi"/>
+			<Item Name="VI Tree.vi" Type="VI" URL="../Public/VI Tree.vi"/>
 		</Item>
-		<Item Name="Quit GNU Octave.vi" Type="VI" URL="../Public/Quit GNU Octave.vi"/>
 		<Item Name="Start GNU Octave.vi" Type="VI" URL="../Public/Start GNU Octave.vi"/>
-		<Item Name="VI Tree.vi" Type="VI" URL="../Public/VI Tree.vi"/>
+		<Item Name="Quit GNU Octave.vi" Type="VI" URL="../Public/Quit GNU Octave.vi"/>
 	</Item>
 </Library>
