@@ -11,6 +11,7 @@
 		<Property Name="NI.LibItem.Scope" Type="Int">2</Property>
 		<Item Name="Get Variable - auxiliary" Type="Folder">
 			<Item Name="Check and Get Scalar.vi" Type="VI" URL="../Private/Get Variable - auxiliary/Check and Get Scalar.vi"/>
+			<Item Name="Check and Get Sizes.vi" Type="VI" URL="../Private/Get Variable - auxiliary/Check and Get Sizes.vi"/>
 			<Item Name="Get Matrix - file.vi" Type="VI" URL="../Private/Get Variable - auxiliary/Get Matrix - file.vi"/>
 			<Item Name="Get Matrix - stdout.vi" Type="VI" URL="../Private/Get Variable - auxiliary/Get Matrix - stdout.vi"/>
 			<Item Name="Get Vector - stdout.vi" Type="VI" URL="../Private/Get Variable - auxiliary/Get Vector - stdout.vi"/>
@@ -55,7 +56,6 @@
 			<Item Name="Is Scalar Vector Matrix.vi" Type="VI" URL="../Private/Utilities/Is Scalar Vector Matrix.vi"/>
 			<Item Name="String to Complex.vi" Type="VI" URL="../Private/Utilities/String to Complex.vi"/>
 		</Item>
-		<Item Name="Check and Get Sizes.vi" Type="VI" URL="../Private/Check and Get Sizes.vi"/>
 	</Item>
 	<Item Name="Public" Type="Folder">
 		<Property Name="NI.LibItem.Scope" Type="Int">1</Property>
