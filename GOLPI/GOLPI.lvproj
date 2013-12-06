@@ -25,8 +25,6 @@
 		</Item>
 		<Item Name="testing" Type="Folder">
 			<Property Name="NI.SortType" Type="Int">3</Property>
-			<Item Name="Demo - Simple Use Testing.vi" Type="VI" URL="../testing/Demo - Simple Use Testing.vi"/>
-			<Item Name="Test RE.vi" Type="VI" URL="../testing/Test RE.vi"/>
 		</Item>
 		<Item Name="GOLPI library.lvlib" Type="Library" URL="../GOLPI library.lvlib"/>
 		<Item Name="LV Process.lvlibp" Type="LVLibp" URL="../LV Process.lvlibp">
