@@ -16,6 +16,7 @@
 	<Item Name="Generate Error.vi" Type="VI" URL="../Generate Error.vi"/>
 	<Item Name="Get Exit Code.vi" Type="VI" URL="../Get Exit Code.vi"/>
 	<Item Name="Kill.vi" Type="VI" URL="../Kill.vi"/>
+	<Item Name="lv_proc.dll" Type="Document" URL="../../lv_proc.dll"/>
 	<Item Name="Pipe Handle.ctl" Type="VI" URL="../Pipe Handle.ctl"/>
 	<Item Name="Read Stdout.vi" Type="VI" URL="../Read Stdout.vi"/>
 	<Item Name="Vi Tree.vi" Type="VI" URL="../Vi Tree.vi"/>
