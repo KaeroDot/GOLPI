@@ -24,7 +24,6 @@
 			<Item Name="MAT Type Representation.ctl" Type="VI" URL="../matfilerw/MAT Type Representation.ctl"/>
 		</Item>
 		<Item Name="GOLPI library.lvlib" Type="Library" URL="../GOLPI library.lvlib"/>
-		<Item Name="lv_proc.dll" Type="Document" URL="../lv_proc.dll"/>
 		<Item Name="Dependencies" Type="Dependencies">
 			<Item Name="vi.lib" Type="Folder">
 				<Item Name="Application Directory.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/file.llb/Application Directory.vi"/>
@@ -97,7 +96,7 @@
 				<Property Name="Source[1].sourceInclusion" Type="Str">TopLevel</Property>
 				<Property Name="Source[1].type" Type="Str">Library</Property>
 				<Property Name="Source[2].destinationIndex" Type="Int">0</Property>
-				<Property Name="Source[2].itemID" Type="Ref">/My Computer/lv_proc.dll</Property>
+				<Property Name="Source[2].itemID" Type="Ref">/My Computer/Dependencies/LV Process library.lvlib/lv_proc.dll</Property>
 				<Property Name="Source[2].sourceInclusion" Type="Str">Include</Property>
 				<Property Name="SourceCount" Type="Int">3</Property>
 				<Property Name="TgtF_companyName" Type="Str">CMI</Property>
