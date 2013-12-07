@@ -82,6 +82,7 @@
 		</Item>
 		<Item Name="Utility" Type="Folder">
 			<Item Name="Check Output For Octave Errors.vi" Type="VI" URL="../Public/Utility/Check Output For Octave Errors.vi"/>
+			<Item Name="Check Status.vi" Type="VI" URL="../Public/Utility/Check Status.vi"/>
 			<Item Name="Set Debug Mode.vi" Type="VI" URL="../Public/Utility/Set Debug Mode.vi"/>
 			<Item Name="VI Tree.vi" Type="VI" URL="../Public/VI Tree.vi"/>
 		</Item>
