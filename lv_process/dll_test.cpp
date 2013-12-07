@@ -12,7 +12,7 @@ TForm1 *Form1;
 
 extern "C" __declspec(dllimport) int proc_format_error(int code,char *str,int buflen);
 extern "C" __declspec(dllimport) int proc_handle_size(void);
-extern "C" __declspec(dllimport) int proc_create(void *proc,char *folder,char *cmd,int hide);
+extern "C" __declspec(dllexport) int proc_create(void *proc,char *folder,char *cmd,int sterr,int hide);
 extern "C" __declspec(dllimport) int proc_cleanup(void *proc);
 extern "C" __declspec(dllimport) int proc_get_exit_code(void *proc,int *code);
 extern "C" __declspec(dllimport) int proc_wait_exit(void *proc,int *code,int time);
@@ -43,7 +43,7 @@ void __fastcall TForm1::BtnRunClick(TObject *Sender)
 		proc=malloc(proc_handle_size());
 
 		// create process
-		int ret=proc_create(proc,Epath->Text.c_str(),(Epath->Text+"//"+Ecmd->Text).c_str(),0);
+		int ret=proc_create(proc,Epath->Text.c_str(),(Epath->Text+"//"+Ecmd->Text).c_str(),1,!CBconsole->Checked);
 
 		// clear stdout
 		Memo->Clear();
@@ -66,12 +66,19 @@ void __fastcall TForm1::BtnRunClick(TObject *Sender)
 	{
 		// --- exit process ---
 
+    int written;
+		proc_write_stdin(proc,"exit\n",5,&written);
+		int code;
+		if(proc_wait_exit(proc,&code,5000))
+			proc_terminate(proc,&code,5000);
+
+		proc_cleanup(proc);
+
+		free((void*)proc);
+
 		// exit
 		stat=0;
-
-		// wait for process exit code
-		proc_wait_exit(proc,NULL,0);
-
+    
 		BtnRun->Caption="Run";
 		Caption="STOPPED - process has returned exit code.";
 	}
@@ -165,7 +172,7 @@ void __fastcall TForm1::EinputKeyPress(TObject *Sender, char &Key)
 		int written;
 		proc_write_stdin(proc,buf,len,&written);
 
-		Einput->Text="";
+		//Einput->Text="";
 	}
 }
 //---------------------------------------------------------------------------
@@ -189,12 +196,8 @@ void __fastcall TForm1::BtnCmdClick(TObject *Sender)
 
 
 
-void __fastcall TForm1::Button1Click(TObject *Sender)
-{
-  int written;
-	proc_write_stdin(proc,"exit\n",5,&written);
-	int code;
-	proc_wait_exit(proc,&code,5000);
-}
-//---------------------------------------------------------------------------
+
+
+
+
 

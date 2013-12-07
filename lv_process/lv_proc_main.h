@@ -3,6 +3,16 @@
 #define lv_proc_mainH
 //---------------------------------------------------------------------------
 
+typedef struct{
+  HANDLE th;
+	int exit;
+	char *data;
+	char *read;
+	char *write;
+	int len;
+	CRITICAL_SECTION cs;
+}TFifo;
+
 // --- process instance handles structure ---
 typedef struct{
 	// process and main thread handles and ids
@@ -15,8 +25,25 @@ typedef struct{
 	// ...[1] ends attached to the process instance,
 	HANDLE pout[2];
 	HANDLE pinp[2];
+	// optional console:
+	// stdout
+	HANDLE cout;
+	// colors
+	DWORD clr_in;
+	DWORD clr_out;
+	// stdout FIFO:
+	TFifo *fifo;
+	// debug
+	char dbg_path[MAX_PATH];
 }TPHndl;
 
+typedef struct{
+  int no_hide;
+	short console_x;
+	short console_y;
+	WORD console_clr_stdin;
+	WORD console_clr_stdout;
+}TCfg;
 
 // --- error codes ---
 #define LVP_EC_NO_PROC 0x0001
@@ -32,10 +59,14 @@ typedef struct{
 #define LVP_EC_TIMEOUT 0x0015
 #define LVP_EC_TERM_FAILED 0x0016
 #define LVP_EC_SMALL_BUF 0x0020
+#define LVP_EC_CONS_CRAETE_FAILED 0x0030
+#define LVP_EC_STDOUT_RD_TH_FAILED 0x0040
+#define LVP_EC_STDOUT_FIFO_FAILED 0x0041
 
 
 // --- internal prototypes ---
 int time_get_ms(LARGE_INTEGER *t1,LARGE_INTEGER *t2,LARGE_INTEGER *f);
+int peek_stdout(TPHndl *proc,int *exit,char *buf,int bsize,int *rread,int *rtord);
 
 // --- external prototypes ---
 extern "C" __declspec(dllexport) int proc_format_error(int code,char *str,int buflen);

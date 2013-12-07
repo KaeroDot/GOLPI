@@ -1,12 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BorlandProject>
 	<Transactions>
-    <Transaction>2013.05.08 10:36:06.859.cpp,C:\Documents and Settings\doma\My Documents\Borland Studio Projects\Unit1.cpp=E:\Data\C\DLL\create_process\main.cpp</Transaction>
-    <Transaction>2013.05.08 10:36:15.531.bdsproj,C:\Documents and Settings\doma\My Documents\Borland Studio Projects\Project1.bdsproj=E:\Data\C\DLL\create_process\create_process.bdsproj</Transaction>
-    <Transaction>2013.05.08 13:13:27.765.bdsproj,E:\Data\C\DLL\create_process\create_process.bdsproj=E:\Data\C\DLL\create_process\lv_proc.bdsproj</Transaction>
-    <Transaction>2013.05.10 18:08:07.453.cpp,E:\Data\C\DLL\lv_process\main.cpp=E:\Data\C\DLL\lv_process\main_2.cpp</Transaction>
-    <Transaction>2013.05.10 18:08:51.765.cpp,E:\Data\C\DLL\lv_process\Unit1.cpp=E:\Data\C\DLL\lv_process\lv_proc_main.cpp</Transaction>
-    <Transaction>2013.05.10 18:08:51.765.h,E:\Data\C\DLL\lv_process\Unit1.h=E:\Data\C\DLL\lv_process\lv_proc_main.h</Transaction>
-    <Transaction>2013.05.10 19:01:43.859.cpp,E:\Data\C\DLL\lv_process\main_2.cpp=</Transaction>
+    <Transaction>2014.01.27 20:49:24.656.bdsproj,C:\Documents and Settings\doma\My Documents\Borland Studio Projects\Project1.bdsproj=E:\Data\C\DLL\lv_process\lv_proc.bdsproj</Transaction>
   </Transactions>
 </BorlandProject>

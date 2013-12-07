@@ -1,8 +1,8 @@
 object Form1: TForm1
   Left = 0
   Top = 0
-  ClientHeight = 432
-  ClientWidth = 752
+  ClientHeight = 419
+  ClientWidth = 743
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -24,8 +24,8 @@ object Form1: TForm1
   object Memo: TMemo
     Left = 8
     Top = 47
-    Width = 736
-    Height = 350
+    Width = 727
+    Height = 337
     Align = alCustom
     Anchors = [akLeft, akTop, akRight, akBottom]
     Font.Charset = DEFAULT_CHARSET
@@ -37,40 +37,46 @@ object Form1: TForm1
     ReadOnly = True
     ScrollBars = ssVertical
     TabOrder = 1
+    ExplicitWidth = 736
+    ExplicitHeight = 350
   end
   object Epath: TEdit
     Left = 89
     Top = 20
-    Width = 473
+    Width = 464
     Height = 21
     Align = alCustom
     Anchors = [akLeft, akTop, akRight]
     TabOrder = 2
     Text = 'C:\Octave\Octave3.6.4_gcc4.6.2\bin\'
+    ExplicitWidth = 473
   end
   object Ecmd: TEdit
-    Left = 568
+    Left = 559
     Top = 20
     Width = 176
     Height = 21
     Align = alCustom
     Anchors = [akTop, akRight]
     TabOrder = 3
-    Text = 'octave.exe -q'
+    Text = 'octave.exe -q -i'
+    ExplicitLeft = 568
   end
   object Einput: TEdit
     Left = 8
-    Top = 403
-    Width = 580
+    Top = 390
+    Width = 571
     Height = 21
     Align = alCustom
     Anchors = [akLeft, akRight, akBottom]
     TabOrder = 4
     OnKeyPress = EinputKeyPress
+    ExplicitTop = 403
+    ExplicitWidth = 580
   end
   object BtnCmd: TButton
-    Left = 594
-    Top = 403
+    Left = 585
+    Top = 390
     Width = 150
     Height = 21
     Align = alCustom
@@ -78,15 +84,19 @@ object Form1: TForm1
     Caption = 'Command (write + read)'
     TabOrder = 5
     OnClick = BtnCmdClick
+    ExplicitLeft = 594
+    ExplicitTop = 403
   end
-  object Button1: TButton
-    Left = 594
-    Top = 360
-    Width = 75
-    Height = 25
-    Caption = 'Terminate'
+  object CBconsole: TCheckBox
+    Left = 559
+    Top = 2
+    Width = 97
+    Height = 17
+    Align = alCustom
+    Anchors = [akTop, akRight]
+    Caption = 'Create console'
     TabOrder = 6
-    OnClick = Button1Click
+    ExplicitLeft = 568
   end
   object timer: TTimer
     Interval = 50

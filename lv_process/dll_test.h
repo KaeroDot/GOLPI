@@ -19,12 +19,11 @@ __published:	// IDE-managed Components
 	TEdit *Einput;
 	TTimer *timer;
 	TButton *BtnCmd;
-	TButton *Button1;
+	TCheckBox *CBconsole;
 	void __fastcall BtnRunClick(TObject *Sender);
 	void __fastcall timerTimer(TObject *Sender);
 	void __fastcall EinputKeyPress(TObject *Sender, char &Key);
 	void __fastcall BtnCmdClick(TObject *Sender);
-	void __fastcall Button1Click(TObject *Sender);
 private:	// User declarations
 public:		// User declarations
 	__fastcall TForm1(TComponent* Owner);
