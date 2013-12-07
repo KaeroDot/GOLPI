@@ -76,7 +76,7 @@
 				<Property Name="Bld_localDestDir" Type="Path">../builds/GOLPI [VersionNumber]</Property>
 				<Property Name="Bld_localDestDirType" Type="Str">relativeToCommon</Property>
 				<Property Name="Bld_previewCacheID" Type="Str">{369EFAE7-7719-4A46-B6B4-E54D725C2DB5}</Property>
-				<Property Name="Bld_version.minor" Type="Int">2</Property>
+				<Property Name="Bld_version.minor" Type="Int">3</Property>
 				<Property Name="Destination[0].destName" Type="Str">GOLPI Library.lvlibp</Property>
 				<Property Name="Destination[0].path" Type="Path">../builds/GOLPI [VersionNumber]/GOLPI Library.lvlibp</Property>
 				<Property Name="Destination[0].preserveHierarchy" Type="Bool">true</Property>
@@ -85,7 +85,7 @@
 				<Property Name="Destination[1].path" Type="Path">../builds/GOLPI [VersionNumber]</Property>
 				<Property Name="DestinationCount" Type="Int">2</Property>
 				<Property Name="PackedLib_callersAdapt" Type="Bool">true</Property>
-				<Property Name="Source[0].itemID" Type="Str">{06352125-0FB9-421F-B000-C9C9729FC6BD}</Property>
+				<Property Name="Source[0].itemID" Type="Str">{4E78ECC9-81CE-48C0-B5BE-67D78DB615C9}</Property>
 				<Property Name="Source[0].type" Type="Str">Container</Property>
 				<Property Name="Source[1].destinationIndex" Type="Int">0</Property>
 				<Property Name="Source[1].itemID" Type="Ref">/My Computer/GOLPI library.lvlib</Property>
