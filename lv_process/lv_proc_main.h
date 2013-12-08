@@ -3,6 +3,7 @@
 #define lv_proc_mainH
 //---------------------------------------------------------------------------
 
+// --- process stdout fifo ---
 typedef struct{
   HANDLE th;
 	int exit;
@@ -11,6 +12,8 @@ typedef struct{
 	char *write;
 	int len;
 	CRITICAL_SECTION cs;
+	int c_stdout_bytes;
+	int c_stdin_bytes;
 }TFifo;
 
 // --- process instance handles structure ---
@@ -37,6 +40,7 @@ typedef struct{
 	char dbg_path[MAX_PATH];
 }TPHndl;
 
+// --- configuration ---
 typedef struct{
   int no_hide;
 	short console_x;
@@ -63,8 +67,29 @@ typedef struct{
 #define LVP_EC_STDOUT_RD_TH_FAILED 0x0040
 #define LVP_EC_STDOUT_FIFO_FAILED 0x0041
 
+// --- constants ---
+#define STDOUT_FIFO_BUF_LEN 1048576
+#define STDOUT_TH_BUF_SIZE 8192
+#define STDOUT_TH_UPDATE_TIME 1500
 
 // --- internal prototypes ---
+// debugs
+int debug_init(TPHndl *proc,char *path);
+int debug_printf(TPHndl *proc,const char *fmt,...);
+// inis
+WORD ini_parse_color(char *str,WORD clr_in,char *clr_str_out,int size);
+int ini_read_ini(TCfg *cfg,int *dbg);
+// stdout fifo
+int fifo_alloc(TPHndl *proc,int size);
+int fifo_free(TPHndl *proc);
+int fifo_to_write(TPHndl *proc,int *len);
+int fifo_to_read(TPHndl *proc,int *len);
+int fifo_clear(TPHndl *proc);
+int fifo_write(TPHndl *proc,char *data,int towr,int *written);
+int fifo_read(TPHndl *proc,char *data,int tord,int *read);
+DWORD WINAPI fifo_read_thread(LPVOID lpParam);
+// other
+int peek_stdout(TPHndl *proc,int *exit,char *buf,int bsize,int *rread,int *rtord);
 int time_get_ms(LARGE_INTEGER *t1,LARGE_INTEGER *t2,LARGE_INTEGER *f);
 int peek_stdout(TPHndl *proc,int *exit,char *buf,int bsize,int *rread,int *rtord);
 

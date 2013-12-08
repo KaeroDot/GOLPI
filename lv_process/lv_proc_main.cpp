@@ -37,6 +37,10 @@
 // this should be automatically loaded with DLL folder path
 AnsiString dll_path;
 
+
+//---------------------------------------------------------------------------
+// debug file initialization
+//---------------------------------------------------------------------------
 int debug_init(TPHndl *proc,char *path)
 {
 	proc->dbg_path[0] = '\0';
@@ -51,6 +55,9 @@ int debug_init(TPHndl *proc,char *path)
 	return(0);
 }
 
+//---------------------------------------------------------------------------
+// debug file printf
+//---------------------------------------------------------------------------
 int debug_printf(TPHndl *proc,const char *fmt,...)
 {
 	if(proc && proc->dbg_path[0])
@@ -237,6 +244,10 @@ int fifo_alloc(TPHndl *proc,int size)
 	proc->fifo->read = proc->fifo->data;
 	proc->fifo->write = proc->fifo->data;
 
+  // clear transfered data counters
+	proc->fifo->c_stdout_bytes = 0;
+	proc->fifo->c_stdin_bytes = 0;
+
 	// init critical section
 	InitializeCriticalSection(&proc->fifo->cs);
 
@@ -409,6 +420,9 @@ int fifo_write(TPHndl *proc,char *data,int towr,int *written)
 		}
 	}
 
+  // update stdout bytes counter 
+	proc->fifo->c_stdout_bytes += towr;
+
 	LeaveCriticalSection(&proc->fifo->cs);
 
 	// return bytes count written
@@ -483,6 +497,19 @@ int fifo_read(TPHndl *proc,char *data,int tord,int *read)
 	return(0);
 }
 
+char *fmt_capacity(char *str,int size)
+{
+	char tmp[64];
+	if(size<10000)
+		sprintf(tmp,"%dB",size);
+	else if(size<1000000)
+		sprintf(tmp,"%.02fkB",(double)size/1024);
+	else
+		sprintf(tmp,"%.02fMB",(double)size/1048576);
+	strcat(str,tmp);
+	return(str);
+}
+
 //---------------------------------------------------------------------------
 // STDOUT FIFO: STDOUT readout thread
 //---------------------------------------------------------------------------
@@ -495,8 +522,10 @@ DWORD WINAPI fifo_read_thread(LPVOID lpParam)
 
 	// signalize completed thread initialization
 	proc.fifo->exit = 0;
-                                                   
-	#define STDOUT_TH_BUF_SIZE 8192
+
+	LARGE_INTEGER freq; QueryPerformanceFrequency(&freq);
+	LARGE_INTEGER t_last; QueryPerformanceCounter(&t_last);
+ 
 	char buf[STDOUT_TH_BUF_SIZE];
   int exit;
 	do{
@@ -533,10 +562,24 @@ DWORD WINAPI fifo_read_thread(LPVOID lpParam)
 		if(!exit && !proc.fifo->exit && !tord)
 			Sleep(5);
 
+		// update status?
+		LARGE_INTEGER t_new; QueryPerformanceCounter(&t_new);
+		if(time_get_ms(&t_last,&t_new,&freq)>=STDOUT_TH_UPDATE_TIME)
+		{
+			strcpy(buf,"lv_proc.dll console (read only), stdout = ");
+			fmt_capacity(buf,proc.fifo->c_stdout_bytes);
+			strcat(buf,", stdin = ");
+			fmt_capacity(buf,proc.fifo->c_stdin_bytes);
+			SetConsoleTitle(buf);
+			t_last = t_new;
+		}
+
+
 	}while(!proc.fifo->exit && !exit);
 
 	return(0);
 }
+
 
 
 
@@ -756,24 +799,24 @@ extern "C" __declspec(dllexport) int proc_create(TPHndl *proc,char *folder,char 
 	si.hStdError=sterr?proc->pout[1]:NULL;
 
 	// --- try to crate process ---
-	int ret = CreateProcess(NULL,cmd,NULL,NULL,true,0,NULL,folder,&si,&pi);
-	proc->hproc = pi.hProcess;
-	proc->hth = pi.hThread;
-	proc->pid = pi.dwProcessId;
-	proc->tid = pi.dwThreadId;
-	if(!ret)
+  if(!CreateProcess(NULL,cmd,NULL,NULL,true,0,NULL,folder,&si,&pi))
 	{
 		// failed - close handles
 		proc_cleanup(proc);
 		return(LVP_EC_CANT_CREATE_PROC);
 	}
+  // store process and thread pointers
+	proc->hproc = pi.hProcess;
+	proc->hth = pi.hThread;
+	proc->pid = pi.dwProcessId;
+	proc->tid = pi.dwThreadId;
 
 	debug_printf(proc," - done\n");
 
 	debug_printf(proc,"allocating stdout fifo\n");
 
 	// --- try to create stdout fifo ---
-	if(fifo_alloc(proc,1048576))
+	if(fifo_alloc(proc,STDOUT_FIFO_BUF_LEN))
 	{
 		// failed
 		proc_cleanup(proc);
@@ -849,7 +892,7 @@ extern "C" __declspec(dllexport) int proc_cleanup(TPHndl *proc)
 	debug_printf(proc,"closing stdout readout thread:\n");
 
 	// terminate stdout read thread
-	if(proc->fifo->th)
+	if(proc->fifo && proc->fifo->th)
 	{
 		ResumeThread(proc->fifo->th);
 		proc->fifo->exit = 1;
@@ -1076,14 +1119,18 @@ extern "C" __declspec(dllexport) int proc_write_stdin(TPHndl *proc,char *buf,int
 
 	// try to write data buffer
 	DWORD wrt;
-	int ret=WriteFile(proc->pinp[0],(void*)buf,towr,&wrt,NULL);
+	int ret = WriteFile(proc->pinp[0],(void*)buf,towr,&wrt,NULL);
 
 	// return written count
 	if(written)
 		*written=(int)wrt;
 
+  // update stdin bytes counter
+	if(proc->fifo)
+		proc->fifo->c_stdin_bytes += wrt;
+
 	// write buffer to the console?
-	if(ret && proc->cout)
+	if(ret && proc->cout && proc->fifo)
 	{
     debug_printf(proc," - writting copy to the console\n");
 
@@ -1141,7 +1188,7 @@ extern "C" __declspec(dllexport) int proc_peek_stdout(TPHndl *proc,int *exit,cha
 
 	return(0);
 }
-
+// main stdout readout function, called ONLY by readout thread
 int peek_stdout(TPHndl *proc,int *exit,char *buf,int bsize,int *rread,int *rtord)
 {
 	// leave if no proc handle
