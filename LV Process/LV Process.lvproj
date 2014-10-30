@@ -2,7 +2,7 @@
 <Project Type="Project" LVVersion="13008000">
 	<Property Name="CCSymbols" Type="Str"></Property>
 	<Property Name="NI.LV.All.SourceOnly" Type="Bool">true</Property>
-	<Property Name="NI.Project.Description" Type="Str">Library for accessing pipes under Windows OS. Calls library lv_proc.dll written in C.</Property>
+	<Property Name="NI.Project.Description" Type="Str">Library to communicate with processes by means of stdin and stdout for Windows OS. VIs call external library lv_process.dll to start a process, send and receive data through stdin and stdout and close process. In LabVIEW a pipe is represented by a cluster containing handlers and setting. User can change the cluster values as required (be careful). All traffic can be logged if debug mode is started. Debug console can be shown on the background.</Property>
 	<Item Name="My Computer" Type="My Computer">
 		<Property Name="NI.SortType" Type="Int">3</Property>
 		<Property Name="server.app.propertiesEnabled" Type="Bool">true</Property>
@@ -38,7 +38,9 @@
 				<Property Name="Bld_localDestDirType" Type="Str">relativeToCommon</Property>
 				<Property Name="Bld_modifyLibraryFile" Type="Bool">true</Property>
 				<Property Name="Bld_previewCacheID" Type="Str">{62CC9E57-F4E6-467D-8B21-728623B38787}</Property>
+				<Property Name="Bld_version.build" Type="Int">1</Property>
 				<Property Name="Bld_version.minor" Type="Int">5</Property>
+				<Property Name="Bld_version.patch" Type="Int">1</Property>
 				<Property Name="Destination[0].destName" Type="Str">LV Process.lvlibp</Property>
 				<Property Name="Destination[0].path" Type="Path">../builds/LV Process [VersionNumber]/NI_AB_PROJECTNAME.lvlibp</Property>
 				<Property Name="Destination[0].preserveHierarchy" Type="Bool">true</Property>
@@ -47,7 +49,7 @@
 				<Property Name="Destination[1].path" Type="Path">../builds/LV Process [VersionNumber]</Property>
 				<Property Name="DestinationCount" Type="Int">2</Property>
 				<Property Name="PackedLib_callersAdapt" Type="Bool">true</Property>
-				<Property Name="Source[0].itemID" Type="Str">{F0EEAAAE-76E0-47D5-BF62-145495B2C875}</Property>
+				<Property Name="Source[0].itemID" Type="Str">{5ED37BB1-A144-4CF7-AD34-9C7212D984C7}</Property>
 				<Property Name="Source[0].type" Type="Str">Container</Property>
 				<Property Name="Source[1].destinationIndex" Type="Int">0</Property>
 				<Property Name="Source[1].itemID" Type="Ref">/My Computer/LV Process library.lvlib/Pipe Handle.ctl</Property>
@@ -116,7 +118,9 @@
 				<Property Name="Bld_localDestDir" Type="Path">../GOLPI/LV Process source distribution</Property>
 				<Property Name="Bld_localDestDirType" Type="Str">relativeToCommon</Property>
 				<Property Name="Bld_previewCacheID" Type="Str">{9A7296D5-193A-4BE7-B19A-B969D6355041}</Property>
-				<Property Name="Bld_version.minor" Type="Int">4</Property>
+				<Property Name="Bld_version.build" Type="Int">1</Property>
+				<Property Name="Bld_version.minor" Type="Int">5</Property>
+				<Property Name="Bld_version.patch" Type="Int">1</Property>
 				<Property Name="Destination[0].destName" Type="Str">Destination Directory</Property>
 				<Property Name="Destination[0].path" Type="Path">../GOLPI/LV Process source distribution</Property>
 				<Property Name="Destination[1].destName" Type="Str">Support Directory</Property>
@@ -124,7 +128,7 @@
 				<Property Name="Destination[2].destName" Type="Str">lv_proc.dll destination</Property>
 				<Property Name="Destination[2].path" Type="Path">../GOLPI</Property>
 				<Property Name="DestinationCount" Type="Int">3</Property>
-				<Property Name="Source[0].itemID" Type="Str">{98AA666F-D32C-4C74-896A-46E12529DEA6}</Property>
+				<Property Name="Source[0].itemID" Type="Str">{5ED37BB1-A144-4CF7-AD34-9C7212D984C7}</Property>
 				<Property Name="Source[0].type" Type="Str">Container</Property>
 				<Property Name="Source[1].destinationIndex" Type="Int">0</Property>
 				<Property Name="Source[1].itemID" Type="Ref">/My Computer/LV Process library.lvlib</Property>
