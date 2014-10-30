@@ -1,7 +1,7 @@
-<VI_Package_Builder_Settings Version="0.6" Created_Date="2014-10-28 08:43:35" Modified_Date="2014-10-30 21:30:10" Creator="Tim Orling" Comments="" ID="07c0733f357c3f48c603fb3b2e39ebca">
+<VI_Package_Builder_Settings Version="0.6" Created_Date="2014-10-28 08:43:35" Modified_Date="2014-10-30 21:41:11" Creator="Tim Orling" Comments="" ID="d94564febda13fead918e2ed1d3d667f">
   <Library_General_Settings>
     <Package_File_Name>LV_Process_lvlib</Package_File_Name>
-    <Library_Version>0.5.1.2</Library_Version>
+    <Library_Version>0.5.2.2</Library_Version>
     <Auto_Increment_Version>false</Auto_Increment_Version>
     <Library_Source_Folder>.</Library_Source_Folder>
     <Library_Output_Folder>..\builds</Library_Output_Folder>
@@ -35,7 +35,7 @@ LV Process works only with lv_proc.dll library, which is part of vipm package or
       <Copyright>Copyright (c) 2013,Martin Šíra (msira@cmi.cz), Stanislav Mašláò</Copyright>
       <Packager>Martin Šíra, Stanislav Mašláò</Packager>
       <URL>http://kaero.wz.cz/golpi.html</URL>
-      <Release_Notes>First package build.</Release_Notes>
+      <Release_Notes>LV Process: fixed typo in vi descriptions.</Release_Notes>
     </Description>
     <Destinations>
       <Toolkit_VIs>
@@ -334,7 +334,7 @@ LV Process works only with lv_proc.dll library, which is part of vipm package or
         <Path>Write Stdin.vi</Path>
         <VI_Title/>
       </Items_Data>
-      <GUID>20DAEA900CE5D2C22CADF64AE5F462BA</GUID>
+      <GUID>D0AD0D5FA8FBFCB78385FDA17EAA0764</GUID>
     </Functions_Palette_Data>
     <Controls_Palette_Data>
       <Parent_Palette_Index>-1</Parent_Palette_Index>
@@ -369,7 +369,7 @@ LV Process works only with lv_proc.dll library, which is part of vipm package or
         <Path>Pipe Handle.ctl</Path>
         <VI_Title/>
       </Items_Data>
-      <GUID>E38E02006C358B748B427336C01ED2DD</GUID>
+      <GUID>ED121A0F823F33A5807EFAA442D101B9</GUID>
     </Controls_Palette_Data>
   </Library_Palette_Definition>
 </VI_Package_Builder_Settings>
