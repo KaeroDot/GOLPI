@@ -87,7 +87,7 @@
 				<Property Name="Destination[1].path" Type="Path">../builds/GOLPI [VersionNumber]</Property>
 				<Property Name="DestinationCount" Type="Int">2</Property>
 				<Property Name="PackedLib_callersAdapt" Type="Bool">true</Property>
-				<Property Name="Source[0].itemID" Type="Str">{D30E2314-5E66-4009-85DB-899D3C29B007}</Property>
+				<Property Name="Source[0].itemID" Type="Str">{444465AE-0991-4783-8C3A-303FAA881700}</Property>
 				<Property Name="Source[0].type" Type="Str">Container</Property>
 				<Property Name="Source[1].destinationIndex" Type="Int">0</Property>
 				<Property Name="Source[1].itemID" Type="Ref">/My Computer/GOLPI library.lvlib</Property>

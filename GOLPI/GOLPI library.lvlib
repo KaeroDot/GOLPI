@@ -105,5 +105,5 @@ GOLPI works only with lv_proc.dll library, which is part of vipm package or shou
 		<Item Name="Quit GNU Octave.vi" Type="VI" URL="../Public/Quit GNU Octave.vi"/>
 		<Item Name="VI Tree.vi" Type="VI" URL="../Public/VI Tree.vi"/>
 	</Item>
-	<Item Name="license.txt" Type="Document" URL="../license.txt"/>
+	<Item Name="GOLPI license.txt" Type="Document" URL="../GOLPI license.txt"/>
 </Library>
