@@ -73,6 +73,7 @@ GOLPI works only with lv_proc.dll library, which is part of vipm package or shou
 			<Item Name="String to Complex.vi" Type="VI" URL="../Private/Utilities/String to Complex.vi"/>
 			<Item Name="String to Double.vi" Type="VI" URL="../Private/Utilities/String to Double.vi"/>
 			<Item Name="ASCII numbers to String.vi" Type="VI" URL="../Private/Utilities/ASCII numbers to String.vi"/>
+			<Item Name="Check and Generate Path to Octave Executable.vi" Type="VI" URL="../Private/Utilities/Check and Generate Path to Octave Executable.vi"/>
 		</Item>
 	</Item>
 	<Item Name="Public" Type="Folder">
