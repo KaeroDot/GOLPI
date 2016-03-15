@@ -1,7 +1,7 @@
-<VI_Package_Builder_Settings Version="0.6" Created_Date="2014-10-28 08:43:35" Modified_Date="2014-10-30 21:41:11" Creator="Tim Orling" Comments="" ID="d94564febda13fead918e2ed1d3d667f">
+<VI_Package_Builder_Settings Version="0.6" Created_Date="2014-10-28 08:43:35" Modified_Date="2016-03-15 16:11:56" Creator="Tim Orling" Comments="" ID="b0f959d36ae9fe41c5432a1e0206faf7">
   <Library_General_Settings>
     <Package_File_Name>LV_Process_lvlib</Package_File_Name>
-    <Library_Version>0.5.2.2</Library_Version>
+    <Library_Version>0.6.0.2</Library_Version>
     <Auto_Increment_Version>false</Auto_Increment_Version>
     <Library_Source_Folder>.</Library_Source_Folder>
     <Library_Output_Folder>..\builds</Library_Output_Folder>
@@ -35,7 +35,12 @@ LV Process works only with lv_proc.dll library, which is part of vipm package or
       <Copyright>Copyright (c) 2013,Martin Šíra (msira@cmi.cz), Stanislav Mašláò</Copyright>
       <Packager>Martin Šíra, Stanislav Mašláò</Packager>
       <URL>http://kaero.wz.cz/golpi.html</URL>
-      <Release_Notes>LV Process: fixed typo in vi descriptions.</Release_Notes>
+      <Release_Notes>LV Process: 
+fix of error merge priority
+fix distinction between exited and not running
+update for a new version of lv_proc.dll 4.1
+add Create process take input of direct path to lv_proc.dll
+add read out lv_proc.dll version information </Release_Notes>
     </Description>
     <Destinations>
       <Toolkit_VIs>
@@ -205,7 +210,7 @@ LV Process works only with lv_proc.dll library, which is part of vipm package or
           <Column>1</Column>
         </Position>
         <Icon>00000000</Icon>
-        <Path>Clean Up.vi</Path>
+        <Path>Public\Clean Up.vi</Path>
         <VI_Title/>
       </Items_Data>
       <Items_Data>
@@ -219,7 +224,7 @@ LV Process works only with lv_proc.dll library, which is part of vipm package or
           <Column>2</Column>
         </Position>
         <Icon>00000000</Icon>
-        <Path>Create Process.vi</Path>
+        <Path>Public\Create Process.vi</Path>
         <VI_Title/>
       </Items_Data>
       <Items_Data>
@@ -233,7 +238,7 @@ LV Process works only with lv_proc.dll library, which is part of vipm package or
           <Column>3</Column>
         </Position>
         <Icon>00000000</Icon>
-        <Path>Demo.vi</Path>
+        <Path>Public\Demo.vi</Path>
         <VI_Title/>
       </Items_Data>
       <Items_Data>
@@ -247,7 +252,7 @@ LV Process works only with lv_proc.dll library, which is part of vipm package or
           <Column>4</Column>
         </Position>
         <Icon>00000000</Icon>
-        <Path>Generate Error.vi</Path>
+        <Path>Private\Generate Error.vi</Path>
         <VI_Title/>
       </Items_Data>
       <Items_Data>
@@ -261,7 +266,7 @@ LV Process works only with lv_proc.dll library, which is part of vipm package or
           <Column>5</Column>
         </Position>
         <Icon>00000000</Icon>
-        <Path>Get Exit Code.vi</Path>
+        <Path>Public\Get Exit Code.vi</Path>
         <VI_Title/>
       </Items_Data>
       <Items_Data>
@@ -275,7 +280,7 @@ LV Process works only with lv_proc.dll library, which is part of vipm package or
           <Column>6</Column>
         </Position>
         <Icon>00000000</Icon>
-        <Path>Kill.vi</Path>
+        <Path>Public\Kill.vi</Path>
         <VI_Title/>
       </Items_Data>
       <Items_Data>
@@ -289,7 +294,7 @@ LV Process works only with lv_proc.dll library, which is part of vipm package or
           <Column>1</Column>
         </Position>
         <Icon>00000000</Icon>
-        <Path>Read Stdout.vi</Path>
+        <Path>Public\Read Stdout.vi</Path>
         <VI_Title/>
       </Items_Data>
       <Items_Data>
@@ -303,7 +308,7 @@ LV Process works only with lv_proc.dll library, which is part of vipm package or
           <Column>2</Column>
         </Position>
         <Icon>00000000</Icon>
-        <Path>Vi Tree.vi</Path>
+        <Path>Public\Vi Tree.vi</Path>
         <VI_Title/>
       </Items_Data>
       <Items_Data>
@@ -317,7 +322,7 @@ LV Process works only with lv_proc.dll library, which is part of vipm package or
           <Column>3</Column>
         </Position>
         <Icon>00000000</Icon>
-        <Path>Wait For Exit.vi</Path>
+        <Path>Public\Wait For Exit.vi</Path>
         <VI_Title/>
       </Items_Data>
       <Items_Data>
@@ -331,10 +336,10 @@ LV Process works only with lv_proc.dll library, which is part of vipm package or
           <Column>4</Column>
         </Position>
         <Icon>00000000</Icon>
-        <Path>Write Stdin.vi</Path>
+        <Path>Public\Write Stdin.vi</Path>
         <VI_Title/>
       </Items_Data>
-      <GUID>D0AD0D5FA8FBFCB78385FDA17EAA0764</GUID>
+      <GUID>104356DDF4D4AD815071F17D62DCCDA0</GUID>
     </Functions_Palette_Data>
     <Controls_Palette_Data>
       <Parent_Palette_Index>-1</Parent_Palette_Index>
@@ -366,10 +371,10 @@ LV Process works only with lv_proc.dll library, which is part of vipm package or
           <Column>1</Column>
         </Position>
         <Icon>00000000</Icon>
-        <Path>Pipe Handle.ctl</Path>
+        <Path>Public\Pipe Handle.ctl</Path>
         <VI_Title/>
       </Items_Data>
-      <GUID>ED121A0F823F33A5807EFAA442D101B9</GUID>
+      <GUID>791560AE7E4A8778BA8AA1DD97A9DEFD</GUID>
     </Controls_Palette_Data>
   </Library_Palette_Definition>
 </VI_Package_Builder_Settings>

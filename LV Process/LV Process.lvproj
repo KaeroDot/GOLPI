@@ -38,6 +38,7 @@
 				<Property Name="Bld_localDestDirType" Type="Str">relativeToCommon</Property>
 				<Property Name="Bld_modifyLibraryFile" Type="Bool">true</Property>
 				<Property Name="Bld_previewCacheID" Type="Str">{62CC9E57-F4E6-467D-8B21-728623B38787}</Property>
+				<Property Name="Bld_version.build" Type="Int">1</Property>
 				<Property Name="Bld_version.minor" Type="Int">6</Property>
 				<Property Name="Destination[0].destName" Type="Str">LV Process.lvlibp</Property>
 				<Property Name="Destination[0].path" Type="Path">../builds/LV Process [VersionNumber]/NI_AB_PROJECTNAME.lvlibp</Property>
@@ -47,7 +48,7 @@
 				<Property Name="Destination[1].path" Type="Path">../builds/LV Process [VersionNumber]</Property>
 				<Property Name="DestinationCount" Type="Int">2</Property>
 				<Property Name="PackedLib_callersAdapt" Type="Bool">true</Property>
-				<Property Name="Source[0].itemID" Type="Str">{0ECD7763-5BB7-4031-9342-2CF62CEECB21}</Property>
+				<Property Name="Source[0].itemID" Type="Str">{C2A91493-5F72-41FB-9BAA-AC3090F031D7}</Property>
 				<Property Name="Source[0].type" Type="Str">Container</Property>
 				<Property Name="Source[1].destinationIndex" Type="Int">0</Property>
 				<Property Name="Source[1].itemID" Type="Ref">/My Computer/LV Process library.lvlib/Public/Pipe Handle.ctl</Property>
@@ -116,6 +117,7 @@
 				<Property Name="Bld_localDestDir" Type="Path">../GOLPI/LV Process source distribution</Property>
 				<Property Name="Bld_localDestDirType" Type="Str">relativeToCommon</Property>
 				<Property Name="Bld_previewCacheID" Type="Str">{9A7296D5-193A-4BE7-B19A-B969D6355041}</Property>
+				<Property Name="Bld_version.build" Type="Int">1</Property>
 				<Property Name="Bld_version.minor" Type="Int">6</Property>
 				<Property Name="Destination[0].destName" Type="Str">Destination Directory</Property>
 				<Property Name="Destination[0].path" Type="Path">../GOLPI/LV Process source distribution</Property>
@@ -124,7 +126,7 @@
 				<Property Name="Destination[2].destName" Type="Str">lv_proc.dll destination</Property>
 				<Property Name="Destination[2].path" Type="Path">../GOLPI</Property>
 				<Property Name="DestinationCount" Type="Int">3</Property>
-				<Property Name="Source[0].itemID" Type="Str">{0ECD7763-5BB7-4031-9342-2CF62CEECB21}</Property>
+				<Property Name="Source[0].itemID" Type="Str">{C2A91493-5F72-41FB-9BAA-AC3090F031D7}</Property>
 				<Property Name="Source[0].type" Type="Str">Container</Property>
 				<Property Name="Source[1].destinationIndex" Type="Int">0</Property>
 				<Property Name="Source[1].itemID" Type="Ref">/My Computer/LV Process library.lvlib</Property>
