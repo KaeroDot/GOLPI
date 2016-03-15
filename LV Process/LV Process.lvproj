@@ -23,6 +23,7 @@
 				<Item Name="NI_FileType.lvlib" Type="Library" URL="/&lt;vilib&gt;/Utility/lvfile.llb/NI_FileType.lvlib"/>
 				<Item Name="NI_PackedLibraryUtility.lvlib" Type="Library" URL="/&lt;vilib&gt;/Utility/LVLibp/NI_PackedLibraryUtility.lvlib"/>
 				<Item Name="Check if File or Folder Exists.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/libraryn.llb/Check if File or Folder Exists.vi"/>
+				<Item Name="Application Directory.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/file.llb/Application Directory.vi"/>
 			</Item>
 		</Item>
 		<Item Name="Build Specifications" Type="Build">
@@ -37,9 +38,7 @@
 				<Property Name="Bld_localDestDirType" Type="Str">relativeToCommon</Property>
 				<Property Name="Bld_modifyLibraryFile" Type="Bool">true</Property>
 				<Property Name="Bld_previewCacheID" Type="Str">{62CC9E57-F4E6-467D-8B21-728623B38787}</Property>
-				<Property Name="Bld_version.build" Type="Int">1</Property>
-				<Property Name="Bld_version.minor" Type="Int">5</Property>
-				<Property Name="Bld_version.patch" Type="Int">2</Property>
+				<Property Name="Bld_version.minor" Type="Int">6</Property>
 				<Property Name="Destination[0].destName" Type="Str">LV Process.lvlibp</Property>
 				<Property Name="Destination[0].path" Type="Path">../builds/LV Process [VersionNumber]/NI_AB_PROJECTNAME.lvlibp</Property>
 				<Property Name="Destination[0].preserveHierarchy" Type="Bool">true</Property>
@@ -48,16 +47,16 @@
 				<Property Name="Destination[1].path" Type="Path">../builds/LV Process [VersionNumber]</Property>
 				<Property Name="DestinationCount" Type="Int">2</Property>
 				<Property Name="PackedLib_callersAdapt" Type="Bool">true</Property>
-				<Property Name="Source[0].itemID" Type="Str">{E7491C39-B560-4A61-BE4E-796132DF5538}</Property>
+				<Property Name="Source[0].itemID" Type="Str">{0ECD7763-5BB7-4031-9342-2CF62CEECB21}</Property>
 				<Property Name="Source[0].type" Type="Str">Container</Property>
 				<Property Name="Source[1].destinationIndex" Type="Int">0</Property>
-				<Property Name="Source[1].itemID" Type="Ref">/My Computer/LV Process library.lvlib/Pipe Handle.ctl</Property>
+				<Property Name="Source[1].itemID" Type="Ref">/My Computer/LV Process library.lvlib/Public/Pipe Handle.ctl</Property>
 				<Property Name="Source[1].type" Type="Str">VI</Property>
 				<Property Name="Source[10].destinationIndex" Type="Int">0</Property>
-				<Property Name="Source[10].itemID" Type="Ref">/My Computer/LV Process library.lvlib/Wait For Exit.vi</Property>
+				<Property Name="Source[10].itemID" Type="Ref">/My Computer/LV Process library.lvlib/Public/Wait For Exit.vi</Property>
 				<Property Name="Source[10].type" Type="Str">VI</Property>
 				<Property Name="Source[11].destinationIndex" Type="Int">0</Property>
-				<Property Name="Source[11].itemID" Type="Ref">/My Computer/LV Process library.lvlib/Write Stdin.vi</Property>
+				<Property Name="Source[11].itemID" Type="Ref">/My Computer/LV Process library.lvlib/Public/Write Stdin.vi</Property>
 				<Property Name="Source[11].type" Type="Str">VI</Property>
 				<Property Name="Source[12].destinationIndex" Type="Int">0</Property>
 				<Property Name="Source[12].itemID" Type="Ref">/My Computer/LV Process library.lvlib</Property>
@@ -71,25 +70,25 @@
 				<Property Name="Source[2].itemID" Type="Ref">/My Computer/LV Process library.lvlib/Private/Generate Error.vi</Property>
 				<Property Name="Source[2].type" Type="Str">VI</Property>
 				<Property Name="Source[3].destinationIndex" Type="Int">0</Property>
-				<Property Name="Source[3].itemID" Type="Ref">/My Computer/LV Process library.lvlib/Demo.vi</Property>
+				<Property Name="Source[3].itemID" Type="Ref">/My Computer/LV Process library.lvlib/Public/Demo.vi</Property>
 				<Property Name="Source[3].type" Type="Str">VI</Property>
 				<Property Name="Source[4].destinationIndex" Type="Int">0</Property>
-				<Property Name="Source[4].itemID" Type="Ref">/My Computer/LV Process library.lvlib/Clean Up.vi</Property>
+				<Property Name="Source[4].itemID" Type="Ref">/My Computer/LV Process library.lvlib/Public/Clean Up.vi</Property>
 				<Property Name="Source[4].type" Type="Str">VI</Property>
 				<Property Name="Source[5].destinationIndex" Type="Int">0</Property>
-				<Property Name="Source[5].itemID" Type="Ref">/My Computer/LV Process library.lvlib/Create Process.vi</Property>
+				<Property Name="Source[5].itemID" Type="Ref">/My Computer/LV Process library.lvlib/Public/Create Process.vi</Property>
 				<Property Name="Source[5].type" Type="Str">VI</Property>
 				<Property Name="Source[6].destinationIndex" Type="Int">0</Property>
-				<Property Name="Source[6].itemID" Type="Ref">/My Computer/LV Process library.lvlib/Read Stdout.vi</Property>
+				<Property Name="Source[6].itemID" Type="Ref">/My Computer/LV Process library.lvlib/Public/Read Stdout.vi</Property>
 				<Property Name="Source[6].type" Type="Str">VI</Property>
 				<Property Name="Source[7].destinationIndex" Type="Int">0</Property>
-				<Property Name="Source[7].itemID" Type="Ref">/My Computer/LV Process library.lvlib/Kill.vi</Property>
+				<Property Name="Source[7].itemID" Type="Ref">/My Computer/LV Process library.lvlib/Public/Kill.vi</Property>
 				<Property Name="Source[7].type" Type="Str">VI</Property>
 				<Property Name="Source[8].destinationIndex" Type="Int">0</Property>
-				<Property Name="Source[8].itemID" Type="Ref">/My Computer/LV Process library.lvlib/Vi Tree.vi</Property>
+				<Property Name="Source[8].itemID" Type="Ref">/My Computer/LV Process library.lvlib/Public/Vi Tree.vi</Property>
 				<Property Name="Source[8].type" Type="Str">VI</Property>
 				<Property Name="Source[9].destinationIndex" Type="Int">0</Property>
-				<Property Name="Source[9].itemID" Type="Ref">/My Computer/LV Process library.lvlib/Get Exit Code.vi</Property>
+				<Property Name="Source[9].itemID" Type="Ref">/My Computer/LV Process library.lvlib/Public/Get Exit Code.vi</Property>
 				<Property Name="Source[9].type" Type="Str">VI</Property>
 				<Property Name="SourceCount" Type="Int">13</Property>
 				<Property Name="TgtF_companyName" Type="Str">CMI</Property>
@@ -117,9 +116,7 @@
 				<Property Name="Bld_localDestDir" Type="Path">../GOLPI/LV Process source distribution</Property>
 				<Property Name="Bld_localDestDirType" Type="Str">relativeToCommon</Property>
 				<Property Name="Bld_previewCacheID" Type="Str">{9A7296D5-193A-4BE7-B19A-B969D6355041}</Property>
-				<Property Name="Bld_version.build" Type="Int">1</Property>
-				<Property Name="Bld_version.minor" Type="Int">5</Property>
-				<Property Name="Bld_version.patch" Type="Int">2</Property>
+				<Property Name="Bld_version.minor" Type="Int">6</Property>
 				<Property Name="Destination[0].destName" Type="Str">Destination Directory</Property>
 				<Property Name="Destination[0].path" Type="Path">../GOLPI/LV Process source distribution</Property>
 				<Property Name="Destination[1].destName" Type="Str">Support Directory</Property>
@@ -127,7 +124,7 @@
 				<Property Name="Destination[2].destName" Type="Str">lv_proc.dll destination</Property>
 				<Property Name="Destination[2].path" Type="Path">../GOLPI</Property>
 				<Property Name="DestinationCount" Type="Int">3</Property>
-				<Property Name="Source[0].itemID" Type="Str">{E7491C39-B560-4A61-BE4E-796132DF5538}</Property>
+				<Property Name="Source[0].itemID" Type="Str">{0ECD7763-5BB7-4031-9342-2CF62CEECB21}</Property>
 				<Property Name="Source[0].type" Type="Str">Container</Property>
 				<Property Name="Source[1].destinationIndex" Type="Int">0</Property>
 				<Property Name="Source[1].itemID" Type="Ref">/My Computer/LV Process library.lvlib</Property>

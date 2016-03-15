@@ -12,20 +12,23 @@
 </Property>
 	<Item Name="Private" Type="Folder">
 		<Property Name="NI.LibItem.Scope" Type="Int">2</Property>
-		<Item Name="Check and Generate Path to lv_proc.dll" Type="VI" URL="../Check and Generate Path to lv_proc.dll"/>
-		<Item Name="Generate Error.vi" Type="VI" URL="../Generate Error.vi"/>
+		<Item Name="Check and Generate Path to lv_proc.vi" Type="VI" URL="../Private/Check and Generate Path to lv_proc.vi"/>
+		<Item Name="Generate Error.vi" Type="VI" URL="../Private/Generate Error.vi"/>
 	</Item>
-	<Item Name="Clean Up.vi" Type="VI" URL="../Clean Up.vi"/>
-	<Item Name="Create Process.vi" Type="VI" URL="../Create Process.vi"/>
-	<Item Name="Demo.vi" Type="VI" URL="../Demo.vi"/>
-	<Item Name="Get Exit Code.vi" Type="VI" URL="../Get Exit Code.vi"/>
-	<Item Name="Get Version.vi" Type="VI" URL="../Get Version.vi"/>
-	<Item Name="Kill.vi" Type="VI" URL="../Kill.vi"/>
+	<Item Name="Public" Type="Folder">
+		<Property Name="NI.LibItem.Scope" Type="Int">1</Property>
+		<Item Name="Clean Up.vi" Type="VI" URL="../Public/Clean Up.vi"/>
+		<Item Name="Create Process.vi" Type="VI" URL="../Public/Create Process.vi"/>
+		<Item Name="Demo.vi" Type="VI" URL="../Public/Demo.vi"/>
+		<Item Name="Get Exit Code.vi" Type="VI" URL="../Public/Get Exit Code.vi"/>
+		<Item Name="Get Version.vi" Type="VI" URL="../Public/Get Version.vi"/>
+		<Item Name="Kill.vi" Type="VI" URL="../Public/Kill.vi"/>
+		<Item Name="Pipe Handle.ctl" Type="VI" URL="../Public/Pipe Handle.ctl"/>
+		<Item Name="Read Stdout.vi" Type="VI" URL="../Public/Read Stdout.vi"/>
+		<Item Name="Vi Tree.vi" Type="VI" URL="../Public/Vi Tree.vi"/>
+		<Item Name="Wait For Exit.vi" Type="VI" URL="../Public/Wait For Exit.vi"/>
+		<Item Name="Write Stdin.vi" Type="VI" URL="../Public/Write Stdin.vi"/>
+	</Item>
 	<Item Name="license.txt" Type="Document" URL="../license.txt"/>
 	<Item Name="lv_proc.dll" Type="Document" URL="../lv_proc.dll"/>
-	<Item Name="Pipe Handle.ctl" Type="VI" URL="../Pipe Handle.ctl"/>
-	<Item Name="Read Stdout.vi" Type="VI" URL="../Read Stdout.vi"/>
-	<Item Name="Vi Tree.vi" Type="VI" URL="../Vi Tree.vi"/>
-	<Item Name="Wait For Exit.vi" Type="VI" URL="../Wait For Exit.vi"/>
-	<Item Name="Write Stdin.vi" Type="VI" URL="../Write Stdin.vi"/>
 </Library>
