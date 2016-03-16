@@ -25,8 +25,13 @@ GOLPI works only with lv_proc.dll library, which is part of vipm package or shou
 </Property>
 	<Item Name="Private" Type="Folder">
 		<Property Name="NI.LibItem.Scope" Type="Int">2</Property>
+		<Item Name="Bitstream" Type="Folder">
+			<Item Name="Bitstream Decode.vi" Type="VI" URL="../Private/Bitstream/Bitstream Decode.vi"/>
+			<Item Name="Bitstream to Bytes.vi" Type="VI" URL="../Private/Bitstream/Bitstream to Bytes.vi"/>
+		</Item>
 		<Item Name="Get Variable - auxiliary" Type="Folder">
 			<Item Name="Check and Get Sizes.vi" Type="VI" URL="../Private/Get Variable - auxiliary/Check and Get Sizes.vi"/>
+			<Item Name="Get Matrix - bitstream.vi" Type="VI" URL="../Private/Get Variable - auxiliary/Get Matrix - bitstream.vi"/>
 			<Item Name="Get Matrix - file.vi" Type="VI" URL="../Private/Get Variable - auxiliary/Get Matrix - file.vi"/>
 			<Item Name="Get Matrix - stdout.vi" Type="VI" URL="../Private/Get Variable - auxiliary/Get Matrix - stdout.vi"/>
 		</Item>
@@ -63,6 +68,8 @@ GOLPI works only with lv_proc.dll library, which is part of vipm package or shou
 			<Item Name="GOLPI simple testing.vi" Type="VI" URL="../Private/testing/GOLPI simple testing.vi"/>
 		</Item>
 		<Item Name="Type Definitions" Type="Folder">
+			<Item Name="Bitstream Data Type.ctl" Type="VI" URL="../Private/Type Definitions/Bitstream Data Type.ctl"/>
+			<Item Name="Bitstream Data.ctl" Type="VI" URL="../Private/Type Definitions/Bitstream Data.ctl"/>
 			<Item Name="Custom Error Codes Enum Type Def.vi" Type="VI" URL="../Private/Type Definitions/Custom Error Codes Enum Type Def.vi"/>
 		</Item>
 		<Item Name="Utilities" Type="Folder">
@@ -98,6 +105,7 @@ GOLPI works only with lv_proc.dll library, which is part of vipm package or shou
 			<Item Name="Read Output Till Keyword.vi" Type="VI" URL="../Public/Pipes/Read Output Till Keyword.vi"/>
 		</Item>
 		<Item Name="Utility" Type="Folder">
+			<Item Name="Set Bitstream Mode.vi" Type="VI" URL="../Public/Utility/Set Bitstream Mode.vi"/>
 			<Item Name="Check Output For Octave Errors.vi" Type="VI" URL="../Public/Utility/Check Output For Octave Errors.vi"/>
 			<Item Name="Check Status.vi" Type="VI" URL="../Public/Utility/Check Status.vi"/>
 			<Item Name="Set Debug Mode.vi" Type="VI" URL="../Public/Utility/Set Debug Mode.vi"/>
