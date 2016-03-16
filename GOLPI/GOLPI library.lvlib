@@ -15,7 +15,7 @@ Features:
 
 ---
 GOLPI works only with lv_proc.dll library, which is part of vipm package or should be delivered together with packed library. Placement of this dll is selected in terminal of Start GNU Octave.vi.</Property>
-	<Property Name="NI.Lib.HelpPath" Type="Str"></Property>
+	<Property Name="NI.Lib.HelpPath" Type="Str">../documentation/HELP.html</Property>
 	<Property Name="NI.Lib.Icon" Type="Bin">%Q#!!!!!!!)!"1!&amp;!!!-!%!!!@````]!!!!"!!%!!!-\!!!*Q(C=T:7B=R.2%)=XQ&amp;"5ES);RT#&gt;K)*&lt;"./KTF3A7I;:A-+O:O:%+Z/K9*AK-CP#(V#&amp;LYL#L-*X"I&amp;!23)ZPHNZ33^J3CNABLVO=P@\P&lt;@\X&lt;O8KUC+"S,XJ,QJ4P]9N`64I:4TC\J@ZI^S[M^/;HZ:VPR6]]O&amp;_5N_L8^:LP+PZ\]J:"\&lt;R&lt;!ICI\5I_902U/C'!Y06PIDYL![[21@6`C(W.PZ`/HOLC\\Y^'IG%VK&lt;L:;3XZH0"\0C[[XWTO,`JLWX`;&lt;.;[$TI+`OUGU&gt;;IEK6DQW[VK1/78CQ67_&amp;/J=X$N`+F5,0L%:L078Y:V@[&gt;&gt;R:0;$3T[V1,66Y$_SXYV9$1\V_;&lt;V]P_Q:@ZA*^N6G0:F[*K=4DV7[WL@KJ!D&gt;(I%`.XL`JMAH%;-4ZZNL/_SG&gt;T-'2UO=G7`?7YT@&lt;NX&lt;T*`WW).+&lt;0N3S$&gt;.*)48&gt;8"HKA"XKA"XKA/\KD/\KD/\KD'\KB'\KB'\KB+\KC+\KC+\KG$=G",OC#,JJW9.!];"15$1I%AU'2Y#0A#8A#HI#(3QFY!J[!*_!*?"AC!5`!%`!%0!%0US4A#8A#HI!HY+&amp;5)IFUI--4]&amp;"?("[(R_&amp;R?"Q?7IL$YQ!YT:T#4B%QR$'&gt;%Y@(Y8&amp;Y/"7(R_&amp;R?"Q?BQ&gt;&lt;("[(R_&amp;R?"Q?JK26]524(?DQ5%9-(I0(Y$&amp;Y$"Z+C]&amp;D]"A]"I`"1TMR?!Q?!]*I;"1(19R*RA$DQO!R?0A3A]@A-8A-(I-(+TUB3SN4U61(?P74B5@B58A5(I7(%K,Q+$Q+D]+D]&amp;"7&amp;"[&amp;2_&amp;2?"1?7IH#I`!I0!K)UJ4WIB24*CK$&amp;%(BY3`N&amp;EV0S2/*JC0`.+=&lt;6@)'F,SR*']9S2N"]A/7`/!E0R$*#SVZ!35PD/1&lt;FHQDEA%F.Z:=50*!G@"Z1:[4:_3!0#+\Z$[Z27Z55``SQ-FE)B=8&amp;X*_@CZH:W=S'!TE[/B)ONWO\/`PS^&lt;7FGRM&lt;-T@6I]ZJN'9P:&gt;[H&amp;@:DQ^\*Q`@\ZV]Z@P69+]@0`9KP4[G^Y*]?&lt;`2_S;8+?`)(PG:0-X8[-@E=`)2W348PD&gt;[&gt;X`B(4&gt;G&gt;@_0&gt;[0=G@`0SWPU'S%`%#]!!!!!</Property>
 	<Property Name="NI.Lib.SourceVersion" Type="Int">318799872</Property>
 	<Property Name="NI.Lib.Version" Type="Str">0.4.1.1</Property>
@@ -117,4 +117,6 @@ GOLPI works only with lv_proc.dll library, which is part of vipm package or shou
 	</Item>
 	<Item Name="COPYING" Type="Document" URL="../COPYING"/>
 	<Item Name="COPYING.LESSER" Type="Document" URL="../COPYING.LESSER"/>
+	<Item Name="golpi-1.1.0.tar.gz" Type="Document" URL="../Octave package/golpi-1.1.0.tar.gz"/>
+	<Item Name="HELP.html" Type="Document" URL="../documentation/HELP.html"/>
 </Library>

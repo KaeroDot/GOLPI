@@ -1,7 +1,7 @@
-<VI_Package_Builder_Settings Version="0.6" Created_Date="2014-10-28 08:53:30" Modified_Date="2014-10-30 22:19:24" Creator="Tim Orling" Comments="" ID="0511bae936694bfc87733b0af4d62f55">
+<VI_Package_Builder_Settings Version="0.6" Created_Date="2014-10-28 08:53:30" Modified_Date="2016-03-16 20:19:17" Creator="Tim Orling" Comments="" ID="07f2eb196a81ac2ba9761432d95a400b">
   <Library_General_Settings>
     <Package_File_Name>GOLPI_lvlib</Package_File_Name>
-    <Library_Version>0.4.1.2</Library_Version>
+    <Library_Version>0.5.0.2</Library_Version>
     <Auto_Increment_Version>false</Auto_Increment_Version>
     <Library_Source_Folder>.</Library_Source_Folder>
     <Library_Output_Folder>..\builds</Library_Output_Folder>
@@ -47,8 +47,8 @@ Features:
 GOLPI works only with lv_proc.dll library, which is part of vipm package or should be delivered together with packed library. Placement of this dll is selected in terminal of Start GNU Octave.vi.</Description>
       <Copyright>Copyright (c) 2013,Martin Šíra (msira@cmi.cz), Stanislav Mašláò</Copyright>
       <Packager>Martin Šíra, Stanislav Mašláò</Packager>
-      <URL>http://kaero.wz.cz/golpi.html</URL>
-      <Release_Notes>First VI package build.</Release_Notes>
+      <URL>https://github.com/KaeroDot/GOLPI</URL>
+      <Release_Notes>fixes, changes, additions, see git history.</Release_Notes>
     </Description>
     <Destinations>
       <Toolkit_VIs>
@@ -144,7 +144,7 @@ GOLPI works only with lv_proc.dll library, which is part of vipm package or shou
         <Path>LV Process source distribution</Path>
       </Exclusions>
     </Source_Files>
-    <License_Agreement_Filepath>GOLPI license.txt</License_Agreement_Filepath>
+    <License_Agreement_Filepath>COPYING.LESSER</License_Agreement_Filepath>
     <Licensing_and_Activation>
       <License_LF_file_path/>
       <Licensed_library_file_path/>
@@ -326,7 +326,7 @@ GOLPI works only with lv_proc.dll library, which is part of vipm package or shou
         <Path>Public\Quit GNU Octave.vi</Path>
         <VI_Title/>
       </Items_Data>
-      <GUID>22C715B214AC1C19ED266B3EAB6B9511</GUID>
+      <GUID>828EB71A875BAD837C312687322B546F</GUID>
     </Functions_Palette_Data>
     <Functions_Palette_Data>
       <Parent_Palette_Index>0</Parent_Palette_Index>
@@ -375,7 +375,7 @@ GOLPI works only with lv_proc.dll library, which is part of vipm package or shou
         <Path>Public\Data\Set Variable.vi</Path>
         <VI_Title/>
       </Items_Data>
-      <GUID>A580C959B21E5B1926D2E221F69A0415</GUID>
+      <GUID>ABEE4BB628312369DA41287F2C57D692</GUID>
     </Functions_Palette_Data>
     <Functions_Palette_Data>
       <Parent_Palette_Index>0</Parent_Palette_Index>
@@ -438,7 +438,7 @@ GOLPI works only with lv_proc.dll library, which is part of vipm package or shou
         <Path>Public\Examples\Demo - Simple Use.vi</Path>
         <VI_Title/>
       </Items_Data>
-      <GUID>502D1487DD699587E4F161E2D502C707</GUID>
+      <GUID>156032ED1424A42F6029D97D918ECAB8</GUID>
     </Functions_Palette_Data>
     <Functions_Palette_Data>
       <Parent_Palette_Index>0</Parent_Palette_Index>
@@ -529,7 +529,7 @@ GOLPI works only with lv_proc.dll library, which is part of vipm package or shou
         <Path>Public\Pipes\Write Command.vi</Path>
         <VI_Title/>
       </Items_Data>
-      <GUID>DD77867396806D8BD83C6D8D93A2C5B9</GUID>
+      <GUID>40C0B622C5830482598AA1071BD6BA45</GUID>
     </Functions_Palette_Data>
     <Functions_Palette_Data>
       <Parent_Palette_Index>0</Parent_Palette_Index>
@@ -592,7 +592,7 @@ GOLPI works only with lv_proc.dll library, which is part of vipm package or shou
         <Path>Public\Utility\Set Debug Mode.vi</Path>
         <VI_Title/>
       </Items_Data>
-      <GUID>00FF1C6C1B950DDF842BD2B89D99B2D9</GUID>
+      <GUID>A784B91324951F5B07A8A01EF88C88B8</GUID>
     </Functions_Palette_Data>
     <Controls_Palette_Data>
       <Parent_Palette_Index>-1</Parent_Palette_Index>
@@ -627,7 +627,7 @@ GOLPI works only with lv_proc.dll library, which is part of vipm package or shou
         <Path>Public\GOLPI reference Type Def.ctl</Path>
         <VI_Title/>
       </Items_Data>
-      <GUID>5F4103D341C91CF38B953C614130C4D7</GUID>
+      <GUID>FE313052AA658DD34B514C3A5E07B08D</GUID>
     </Controls_Palette_Data>
   </Library_Palette_Definition>
 </VI_Package_Builder_Settings>

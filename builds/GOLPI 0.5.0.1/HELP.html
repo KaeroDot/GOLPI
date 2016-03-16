@@ -1,0 +1,59 @@
+<h1>How to use Gnu Octave to Labview Pipes Interface</h1>
+
+<h2>Installation</h2>
+
+<p>Add 'GOLPI Library.lvlibp' to your project. Put 'lv_proc.dll' to your project directory (otherwise
+you have to wire path to the dll into 'Start GNU Octave.vi'). Install GNU Octave. If you want
+transfer data from LabVIEW to GNU Octave and back very quickly, install package 'golpi-X.X.X.tar.gz'
+into GNU Octave.</p>
+
+<h2>Use</h2>
+
+<p>Take a look at examples included in the library.</p>
+
+<ol>
+<li><p>Start GNU Octave by 'Start GNU Octave.vi'. You have to wire in path to the directory containing
+GNU Octave binary, i.e. octave-cli.exe (or octave.exe in versions prior 4.0). Wire in your working
+directory, i.e. the working directory of GNU Octave. Usually it is the one with your data files or
+script files.</p></li>
+<li><p>You can send commands to GNU Octave using 'Write Command.vi'.</p></li>
+<li><p>You can read output of GNU Octave using:</p>
+
+<ol>
+<li>'Read Once.vi' - Reads selected number of bytes from available output.</li>
+<li>'Read Full Output.vi' - Reads whole available output.</li>
+<li>'Read Output Till Settle.vi' - Reads output and stops only if the output is not changing
+anymore. This is useful when waiting for the finish of some script, however the script
+have to periodically report its status.</li>
+<li>'Read Output Till Keyword.vi' - Reads output and stops if some keyword is found. This is
+useful when waiting for end of some script and some keyword is shown after the end.</li>
+</ol></li>
+<li><p>You can set value of some variable in GNU Octave user space using 'Set Variable.vi'. It is easier
+than using 'Write Command.vi'. Two modes of transfer are available:</p>
+
+<ol>
+<li>Through console (default).</li>
+<li>Through temporary file. This is useful in the case of large data.</li>
+</ol></li>
+<li><p>You can get value of some variable in GNU Octave user space using 'Get Variable.vi'. It is easier
+than using e.g. 'Read Full Output.vi'. Three modes of transfer are available:</p>
+
+<ol>
+<li>Through console (default).</li>
+<li>Through temporary file. This is useful in the case of large data.</li>
+<li>Through console using bitstream mode. It is faster method of transfer than normal console,
+however you have to install pacakge 'golpi-X.X.X.tar.gz' into GNU Octave or place script
+'golpi_data2bits.m' into GNU Octave path. This mode is set by 'Set Bitstream Mode.vi'.</li>
+</ol></li>
+<li><p>Bitstream mode of transfer data through console can be set by 'Set Bitstream Mode.vi'. See above
+for details.</p></li>
+<li><p>Output of GNU Octave can be checked for errors using 'Check Output for Octave Errors.vi'.</p></li>
+<li><p>Running status of GNU Octave can be checked by 'Check Status.vi'.</p></li>
+<li><p>Debugging can be switched on by 'Set Debug Mode.vi'. All data transfered from and to Gnu Octave
+are saved in the GOLPI reference wire.</p></li>
+<li><p>GNU Octave can be quitted using 'Quit GNU Octave.vi'.</p></li>
+</ol>
+
+<h2>Examples</h2>
+
+<p>See included examples to see basic and advanced use.</p>
