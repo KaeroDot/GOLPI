@@ -84,6 +84,7 @@ GOLPI works only with lv_proc.dll library, which is part of vipm package or shou
 			<Item Name="GOLPI full test - part test vector double.vi" Type="VI" URL="../Private/testing/GOLPI full test - part test vector double.vi"/>
 			<Item Name="GOLPI full test.vi" Type="VI" URL="../Private/testing/GOLPI full test.vi"/>
 			<Item Name="GOLPI simple testing.vi" Type="VI" URL="../Private/testing/GOLPI simple testing.vi"/>
+			<Item Name="Test golpi Package Installation.vi" Type="VI" URL="../Private/testing/Test golpi Package Installation.vi"/>
 		</Item>
 		<Item Name="Type Definitions" Type="Folder">
 			<Item Name="Bitstream Data Type.ctl" Type="VI" URL="../Private/Type Definitions/Bitstream Data Type.ctl"/>
@@ -103,6 +104,7 @@ GOLPI works only with lv_proc.dll library, which is part of vipm package or shou
 			<Item Name="ASCII numbers to String.vi" Type="VI" URL="../Private/Utilities/ASCII numbers to String.vi"/>
 			<Item Name="Check and Generate Path to Octave Executable.vi" Type="VI" URL="../Private/Utilities/Check and Generate Path to Octave Executable.vi"/>
 			<Item Name="Is Variable Name Part of Struct.vi" Type="VI" URL="../Private/Utilities/Is Variable Name Part of Struct.vi"/>
+			<Item Name="Install Octave Package golpi.vi" Type="VI" URL="../Private/Utilities/Install Octave Package golpi.vi"/>
 		</Item>
 	</Item>
 	<Item Name="Public" Type="Folder">
@@ -113,6 +115,7 @@ GOLPI works only with lv_proc.dll library, which is part of vipm package or shou
 			<Item Name="Set Variable.vi" Type="VI" URL="../Public/Data/Set Variable.vi"/>
 		</Item>
 		<Item Name="Examples" Type="Folder">
+			<Item Name="Demo - Transfer Modes.vi" Type="VI" URL="../Public/Examples/Demo - Transfer Modes.vi"/>
 			<Item Name="Demo - GNU Octave Terminal.vi" Type="VI" URL="../Public/Examples/Demo - GNU Octave Terminal.vi"/>
 			<Item Name="Demo - Simple Use.vi" Type="VI" URL="../Public/Examples/Demo - Simple Use.vi"/>
 			<Item Name="Demo - Advanced Use.vi" Type="VI" URL="../Public/Examples/Demo - Advanced Use.vi"/>
