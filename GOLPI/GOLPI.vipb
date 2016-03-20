@@ -1,7 +1,7 @@
-<VI_Package_Builder_Settings Version="0.6" Created_Date="2014-10-28 08:53:30" Modified_Date="2016-03-16 20:19:17" Creator="Tim Orling" Comments="" ID="07f2eb196a81ac2ba9761432d95a400b">
+<VI_Package_Builder_Settings Version="0.6" Created_Date="2014-10-28 08:53:30" Modified_Date="2016-03-20 00:17:40" Creator="Tim Orling" Comments="" ID="48a4e077a0bfe8ea0a985492d19fc0f8">
   <Library_General_Settings>
     <Package_File_Name>GOLPI_lvlib</Package_File_Name>
-    <Library_Version>0.5.0.2</Library_Version>
+    <Library_Version>0.6.0.2</Library_Version>
     <Auto_Increment_Version>false</Auto_Increment_Version>
     <Library_Source_Folder>.</Library_Source_Folder>
     <Library_Output_Folder>..\builds</Library_Output_Folder>
@@ -326,7 +326,7 @@ GOLPI works only with lv_proc.dll library, which is part of vipm package or shou
         <Path>Public\Quit GNU Octave.vi</Path>
         <VI_Title/>
       </Items_Data>
-      <GUID>828EB71A875BAD837C312687322B546F</GUID>
+      <GUID>9A6714001A2A2ABA0B7C0B501182528D</GUID>
     </Functions_Palette_Data>
     <Functions_Palette_Data>
       <Parent_Palette_Index>0</Parent_Palette_Index>
@@ -375,7 +375,7 @@ GOLPI works only with lv_proc.dll library, which is part of vipm package or shou
         <Path>Public\Data\Set Variable.vi</Path>
         <VI_Title/>
       </Items_Data>
-      <GUID>ABEE4BB628312369DA41287F2C57D692</GUID>
+      <GUID>FD7DA88982D7B27D204B4D5BCEBD8446</GUID>
     </Functions_Palette_Data>
     <Functions_Palette_Data>
       <Parent_Palette_Index>0</Parent_Palette_Index>
@@ -438,7 +438,7 @@ GOLPI works only with lv_proc.dll library, which is part of vipm package or shou
         <Path>Public\Examples\Demo - Simple Use.vi</Path>
         <VI_Title/>
       </Items_Data>
-      <GUID>156032ED1424A42F6029D97D918ECAB8</GUID>
+      <GUID>424EEFEA979701DFFB7854F7D98CB0EB</GUID>
     </Functions_Palette_Data>
     <Functions_Palette_Data>
       <Parent_Palette_Index>0</Parent_Palette_Index>
@@ -529,7 +529,7 @@ GOLPI works only with lv_proc.dll library, which is part of vipm package or shou
         <Path>Public\Pipes\Write Command.vi</Path>
         <VI_Title/>
       </Items_Data>
-      <GUID>40C0B622C5830482598AA1071BD6BA45</GUID>
+      <GUID>91371A964055D8EDAE03B5D6E9DF3649</GUID>
     </Functions_Palette_Data>
     <Functions_Palette_Data>
       <Parent_Palette_Index>0</Parent_Palette_Index>
@@ -592,7 +592,7 @@ GOLPI works only with lv_proc.dll library, which is part of vipm package or shou
         <Path>Public\Utility\Set Debug Mode.vi</Path>
         <VI_Title/>
       </Items_Data>
-      <GUID>A784B91324951F5B07A8A01EF88C88B8</GUID>
+      <GUID>DE589C15840DE6DC9470AE20D44CF7C8</GUID>
     </Functions_Palette_Data>
     <Controls_Palette_Data>
       <Parent_Palette_Index>-1</Parent_Palette_Index>
@@ -627,7 +627,7 @@ GOLPI works only with lv_proc.dll library, which is part of vipm package or shou
         <Path>Public\GOLPI reference Type Def.ctl</Path>
         <VI_Title/>
       </Items_Data>
-      <GUID>FE313052AA658DD34B514C3A5E07B08D</GUID>
+      <GUID>058EAB149B4674594EBFAE955AE4F265</GUID>
     </Controls_Palette_Data>
   </Library_Palette_Definition>
 </VI_Package_Builder_Settings>

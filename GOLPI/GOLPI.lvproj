@@ -18,7 +18,7 @@
 		<Item Name="GOLPI library.lvlib" Type="Library" URL="../GOLPI library.lvlib"/>
 		<Item Name="COPYING" Type="Document" URL="../COPYING"/>
 		<Item Name="COPYING.LESSER" Type="Document" URL="../COPYING.LESSER"/>
-		<Item Name="golpi-1.2.0.tar.gz" Type="Document" URL="../Octave package/golpi-1.2.0.tar.gz"/>
+		<Item Name="golpi-1.2.1.tar.gz" Type="Document" URL="../Octave package/golpi-1.2.1.tar.gz"/>
 		<Item Name="Dependencies" Type="Dependencies">
 			<Item Name="vi.lib" Type="Folder">
 				<Item Name="Application Directory.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/file.llb/Application Directory.vi"/>
@@ -75,8 +75,8 @@
 				<Property Name="Bld_localDestDir" Type="Path">../builds/GOLPI [VersionNumber]</Property>
 				<Property Name="Bld_localDestDirType" Type="Str">relativeToCommon</Property>
 				<Property Name="Bld_previewCacheID" Type="Str">{369EFAE7-7719-4A46-B6B4-E54D725C2DB5}</Property>
-				<Property Name="Bld_version.build" Type="Int">2</Property>
-				<Property Name="Bld_version.minor" Type="Int">5</Property>
+				<Property Name="Bld_version.build" Type="Int">1</Property>
+				<Property Name="Bld_version.minor" Type="Int">6</Property>
 				<Property Name="Destination[0].destName" Type="Str">GOLPI Library.lvlibp</Property>
 				<Property Name="Destination[0].path" Type="Path">../builds/GOLPI [VersionNumber]/GOLPI Library.lvlibp</Property>
 				<Property Name="Destination[0].preserveHierarchy" Type="Bool">true</Property>
@@ -85,7 +85,7 @@
 				<Property Name="Destination[1].path" Type="Path">../builds/GOLPI [VersionNumber]</Property>
 				<Property Name="DestinationCount" Type="Int">2</Property>
 				<Property Name="PackedLib_callersAdapt" Type="Bool">true</Property>
-				<Property Name="Source[0].itemID" Type="Str">{287BBFF4-C662-4615-8146-C5A34E800E1D}</Property>
+				<Property Name="Source[0].itemID" Type="Str">{84B2A3E7-B431-4F86-80DD-3B427EEB46A8}</Property>
 				<Property Name="Source[0].type" Type="Str">Container</Property>
 				<Property Name="Source[1].destinationIndex" Type="Int">0</Property>
 				<Property Name="Source[1].itemID" Type="Ref">/My Computer/GOLPI library.lvlib</Property>
@@ -99,13 +99,13 @@
 				<Property Name="Source[2].itemID" Type="Ref">/My Computer/COPYING</Property>
 				<Property Name="Source[2].sourceInclusion" Type="Str">Include</Property>
 				<Property Name="Source[3].destinationIndex" Type="Int">0</Property>
-				<Property Name="Source[3].itemID" Type="Ref">/My Computer/golpi-1.2.0.tar.gz</Property>
+				<Property Name="Source[3].itemID" Type="Ref">/My Computer/COPYING.LESSER</Property>
 				<Property Name="Source[3].sourceInclusion" Type="Str">Include</Property>
 				<Property Name="Source[4].destinationIndex" Type="Int">0</Property>
-				<Property Name="Source[4].itemID" Type="Ref">/My Computer/COPYING.LESSER</Property>
+				<Property Name="Source[4].itemID" Type="Ref">/My Computer/LV Process library.lvlib/lv_proc.dll</Property>
 				<Property Name="Source[4].sourceInclusion" Type="Str">Include</Property>
 				<Property Name="Source[5].destinationIndex" Type="Int">0</Property>
-				<Property Name="Source[5].itemID" Type="Ref">/My Computer/LV Process library.lvlib/lv_proc.dll</Property>
+				<Property Name="Source[5].itemID" Type="Ref">/My Computer/golpi-1.2.1.tar.gz</Property>
 				<Property Name="Source[5].sourceInclusion" Type="Str">Include</Property>
 				<Property Name="SourceCount" Type="Int">6</Property>
 				<Property Name="TgtF_companyName" Type="Str">CMI</Property>
