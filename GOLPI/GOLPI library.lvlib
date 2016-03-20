@@ -105,6 +105,7 @@ GOLPI works only with lv_proc.dll library, which is part of vipm package or shou
 			<Item Name="Check and Generate Path to Octave Executable.vi" Type="VI" URL="../Private/Utilities/Check and Generate Path to Octave Executable.vi"/>
 			<Item Name="Is Variable Name Part of Struct.vi" Type="VI" URL="../Private/Utilities/Is Variable Name Part of Struct.vi"/>
 			<Item Name="Install Octave Package golpi.vi" Type="VI" URL="../Private/Utilities/Install Octave Package golpi.vi"/>
+			<Item Name="Check Matlab Mode Error.vi" Type="VI" URL="../Private/Utilities/Check Matlab Mode Error.vi"/>
 		</Item>
 	</Item>
 	<Item Name="Public" Type="Folder">
