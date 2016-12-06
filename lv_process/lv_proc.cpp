@@ -1,55 +1,136 @@
-//---------------------------------------------------------------------------
-// Simple process executer with stdin/stdout pipes. Features:
-//  1) creates new process
-//  2) creates pipes for stdin/stdout communication with the process
-//  3) uses simple struct as handle to the process and its pipes
-//  4) implements basic pipe read/write functions with minimum parameters
-//  5) implements specialized pipe read+write usable for simple command exec.
-//     with consoles like GNU Octave
-//---------------------------------------------------------------------------
-//   Important note about DLL memory management when your DLL uses the
-//   static version of the RunTime Library:
+//---------------------------------------------------------------------------------------------------------------------
+// LV Process DLL
+//---------------------------------------------------------------------------------------------------------------------
+// Author: Stanislav Maslan
+// E-mail: s.maslan@seznam.cz, smaslan@cmi.cz
+// www: https://forums.ni.com/t5/Community-Documents/LV-Process-Windows-pipes-LabVIEW/tac-p/3497843/highlight/true
+// Revision: V4.0, 2016-12-05
 //
-//   If your DLL exports any functions that pass String objects (or structs/
-//   classes containing nested Strings) as parameter or function results,
-//   you will need to add the library MEMMGR.LIB to both the DLL project and
-//   any other projects that use the DLL.  You will also need to use MEMMGR.LIB
-//   if any other projects which use the DLL will be performing new or delete
-//   operations on any non-TObject-derived classes which are exported from the
-//   DLL. Adding MEMMGR.LIB to your project will change the DLL and its calling
-//   EXE's to use the BORLNDMM.DLL as their memory manager.  In these cases,
-//   the file BORLNDMM.DLL should be deployed along with your DLL.
 //
-//   To avoid using BORLNDMM.DLL, pass string information using "char *" or
-//   ShortString parameters.
+// LICENSE:
+// --------
+// Copyright (c) 2014 - 2016, Stanislav Maslan <s.maslan@seznam.cz>
 //
-//   If your DLL uses the dynamic version of the RTL, you do not need to
-//   explicitly add MEMMGR.LIB as this will be done implicitly for you
-//---------------------------------------------------------------------------
+// This file is part of the LV Process DLL.
+//
+// LV Process DLL interface is free software: you can redistribute it and/or modify
+// it under the terms of the GNU Lesser General Public License as published
+// by the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// LV Process DLL interface is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+// GNU Lesser General Public License for more details.
+//
+// You should have received a copy of the GNU Lesser General Public License
+// along with LV Process DLL interface. If not, see <http://www.gnu.org/licenses/>.
+//
+//
+//
+// BRIEF DESCRIPTION:
+// ------------------
+// This library was developed for pipe communiation with console application. It is basically 
+// just a wrapper for nasty WINAPIs dedicated for pipe handling and process execution. The wrapper
+// simplifies the whole operation to just a several functions with simple data types. So it can be 
+// easily linked also to LabVIEW (that is why it is called "LV Process").
+// 
+// Usage it quite straightforward:
+// 1) Call "proc_create()" to create instance of desired process with some setup.
+//    This function will also create stdin and stdout pipes which are then used for communication with the process.
+// 2) Call "proc_write_stdin()" to write string to the process' stdin.
+// 3) Call "proc_peek_stdout()" to read process stdout (eventual response to 2), etc.).
+// 4) Call "proc_command()" to write and read response at once.
+// 5) Repeat from 2) and profit???
+// 6) When you are done, terminate the process somehow. For instance send "exit\n" to stdin when you want to
+//    to terminate "cmd.exe". Then call "proc_wait_exit()" to wait for process end. If it does not do so,
+//    kill it with fire ... i mean "proc_terminate()". Eventually retrieve exit code by "proc_get_exit_code()".
+// 
+// There are several other functions exportet to DLL so follow the header file for details. 
+//
+// The DLL also enables to create debug console. It is just a read console where you can check the stdin/stdout
+// traffic. Some day I will maybe add keyboard input too.
+// 
+//
+// lv_proc.ini:
+//
+//  If 'lv_proc.ini' config file is found in the folder with the 'lv_proc.dll' it will be used as a config file.
+//  Supported options of the *.ini file:
+//   [DEBUG]
+//   ;enables logging to a "debug.log" file located in DLL's folder
+//   debug_enabled = 0
+//
+//   [PIPES]
+//   ;read and write pipe sizes (0: system decides)
+//   write_pipe_buffer_size = 0
+//   read_pipe_buffer_size = 0
+//   
+//   [READ]
+//   ;read thread priority (0: normal, <-15,15> range possible)
+//   thread_priority = +1
+//   ;read thread idle time if no data in read pipe (1 to 100 ms)
+//   thread_idle_time = 1
+//   
+//   [CONSOLE]
+//   ;always create console (1 - overides proc_create(..., hide) parameter)
+//   no_hide = 0
+//   
+//   ;console buffer sizes (use -1 for default, max 32767)
+//   buf_size_x = 100
+//   buf_size_y = 8192
+//   
+//   ;=== console text color scheme ===
+//   ;Use standard text attribute flags:
+//   ; FOREGROUND_BLUE            Text color contains blue. 
+//   ; FOREGROUND_GREEN           Text color contains green. 
+//   ; FOREGROUND_RED             Text color contains red. 
+//   ; FOREGROUND_INTENSITY       Text color is intensified. 
+//   ; BACKGROUND_BLUE            Background color contains blue. 
+//   ; BACKGROUND_GREEN           Background color contains green. 
+//   ; BACKGROUND_RED             Background color contains red. 
+//   ; BACKGROUND_INTENSITY       Background color is intensified. 
+//   ; COMMON_LVB_LEADING_BYTE    Leading byte. 
+//   ; COMMON_LVB_TRAILING_BYTE   Trailing byte. 
+//   ; COMMON_LVB_GRID_HORIZONTAL Top horizontal. 
+//   ; COMMON_LVB_GRID_LVERTICAL  Left vertical. 
+//   ; COMMON_LVB_GRID_RVERTICAL  Right vertical. 
+//   ; COMMON_LVB_REVERSE_VIDEO   Reverse foreground and background attributes. 
+//   ; COMMON_LVB_UNDERSCORE      Underscore. 
+//   ;standard input text format
+//   color_stdin = FOREGROUND_RED|FOREGROUND_INTENSITY
+//   ;standard output text format
+//   color_stdout = FOREGROUND_GREEN
+//
+// Debug:
+//  If the 'debug_enabled' option is enabled in 'lv_proc.ini' the calls of the particular functions will be
+//  logged to the 'debug.log' that will be created in the folder with 'lv_proc.dll'.
+//---------------------------------------------------------------------------------------------------------------------
+
 
 #include <windows.h>
-#include <vcl.h>
-#include <IniFiles.hpp>
+#include <VersionHelpers.h>
 #include <stdio.h>
 #include <stdarg.h>
-#include "lv_proc_main.h"
 
-// this should be automatically loaded with DLL folder path
-AnsiString dll_path;
+#define _LVPDLLEXPORT
+#include "lv_proc.h"
 
+// DLL file path
+wchar_t dll_path[MAX_PATH];
 
 //---------------------------------------------------------------------------
 // debug file initialization
 //---------------------------------------------------------------------------
-int debug_init(TPHndl *proc,char *path)
+int debug_init(TLVPHndl *proc,wchar_t *path)
 {
 	proc->dbg_path[0] = '\0';
 	if(proc && path)
 	{
-		FILE *fw = fopen(path,"wt");
-		if(!fw)
+		FILE *fw;
+        if(_wfopen_s(&fw,path,L"wt"))
 			return(1);
-		strcpy(proc->dbg_path,path);
+		
+        wcscpy_s(proc->dbg_path,path);
 		fclose(fw);
 	}
 	return(0);
@@ -58,13 +139,12 @@ int debug_init(TPHndl *proc,char *path)
 //---------------------------------------------------------------------------
 // debug file printf
 //---------------------------------------------------------------------------
-int debug_printf(TPHndl *proc,const char *fmt,...)
+int debug_printf(TLVPHndl *proc,const char *fmt,...)
 {
 	if(proc && proc->dbg_path[0])
 	{
-		//ShowMessage(proc->dbg_path);
-		FILE *fw = fopen(proc->dbg_path,"a");
-		if(!fw)
+		FILE *fw;
+		if(_wfopen_s(&fw,proc->dbg_path,L"a"))
 			return(1);
 
 		va_list vpr;
@@ -79,32 +159,71 @@ int debug_printf(TPHndl *proc,const char *fmt,...)
 }
 
 
+//---------------------------------------------------------------------------------------------------------------------
+// combine two paths
+//---------------------------------------------------------------------------------------------------------------------
+wchar_t *build_path(wchar_t *dest,wchar_t *p1,wchar_t *p2,int maxlen)
+{
+    // copy first path into the buffer
+    if(dest != p1)
+        wcscpy_s(dest,maxlen,p1);
+    
+    // add path separator
+    int len = wcsnlen_s(dest,maxlen);
+    if(len > 1 && dest[len-1] != L'\\')
+        wcscat_s(dest,maxlen,L"\\");
+
+    // add second path
+    wcscat_s(dest,maxlen,p2);
+
+    return(dest);
+}
+
+//---------------------------------------------------------------------------------------------------------------------
+// strips absolute path to path and file name
+//---------------------------------------------------------------------------------------------------------------------
+void strip_path(wchar_t *path,int size,wchar_t **name)
+{
+    if(name)
+        *name = NULL;
+    
+    // exctract folder path
+    wchar_t *str = wcsrchr(path,L'\\');
+    if(str)
+    {
+        *str = L'\0';
+        if(name && (str - path - 1) > size)
+            *name = &str[1];
+    }
+}
+
+
 //---------------------------------------------------------------------------
 // INI: parse text format flags, optionaly builds text string from flags list 
 //---------------------------------------------------------------------------
-WORD ini_parse_color(char *str,WORD clr_in,char *clr_str_out,int size)
+WORD ini_parse_color(wchar_t *str,WORD clr_in,wchar_t *clr_str_out,int size)
 {
 	// flags list
 	struct{
-		char *str;
+		wchar_t *str;
 		WORD flag;
 	}clrlst[]={
-		{"FOREGROUND_BLUE",FOREGROUND_BLUE},
-		{"FOREGROUND_GREEN",FOREGROUND_GREEN},
-		{"FOREGROUND_RED",FOREGROUND_RED},
-		{"FOREGROUND_INTENSITY",FOREGROUND_INTENSITY},
-		{"BACKGROUND_BLUE",BACKGROUND_BLUE},
-		{"BACKGROUND_GREEN",BACKGROUND_GREEN},
-		{"BACKGROUND_RED",BACKGROUND_RED},
-		{"BACKGROUND_INTENSITY",BACKGROUND_INTENSITY},
-		{"COMMON_LVB_LEADING_BYTE",COMMON_LVB_LEADING_BYTE},
-		{"COMMON_LVB_TRAILING_BYTE",COMMON_LVB_TRAILING_BYTE},
-		{"COMMON_LVB_GRID_HORIZONTAL",COMMON_LVB_GRID_HORIZONTAL},
-		{"COMMON_LVB_GRID_LVERTICAL",COMMON_LVB_GRID_LVERTICAL},
-		{"COMMON_LVB_GRID_RVERTICAL",COMMON_LVB_GRID_RVERTICAL},
-		{"COMMON_LVB_REVERSE_VIDEO",COMMON_LVB_REVERSE_VIDEO},
-		{"COMMON_LVB_UNDERSCORE",COMMON_LVB_UNDERSCORE},
-		{"",0}
+		{L"FOREGROUND_BLUE",FOREGROUND_BLUE},
+		{L"FOREGROUND_GREEN",FOREGROUND_GREEN},
+		{L"FOREGROUND_RED",FOREGROUND_RED},
+		{L"FOREGROUND_INTENSITY",FOREGROUND_INTENSITY},
+		{L"BACKGROUND_BLUE",BACKGROUND_BLUE},
+		{L"BACKGROUND_GREEN",BACKGROUND_GREEN},
+		{L"BACKGROUND_RED",BACKGROUND_RED},
+		{L"BACKGROUND_INTENSITY",BACKGROUND_INTENSITY},
+		{L"COMMON_LVB_LEADING_BYTE",COMMON_LVB_LEADING_BYTE},
+		{L"COMMON_LVB_TRAILING_BYTE",COMMON_LVB_TRAILING_BYTE},
+		{L"COMMON_LVB_GRID_HORIZONTAL",COMMON_LVB_GRID_HORIZONTAL},
+		{L"COMMON_LVB_GRID_LVERTICAL",COMMON_LVB_GRID_LVERTICAL},
+		{L"COMMON_LVB_GRID_RVERTICAL",COMMON_LVB_GRID_RVERTICAL},
+		{L"COMMON_LVB_REVERSE_VIDEO",COMMON_LVB_REVERSE_VIDEO},
+		{L"COMMON_LVB_UNDERSCORE",COMMON_LVB_UNDERSCORE},
+		{L"",0}
 	};
 
 	// parse flags
@@ -112,7 +231,7 @@ WORD ini_parse_color(char *str,WORD clr_in,char *clr_str_out,int size)
 	int i = -1;
 	while(str && clrlst[++i].flag)
 	{
-		if(strstr(str,clrlst[i].str))
+		if(wcsstr(str,clrlst[i].str))
 			flags |= clrlst[i].flag;
 	}
 
@@ -120,10 +239,11 @@ WORD ini_parse_color(char *str,WORD clr_in,char *clr_str_out,int size)
 	if(clr_str_out && size>1)
 	{
 		// clear output string
-		memset((void*)clr_str_out,'\0',size);
+		//memset((void*)clr_str_out,'\0',size);
+        clr_str_out = '\0';
 		size--;
 
-    // combine flags
+        // combine flags
 		i = -1;
 		while(clrlst[++i].flag)
 		{
@@ -131,17 +251,17 @@ WORD ini_parse_color(char *str,WORD clr_in,char *clr_str_out,int size)
 			if(clr_in&clrlst[i].flag)
 			{
 				// yaha, enough space in string?
-				if((int)strlen(clrlst[i].str)<size)
+				if((int)wcslen(clrlst[i].str)<size)
 				{
 					// yaha, add separator?
 					if(clr_str_out[0])
 					{
-						strcat(clr_str_out,"|");
+						wcscat_s(clr_str_out,size,L"|");
 						size--;
 					}
 					// add flag string
-					strcat(clr_str_out,clrlst[i].str);
-					size -= strlen(clrlst[i].str);
+					wcscat_s(clr_str_out,size,clrlst[i].str);
+					size -= wcslen(clrlst[i].str);
 				}
 			}
 		}
@@ -150,7 +270,7 @@ WORD ini_parse_color(char *str,WORD clr_in,char *clr_str_out,int size)
 	// return all flags
 	return(flags);
 }
-WORD ini_parse_color(char *str)
+WORD ini_parse_color(wchar_t *str)
 {
 	return(ini_parse_color(str,0,NULL,0));
 }
@@ -162,56 +282,62 @@ WORD ini_parse_color(char *str)
 //---------------------------------------------------------------------------
 int ini_read_ini(TCfg *cfg,int *dbg)
 {
-  char cstr[1024];
-	AnsiString str;
-	TIniFile *ini;
+    wchar_t cstr[1024];
 
 	// defaults
 	cfg->no_hide = 0;
 	cfg->console_x = -1;
 	cfg->console_y = -1;
+	cfg->th_priority = 1;
+	cfg->th_idle = 1;
+	cfg->write_pipe_buf = 0;
+ 	cfg->read_pipe_buf = 0;
 	cfg->console_clr_stdin = FOREGROUND_RED|FOREGROUND_INTENSITY;
 	cfg->console_clr_stdout = FOREGROUND_GREEN;
 	if(dbg)
-		*dbg = 0;
+	    *dbg = 0;
   
 	// build "config.ini"
-	AnsiString ipath = dll_path + "lv_proc.ini";
+	wchar_t pini[MAX_PATH];
+    build_path(pini,dll_path,LVPROC_INI,MAX_PATH);
   
 	// no destination buffer
 	if(!cfg)
 		return(1);
-
-	// leave if file not exists
-	if(!FileExists(ipath))
-		return(1);
-
-	// open ini file
-	ini = new TIniFile(ipath);
-
-  // debug mode
+	
+    // debug mode?
 	if(dbg)
-		*dbg = ini->ReadInteger("DEBUG","debug_enabled",*dbg);
+		*dbg = GetPrivateProfileInt(L"DEBUG",L"debug_enabled",0,pini);
 
 	// always show console
-	cfg->no_hide = ini->ReadInteger("CONSOLE","no_hide",cfg->no_hide);
+	cfg->no_hide = GetPrivateProfileInt(L"CONSOLE",L"no_hide",cfg->no_hide,pini);
 
+	// read thread priority
+	cfg->th_priority = GetPrivateProfileInt(L"READ",L"thread_priority",cfg->th_priority,pini);
+	cfg->th_priority = min(max(cfg->th_priority,-15),+15);
+
+	// read thread priority
+	cfg->th_idle = GetPrivateProfileInt(L"READ",L"thread_idle_time",cfg->th_idle,pini);
+	cfg->th_idle = min(max(cfg->th_idle,1),100);
+
+	// pipe buffer sizes
+	cfg->write_pipe_buf = max(GetPrivateProfileInt(L"PIPES",L"write_pipe_buffer_size",cfg->write_pipe_buf,pini),0);
+	cfg->read_pipe_buf = max(GetPrivateProfileInt(L"PIPES",L"read_pipe_buffer_size",cfg->read_pipe_buf,pini),0);
+	
 	// stdin color
 	ini_parse_color(NULL,cfg->console_clr_stdin,cstr,1024);
-	str = ini->ReadString("CONSOLE","color_stdin",cstr);
-	cfg->console_clr_stdin = ini_parse_color(str.c_str());
+    wchar_t temp[1024];
+    GetPrivateProfileString(L"CONSOLE",L"color_stdin",cstr,temp,1024,pini);
+	cfg->console_clr_stdin = ini_parse_color(temp);
 
 	// stdout color
 	ini_parse_color(NULL,cfg->console_clr_stdout,cstr,1024);
-	str = ini->ReadString("CONSOLE","color_stdout",cstr);
-	cfg->console_clr_stdout = ini_parse_color(str.c_str());
+	GetPrivateProfileString(L"CONSOLE",L"color_stdout",cstr,temp,1024,pini);
+    cfg->console_clr_stdout = ini_parse_color(temp);
 
 	// console size
-	cfg->console_x = ini->ReadInteger("CONSOLE","buf_size_x",cfg->console_x);
-	cfg->console_y = ini->ReadInteger("CONSOLE","buf_size_y",cfg->console_y);
-
-	// close ini file
-	delete(ini);
+	cfg->console_x = GetPrivateProfileInt(L"CONSOLE",L"buf_size_x",cfg->console_x,pini);
+    cfg->console_y = GetPrivateProfileInt(L"CONSOLE",L"buf_size_y",cfg->console_y,pini);
 
 	return(0);
 }
@@ -219,13 +345,13 @@ int ini_read_ini(TCfg *cfg,int *dbg)
 //---------------------------------------------------------------------------
 // STDOUT FIFO: allocate/initialize
 //---------------------------------------------------------------------------
-int fifo_alloc(TPHndl *proc,int size)
+int fifo_alloc(TLVPHndl *proc,int size)
 {
 	if(!proc)
 		return(1);
 
 	// allocate fifo structure
-	proc->fifo = (TFifo*)malloc(sizeof(TFifo));
+	proc->fifo = (TLVPFifo*)malloc(sizeof(TLVPFifo));
 	if(!proc->fifo)
 		return(1);
 
@@ -257,7 +383,7 @@ int fifo_alloc(TPHndl *proc,int size)
 //---------------------------------------------------------------------------
 // STDOUT FIFO: loose fifo buffer
 //---------------------------------------------------------------------------
-int fifo_free(TPHndl *proc)
+int fifo_free(TLVPHndl *proc)
 {
 	if(!proc || !proc->fifo)
 		return(1);
@@ -279,7 +405,7 @@ int fifo_free(TPHndl *proc)
 //---------------------------------------------------------------------------
 // STDOUT FIFO: free bytes
 //---------------------------------------------------------------------------
-int fifo_to_write(TPHndl *proc,int *len)
+int fifo_to_write(TLVPHndl *proc,int *len)
 {
 	if(len)
 		*len = 0;
@@ -311,7 +437,7 @@ int fifo_to_write(TPHndl *proc,int *len)
 //---------------------------------------------------------------------------
 // STDOUT FIFO: available data bytes
 //---------------------------------------------------------------------------
-int fifo_to_read(TPHndl *proc,int *len)
+int fifo_to_read(TLVPHndl *proc,int *len)
 {
 	if(len)
 		*len = 0;
@@ -343,7 +469,7 @@ int fifo_to_read(TPHndl *proc,int *len)
 //---------------------------------------------------------------------------
 // STDOUT FIFO: flush fifo content
 //---------------------------------------------------------------------------
-int fifo_clear(TPHndl *proc)
+int fifo_clear(TLVPHndl *proc)
 {
   if(!proc || (proc && !proc->fifo))
 		return(1);
@@ -367,7 +493,7 @@ int fifo_clear(TPHndl *proc)
 //---------------------------------------------------------------------------
 // STDOUT FIFO: write data bytes
 //---------------------------------------------------------------------------
-int fifo_write(TPHndl *proc,char *data,int towr,int *written)
+int fifo_write(TLVPHndl *proc,char *data,int towr,int *written)
 {
 	if(written)
 		*written = 0;
@@ -435,7 +561,7 @@ int fifo_write(TPHndl *proc,char *data,int towr,int *written)
 //---------------------------------------------------------------------------
 // STDOUT FIFO: read data bytes
 //---------------------------------------------------------------------------
-int fifo_read(TPHndl *proc,char *data,int tord,int *read)
+int fifo_read(TLVPHndl *proc,char *data,int tord,int *read)
 {
 	if(read)
 		*read = 0;
@@ -497,16 +623,19 @@ int fifo_read(TPHndl *proc,char *data,int tord,int *read)
 	return(0);
 }
 
-char *fmt_capacity(char *str,int size)
+//---------------------------------------------------------------------------
+// format capacity to string
+//---------------------------------------------------------------------------
+wchar_t *fmt_capacity(wchar_t *str,int maxstr,int size)
 {
-	char tmp[64];
-	if(size<10000)
-		sprintf(tmp,"%dB",size);
-	else if(size<1000000)
-		sprintf(tmp,"%.02fkB",(double)size/1024);
+	wchar_t tmp[64];
+	if(size < 10000)
+		wprintf_s(tmp,64,L"%dB",size);
+	else if(size < 1000000)
+		wprintf_s(tmp,64,L"%.02fkB",(double)size/1024);
 	else
-		sprintf(tmp,"%.02fMB",(double)size/1048576);
-	strcat(str,tmp);
+		wprintf_s(tmp,64,L"%.02fMB",(double)size/1048576);
+	wcscat_s(str,maxstr,tmp);
 	return(str);
 }
 
@@ -517,17 +646,17 @@ DWORD WINAPI fifo_read_thread(LPVOID lpParam)
 {
 	// now we have to make a local copy of the proc handle structure
 	// because we can't rely the parent process won't reallocate the structures memory
-	TPHndl proc;
-	memcpy((void*)&proc,(void*)lpParam,sizeof(TPHndl));
+    TLVPHndl proc;
+    memcpy((void*)&proc,(void*)lpParam,sizeof(TLVPHndl));
 
 	// signalize completed thread initialization
 	proc.fifo->exit = 0;
 
 	LARGE_INTEGER freq; QueryPerformanceFrequency(&freq);
 	LARGE_INTEGER t_last; QueryPerformanceCounter(&t_last);
- 
+
 	char buf[STDOUT_TH_BUF_SIZE];
-  int exit;
+	int exit;
 	do{
 
 		exit = 0;
@@ -541,13 +670,16 @@ DWORD WINAPI fifo_read_thread(LPVOID lpParam)
 			exit = 1;
 			continue;
 		}
-		if(towr>STDOUT_TH_BUF_SIZE)
+		// limit to local buffer size
+		if(towr > STDOUT_TH_BUF_SIZE)
 			towr = STDOUT_TH_BUF_SIZE;
 
-		// try to read stdout
-		EnterCriticalSection(&proc.fifo->cs);
+		// try to read stdout (critical section just in case we have debug console)
+		if(proc.cout)
+			EnterCriticalSection(&proc.fifo->cs);
 		int ret = peek_stdout(&proc,&exit,buf,towr,&read,&tord);
-		LeaveCriticalSection(&proc.fifo->cs);
+		if(proc.cout)
+			LeaveCriticalSection(&proc.fifo->cs);
 		if(ret)
 		{
 			exit = 1;
@@ -560,17 +692,18 @@ DWORD WINAPI fifo_read_thread(LPVOID lpParam)
 
 		// sleep?
 		if(!exit && !proc.fifo->exit && !tord)
-			Sleep(5);
+			WaitForSingleObject(proc.rd_event,proc.read_th_idle);
 
 		// update status?
 		LARGE_INTEGER t_new; QueryPerformanceCounter(&t_new);
 		if(time_get_ms(&t_last,&t_new,&freq)>=STDOUT_TH_UPDATE_TIME)
 		{
-			strcpy(buf,"lv_proc.dll console (read only), stdout = ");
-			fmt_capacity(buf,proc.fifo->c_stdout_bytes);
-			strcat(buf,", stdin = ");
-			fmt_capacity(buf,proc.fifo->c_stdin_bytes);
-			SetConsoleTitle(buf);
+			wchar_t hdr[256];
+            wcscpy_s(hdr,256,L"lv_proc.dll console (read only), stdout = ");
+			fmt_capacity(hdr,256,proc.fifo->c_stdout_bytes);
+			wcscpy_s(hdr,256,L", stdin = ");
+			fmt_capacity(hdr,256,proc.fifo->c_stdin_bytes);
+			SetConsoleTitle(hdr);
 			t_last = t_new;
 		}
 
@@ -581,30 +714,41 @@ DWORD WINAPI fifo_read_thread(LPVOID lpParam)
 }
 
 
-
-
 //---------------------------------------------------------------------------
 // DLL main
 //---------------------------------------------------------------------------
-#pragma argsused
 BOOL WINAPI DllMain(HINSTANCE hinstDLL, DWORD fwdreason, LPVOID lpvReserved)
 {
 	if(fwdreason == DLL_PROCESS_ATTACH)
 	{
 		// get DLL path
-		char path[MAX_PATH];
-		GetModuleFileName((HMODULE)hinstDLL,path,MAX_PATH);
-		// get DLL folder
-		dll_path = ExtractFilePath(path);
+		wchar_t dll_path[MAX_PATH];
+		GetModuleFileName((HMODULE)hinstDLL,dll_path,MAX_PATH);
+
+        // get DLL folder
+        strip_path(dll_path,MAX_PATH,NULL);
 	}
 
 	return(1);
 }
 
+//---------------------------------------------------------------------------------------------------------------------
+// fills the string with DLL version info
+//  *str: string buffer to be filled with the version ASCII string
+//  maxlen: size of string buffer
+//---------------------------------------------------------------------------------------------------------------------
+void sb_get_dll_version(char *str,__int32 maxlen)
+{
+    strcpy_s(str,maxlen-1,"LV Process DLL interface by Stanislav Maslan, s.maslan@seznam.cz, V4.0, 2016-12-05");
+}
+
 //---------------------------------------------------------------------------
-// Formats error code to string.
+// Formats error code to string buffer.
+//  code: lv proc error code
+//  *str: string buffer
+//  buflen: string buffer size
 //---------------------------------------------------------------------------
-extern "C" __declspec(dllexport) int proc_format_error(int code,char *str,int buflen)
+__int32 proc_format_error(__int32 code,char *str,__int32 buflen)
 {
 	// error list
 	struct{
@@ -615,7 +759,7 @@ extern "C" __declspec(dllexport) int proc_format_error(int code,char *str,int bu
 		{LVP_EC_CANT_CREATE_PIPE,"can't create pipe!"},
 		{LVP_EC_CANT_CREATE_PROC,"can't create process!"},
 		{LVP_EC_NO_EXIT,"process is still running!"},
-		{LVP_EC_EXIT_TO,"exit code querry timeout!"},
+		{LVP_EC_EXIT_TO,"exit code query timeout!"},
 		{LVP_EC_NO_BUF,"no data buffer assigned!"},
 		{LVP_EC_NO_LEN,"data buffer has zero length!"},
 		{LVP_EC_WRITE_FAIL,"writting to stdin pipe failed!"},
@@ -624,9 +768,10 @@ extern "C" __declspec(dllexport) int proc_format_error(int code,char *str,int bu
 		{LVP_EC_TIMEOUT,"command response timeout!"},
 		{LVP_EC_TERM_FAILED,"process termination failed!"},
 		{LVP_EC_SMALL_BUF,"buffer to small for error string!"},
-		{LVP_EC_CONS_CRAETE_FAILED,"console creation failed!"},
+		{LVP_EC_CONS_CRAETE_FAILED,"debug console creation failed!"},
 		{LVP_EC_STDOUT_RD_TH_FAILED,"creation of stdout readout thread failed!"},
 		{LVP_EC_STDOUT_FIFO_FAILED,"allocation of the stdout fifo buffer failed!"},
+		{LVP_EC_STDOUT_EVENT_FAILED,"creating wakup event of the stdout fifo buffer failed!"},
 		{0,"unknown error!"}
 	};
 
@@ -638,49 +783,65 @@ extern "C" __declspec(dllexport) int proc_format_error(int code,char *str,int bu
 		perr++;
 		if((perr->code==0 || perr->code==code) && code)
 		{
-			sprintf(buf,"LV process error (%d): %s",code,perr->str);
+			sprintf_s(buf,256,"LV process error (%d): %s",code,perr->str);
 			break;
 		}
 	}while(perr->code>0);
-
+    
 	// try to return
-	if(strlen(buf)>=(unsigned)buflen)
+    strcpy_s(str,buflen,buf);
+	if(strlen(buf) >= (unsigned)buflen)
 		return(LVP_EC_SMALL_BUF);
-	strcpy(str,buf);
 
 	return(0);
 }
 
 
 //---------------------------------------------------------------------------
-// Return handles struct size [Bytes].
+// Return size of the lv process handle TPHndl in bytes (usefull in LabVIEW).
 //---------------------------------------------------------------------------
-extern "C" __declspec(dllexport) int proc_handle_size(void)
+__int32 proc_handle_size(void)
 {
-	return(sizeof(TPHndl));
+    return(sizeof(TLVPHndl));
 }
 
 //---------------------------------------------------------------------------
 // Try to create process and its pipes.
 // Closes all opened handles if not successfull.
+//  *proc: lv process instance handle
+//  *folder: working directory for the process
+//  *cmd: the command to execute, i.e. path to the executable of the process
+//        with eventual parameters, so for instance "cmd.exe" to run wincmd
+//  sterr: write 1 to combine stderr to stdout
+//  hide: write 1 to hide console
 //---------------------------------------------------------------------------
-extern "C" __declspec(dllexport) int proc_create(TPHndl *proc,char *folder,char *cmd,int sterr,int hide)
+__int32 proc_create(TLVPHndl *proc,char *folder,char *cmd,__int32 sterr,__int32 hide)
 {
 	// leave if no proc handle
 	if(!proc)
 		return(LVP_EC_NO_PROC);
 
 	// clear handle variables
-	memset((void*)proc,0,sizeof(TPHndl));
+    memset((void*)proc,0,sizeof(TLVPHndl));
 
 	// try read ini
 	TCfg cfg;
 	int dbg;
 	ini_read_ini(&cfg,&dbg);
 
+    // copy config to lv_process handle
+	proc->read_th_idle = cfg.th_idle;
+
 	// store debug file path
 	if(dbg)
-		debug_init(proc,(dll_path + "debug.log").c_str());
+    {
+		// build debug file path
+        wchar_t dbgpth[MAX_PATH];
+        wcscpy_s(dbgpth,MAX_PATH,dll_path);
+        build_path(dbgpth,dll_path,LVPROC_DBG,MAX_PATH);
+        // try to initiazlize
+        debug_init(proc,dbgpth);
+    }
 
 	// clear hide parameter?
 	if(cfg.no_hide)
@@ -704,7 +865,7 @@ extern "C" __declspec(dllexport) int proc_create(TPHndl *proc,char *folder,char 
 		proc->cout = GetStdHandle(STD_OUTPUT_HANDLE);
 
 		// set title
-		SetConsoleTitle("lv_proc.dll console (read only)");
+		SetConsoleTitle(L"lv_proc.dll console (read only)");
 
 		// set buffers
 		CONSOLE_SCREEN_BUFFER_INFO binf;
@@ -726,7 +887,7 @@ extern "C" __declspec(dllexport) int proc_create(TPHndl *proc,char *folder,char 
 			crec.Right = crec.Left + cfg.console_x - 1;
 		SetConsoleWindowInfo(proc->cout,1,&crec);
 
-    // setup stdinput mode
+        // setup stdinput mode
 		HANDLE cinp = GetStdHandle(STD_INPUT_HANDLE);
 		DWORD cinp_mode;
 		GetConsoleMode(cinp,&cinp_mode);
@@ -740,19 +901,13 @@ extern "C" __declspec(dllexport) int proc_create(TPHndl *proc,char *folder,char 
 		debug_printf(proc," - console setup done\n");
 	}
 
-  debug_printf(proc,"creating process stdin/stdout pipes\n");
-
-	// --- check OS version ---
-	OSVERSIONINFO osv;
-	osv.dwOSVersionInfoSize = sizeof(osv);
-	GetVersionEx(&osv);
-	int ver=osv.dwPlatformId==VER_PLATFORM_WIN32_NT;
+    debug_printf(proc,"creating process stdin/stdout pipes\n");
 
 	// --- crate pipes for console stdout and stdin ---
 	// pipe secturity attributes
 	SECURITY_ATTRIBUTES sa;
 	SECURITY_DESCRIPTOR sd;
-	if(ver)
+	if(IsWindowsXPOrGreater())
 	{
 		InitializeSecurityDescriptor(&sd,SECURITY_DESCRIPTOR_REVISION);
 		SetSecurityDescriptorDacl(&sd,true,NULL,false);
@@ -765,14 +920,14 @@ extern "C" __declspec(dllexport) int proc_create(TPHndl *proc,char *folder,char 
 
 	// --- try to create pipes ---
 	// stdin pipe
-	if(!CreatePipe(&proc->pinp[1],&proc->pinp[0],&sa,0))
+	if(!CreatePipe(&proc->pinp[1],&proc->pinp[0],&sa,cfg.write_pipe_buf))
 	{
 		// failed - leave
 		proc_cleanup(proc);
 		return(LVP_EC_CANT_CREATE_PIPE);
 	}
 	// stdout pipe
-	if(!CreatePipe(&proc->pout[0],&proc->pout[1],&sa,0))
+	if(!CreatePipe(&proc->pout[0],&proc->pout[1],&sa,cfg.read_pipe_buf))
 	{
 		// failed - close pipes and leave
 		proc_cleanup(proc);
@@ -781,11 +936,11 @@ extern "C" __declspec(dllexport) int proc_create(TPHndl *proc,char *folder,char 
 
 	debug_printf(proc," - done\n");
 
-  debug_printf(proc,"creating process\n");
+    debug_printf(proc,"creating process\n");
 
 	// --- create process startup info ---
 	// general setup
-	STARTUPINFO si;
+	STARTUPINFOA si;
 	PROCESS_INFORMATION pi;
 	ZeroMemory(&si,sizeof(si));
 	ZeroMemory(&pi,sizeof(pi));
@@ -797,15 +952,15 @@ extern "C" __declspec(dllexport) int proc_create(TPHndl *proc,char *folder,char 
 	si.hStdOutput=proc->pout[1];
 	si.hStdInput=proc->pinp[1];
 	si.hStdError=sterr?proc->pout[1]:NULL;
-
-	// --- try to crate process ---
-  if(!CreateProcess(NULL,cmd,NULL,NULL,true,0,NULL,folder,&si,&pi))
+        
+    // --- try to crate process ---
+    if(!CreateProcessA(NULL,cmd,NULL,NULL,true,0,NULL,folder,&si,&pi))
 	{
 		// failed - close handles
 		proc_cleanup(proc);
 		return(LVP_EC_CANT_CREATE_PROC);
 	}
-  // store process and thread pointers
+    // store process and thread pointers
 	proc->hproc = pi.hProcess;
 	proc->hth = pi.hThread;
 	proc->pid = pi.dwProcessId;
@@ -825,6 +980,20 @@ extern "C" __declspec(dllexport) int proc_create(TPHndl *proc,char *folder,char 
 
 	debug_printf(proc," - done\n");
 
+	debug_printf(proc,"creating stdout wakup event\n");
+	
+	// --- try to create read wakeup event ---
+	proc->rd_event = CreateEvent(NULL,false,false,NULL);
+	if(!proc->rd_event)
+	{
+		// failed
+		proc_cleanup(proc);
+		return(LVP_EC_STDOUT_EVENT_FAILED);
+	}
+
+	debug_printf(proc," - done\n");
+	
+
 	debug_printf(proc,"creating stdout readout thread\n");
 
 	// create stdout fifo read thread
@@ -836,6 +1005,9 @@ extern "C" __declspec(dllexport) int proc_create(TPHndl *proc,char *folder,char 
 		proc_cleanup(proc);
 		return(LVP_EC_STDOUT_RD_TH_FAILED);
 	}
+
+	// set thread priority
+	SetThreadPriority(proc->fifo->th,cfg.th_priority);
 
 	debug_printf(proc," - done\n");
 
@@ -859,9 +1031,10 @@ extern "C" __declspec(dllexport) int proc_create(TPHndl *proc,char *folder,char 
 }
 
 //---------------------------------------------------------------------------
-// Close process instance handles.
+// Close process instance handle. Call this to cleanup after the process has terminated.
+//  *proc: lv process instance handle
 //---------------------------------------------------------------------------
-extern "C" __declspec(dllexport) int proc_cleanup(TPHndl *proc)
+__int32 proc_cleanup(TLVPHndl *proc)
 {
 	// leave if no proc handle
 	if(!proc)
@@ -911,6 +1084,14 @@ extern "C" __declspec(dllexport) int proc_cleanup(TPHndl *proc)
 
 	debug_printf(proc," - stdout readout thread closed\n");
 
+	// loose wakeup event
+	if(proc->rd_event)
+	{
+		CloseHandle(proc->rd_event);
+	}
+
+	debug_printf(proc," - stdout wakeup event closed\n");
+
 	// destroy console
 	if(proc->cout)
 	{
@@ -924,10 +1105,10 @@ extern "C" __declspec(dllexport) int proc_cleanup(TPHndl *proc)
 
 
 	// clear handle variables
-	char path[MAX_PATH];
-	strcpy(path,proc->dbg_path);
-	memset((void*)proc,0,sizeof(TPHndl));
-	strcpy(proc->dbg_path,path);
+	wchar_t path[MAX_PATH];
+	wcscpy_s(path,MAX_PATH,proc->dbg_path);
+    memset((void*)proc,0,sizeof(TLVPHndl));
+	wcscpy_s(proc->dbg_path,MAX_PATH,path);
 
 	return(0);
 }
@@ -935,8 +1116,10 @@ extern "C" __declspec(dllexport) int proc_cleanup(TPHndl *proc)
 //---------------------------------------------------------------------------
 // Try to get process instance exit code.
 // Returns LVP_EC_NO_EXIT error if still running.
+//  *proc: lv process instance handle
+//  *code: pointer to variable that receives the exit code (optional)
 //---------------------------------------------------------------------------
-extern "C" __declspec(dllexport) int proc_get_exit_code(TPHndl *proc,int *code)
+__int32 proc_get_exit_code(TLVPHndl *proc,__int32 *code)
 {
 	// return default exit code
 	if(code)
@@ -973,8 +1156,11 @@ extern "C" __declspec(dllexport) int proc_get_exit_code(TPHndl *proc,int *code)
 
 //---------------------------------------------------------------------------
 // Wait for process exit code. Set time to 0 if no timeout requested.
+//  *proc: lv process instance handle
+//  *code: variable that receives exit code (optional)
+//  time: timeout in ms, rather don't use 0 :)
 //---------------------------------------------------------------------------
-extern "C" __declspec(dllexport) int proc_wait_exit(TPHndl *proc,int *code,int time)
+__int32 proc_wait_exit(TLVPHndl *proc,__int32 *code,__int32 time)
 {
 	DWORD ec = 0;
 
@@ -1031,9 +1217,12 @@ extern "C" __declspec(dllexport) int proc_wait_exit(TPHndl *proc,int *code,int t
 }
 
 //---------------------------------------------------------------------------
-// Terminate process.
+// Harcore process termination. Call this when the process does not behave or it cannot be 
+// terminated at all.
+//  *proc: lv process instance handle
+//  time: timeout in ms
 //---------------------------------------------------------------------------
-extern "C" __declspec(dllexport) int proc_terminate(TPHndl *proc,int time)
+__int32 proc_terminate(TLVPHndl *proc,__int32 time)
 {
 	// leave if no proc handle
 	if(!proc || !proc->hproc)
@@ -1058,8 +1247,11 @@ extern "C" __declspec(dllexport) int proc_terminate(TPHndl *proc,int time)
 // Flush stdout pipe data. 'rint' [ms] is maximum interval between incomming
 // stdout data blocks.
 // Function returns if no data appears on stdout for 'rint'.
+//  *proc: lv process instance handle
+//  *exit: variable that receives exit code if process exited (optional)
+//  rint: maximum 'gap' between incomming stdout data in ms
 //---------------------------------------------------------------------------
-extern "C" __declspec(dllexport) int proc_flush_stdout(TPHndl *proc,int *exit,int rint)
+__int32 proc_flush_stdout(TLVPHndl *proc,__int32 *exit,__int32 rint)
 {
 	// leave if no proc handle
 	if(!proc || !proc->hproc)
@@ -1080,8 +1272,8 @@ extern "C" __declspec(dllexport) int proc_flush_stdout(TPHndl *proc,int *exit,in
 
 	debug_printf(proc," - done\n");
 
-  // check process status
-  DWORD ret;
+    // check process status
+    DWORD ret;
 	GetExitCodeProcess(proc->hproc,&ret);
 	// process retuned?
 	int done=(ret!=STILL_ACTIVE);
@@ -1097,11 +1289,14 @@ extern "C" __declspec(dllexport) int proc_flush_stdout(TPHndl *proc,int *exit,in
 	return(0);
 }
 
-
 //---------------------------------------------------------------------------
 // Write to stdin pipe.
+//  *proc: lv process instance handle
+//  *buf: data to write
+//  towr: number of bytes to write
+//  *written: returns number of actually written bytes (optional)
 //---------------------------------------------------------------------------
-extern "C" __declspec(dllexport) int proc_write_stdin(TPHndl *proc,char *buf,int towr,int *written)
+__int32 proc_write_stdin(TLVPHndl *proc,char *buf,__int32 towr,__int32 *written)
 {
 	// leave if no proc handle
 	if(!proc || !proc->hproc || !proc->pinp[0])
@@ -1125,7 +1320,7 @@ extern "C" __declspec(dllexport) int proc_write_stdin(TPHndl *proc,char *buf,int
 	if(written)
 		*written=(int)wrt;
 
-  // update stdin bytes counter
+    // update stdin bytes counter
 	if(proc->fifo)
 		proc->fifo->c_stdin_bytes += wrt;
 
@@ -1148,19 +1343,28 @@ extern "C" __declspec(dllexport) int proc_write_stdin(TPHndl *proc,char *buf,int
 }
 
 //---------------------------------------------------------------------------
-// Peek process stdout pipe, read upto blen chars, return process status.
+// Peek process stdout pipe, read upto 'blen' chars, return process status.
+//  *proc: lv process instance handle
+//  *exit: returns exit code if process returned (optional)
+//  *buf: read buffer
+//  bsize: byte size of the read buffer
+//  *rread: returns total read bytes (optional)
+//  *rtord: returns remaining bytes to read (optional)
 //---------------------------------------------------------------------------
-extern "C" __declspec(dllexport) int proc_peek_stdout(TPHndl *proc,int *exit,char *buf,int bsize,int *rread,int *rtord)
+__int32 proc_peek_stdout(TLVPHndl *proc,__int32 *exit,char *buf,__int32 bsize,__int32 *rread,__int32 *rtord)
 {
 	// leave if no proc handle
-	if(!proc || !proc->hproc)
+	if(!proc || !proc->hproc || !proc->rd_event)
 		return(LVP_EC_NO_PROC);
+
+    // wakeup read thread
+	SetEvent(proc->rd_event);
 
 	// reserve '\0' in buffer size (string termination)
 	bsize=(bsize>0)?(bsize-1):0;
   
 	// read data from stdout fifo
-  int read = 0;
+    int read = 0;
 	fifo_read(proc,buf,bsize,&read);
 	buf += read;
 	*buf = '\0';
@@ -1177,7 +1381,7 @@ extern "C" __declspec(dllexport) int proc_peek_stdout(TPHndl *proc,int *exit,cha
 		debug_printf(proc,"buffered stdout peek: %dB read, %dB remaining\n",read,tord);
 
 	// check process status
-  DWORD ret;
+    DWORD ret;
 	GetExitCodeProcess(proc->hproc,&ret);
 	// process retuned?
 	int done=(ret!=STILL_ACTIVE);
@@ -1189,7 +1393,7 @@ extern "C" __declspec(dllexport) int proc_peek_stdout(TPHndl *proc,int *exit,cha
 	return(0);
 }
 // main stdout readout function, called ONLY by readout thread
-int peek_stdout(TPHndl *proc,int *exit,char *buf,int bsize,int *rread,int *rtord)
+int peek_stdout(TLVPHndl *proc,int *exit,char *buf,int bsize,int *rread,int *rtord)
 {
 	// leave if no proc handle
 	if(!proc || !proc->hproc || !proc->pout[0])
@@ -1222,7 +1426,7 @@ int peek_stdout(TPHndl *proc,int *exit,char *buf,int bsize,int *rread,int *rtord
 			DWORD bread;
 			ReadFile(proc->pout[0],buf,ptord,&bread,NULL);
 
-      debug_printf(proc,"stdout pipe -> fifo: %dB\n",bread);
+            debug_printf(proc,"stdout pipe -> fifo: %dB\n",bread);
 
 			// write buffer to the console?
 			if(bread && proc->cout)
@@ -1273,12 +1477,19 @@ int peek_stdout(TPHndl *proc,int *exit,char *buf,int bsize,int *rread,int *rtord
 //---------------------------------------------------------------------------
 // Flush input pipe, send command buffer, wait for process instance answer,
 // read output pipe.
-//  rtime - first response byte timeout [ms]
-//  rint  - maximum receive interval between successive data blocks [ms]
+//  *proc: lv process instance handle
+//  *exit: returns exit code if process returned (optional)
+//  *cmd: data to write
+//  cmdlen: write data size [B]
+//  *buf: read buffer
+//  buflen: read buffer size [B]
+//  *bufret: returnes bytes read (optional)
+//  rtime: first response byte timeout [ms]
+//  rint: maximum receive interval between successive data blocks [ms]
 //
 // In case no command is sent, function only reads stdout pipe with timeout.
 //---------------------------------------------------------------------------
-extern "C" __declspec(dllexport) int proc_command(TPHndl *proc,int *exit,char *cmd,int cmdlen,char *buf,int buflen,int *bufret,int rtime,int rint)
+__int32 proc_command(TLVPHndl *proc,__int32 *exit,char *cmd,__int32 cmdlen,char *buf,__int32 buflen,__int32 *bufret,__int32 rtime,__int32 rint)
 {
 	int ret;
 	int done;
@@ -1341,6 +1552,9 @@ extern "C" __declspec(dllexport) int proc_command(TPHndl *proc,int *exit,char *c
 
 	debug_printf(proc,"sending command - waiting for answer\n");
 
+	// wakeup read thread
+	SetEvent(proc->rd_event);
+
 	// --- try to read response ---
 	LARGE_INTEGER t_last;
 	QueryPerformanceCounter(&t_last);
@@ -1400,12 +1614,10 @@ extern "C" __declspec(dllexport) int proc_command(TPHndl *proc,int *exit,char *c
 		}
 
 		// wait a moment
-		Sleep(5);
+		Sleep(1);
 
 	}while(1);
 }
-
-
 
 
 
