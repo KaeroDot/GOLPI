@@ -4,7 +4,7 @@
 // Author: Stanislav Maslan
 // E-mail: s.maslan@seznam.cz, smaslan@cmi.cz
 // www: https://forums.ni.com/t5/Community-Documents/LV-Process-Windows-pipes-LabVIEW/tac-p/3497843/highlight/true
-// Revision: V4.0, 2016-12-05
+// Revision: V4.1, 2016-12-06
 //
 //
 // LICENSE:
@@ -30,7 +30,7 @@
 //
 // BRIEF DESCRIPTION:
 // ------------------
-// This library was developed for pipe communiation with console application. It is basically 
+// This library was developed for pipe communication with console application. It is basically 
 // just a wrapper for nasty WINAPIs dedicated for pipe handling and process execution. The wrapper
 // simplifies the whole operation to just a several functions with simple data types. So it can be 
 // easily linked also to LabVIEW (that is why it is called "LV Process").
@@ -46,7 +46,7 @@
 //    to terminate "cmd.exe". Then call "proc_wait_exit()" to wait for process end. If it does not do so,
 //    kill it with fire ... i mean "proc_terminate()". Eventually retrieve exit code by "proc_get_exit_code()".
 // 
-// There are several other functions exportet to DLL so follow the header file for details. 
+// There are several other functions exported to DLL so follow the header file for details. 
 //
 // The DLL also enables to create debug console. It is just a read console where you can check the stdin/stdout
 // traffic. Some day I will maybe add keyboard input too.
@@ -240,7 +240,7 @@ WORD ini_parse_color(wchar_t *str,WORD clr_in,wchar_t *clr_str_out,int size)
 	{
 		// clear output string
 		//memset((void*)clr_str_out,'\0',size);
-        clr_str_out = '\0';
+        clr_str_out[0] = '\0';
 		size--;
 
         // combine flags
@@ -284,6 +284,10 @@ int ini_read_ini(TCfg *cfg,int *dbg)
 {
     wchar_t cstr[1024];
 
+    // no destination buffer
+    if(!cfg)
+        return(1);
+
 	// defaults
 	cfg->no_hide = 0;
 	cfg->console_x = -1;
@@ -300,15 +304,11 @@ int ini_read_ini(TCfg *cfg,int *dbg)
 	// build "config.ini"
 	wchar_t pini[MAX_PATH];
     build_path(pini,dll_path,LVPROC_INI,MAX_PATH);
-  
-	// no destination buffer
-	if(!cfg)
-		return(1);
-	
+          	
     // debug mode?
 	if(dbg)
 		*dbg = GetPrivateProfileInt(L"DEBUG",L"debug_enabled",0,pini);
-
+    
 	// always show console
 	cfg->no_hide = GetPrivateProfileInt(L"CONSOLE",L"no_hide",cfg->no_hide,pini);
 
@@ -327,12 +327,13 @@ int ini_read_ini(TCfg *cfg,int *dbg)
 	// stdin color
 	ini_parse_color(NULL,cfg->console_clr_stdin,cstr,1024);
     wchar_t temp[1024];
-    GetPrivateProfileString(L"CONSOLE",L"color_stdin",cstr,temp,1024,pini);
+    GetPrivateProfileStringW(L"CONSOLE",L"color_stdin",cstr,temp,1024,pini);
 	cfg->console_clr_stdin = ini_parse_color(temp);
+        
 
 	// stdout color
 	ini_parse_color(NULL,cfg->console_clr_stdout,cstr,1024);
-	GetPrivateProfileString(L"CONSOLE",L"color_stdout",cstr,temp,1024,pini);
+	GetPrivateProfileStringW(L"CONSOLE",L"color_stdout",cstr,temp,1024,pini);
     cfg->console_clr_stdout = ini_parse_color(temp);
 
 	// console size
@@ -566,7 +567,7 @@ int fifo_read(TLVPHndl *proc,char *data,int tord,int *read)
 	if(read)
 		*read = 0;
 
-  if(!proc || (proc && !proc->fifo))
+    if(!proc || (proc && !proc->fifo))
 		return(1);
 
 	EnterCriticalSection(&proc->fifo->cs);
@@ -578,16 +579,16 @@ int fifo_read(TLVPHndl *proc,char *data,int tord,int *read)
 	}
 
 	// get free space
-  int len;
-	if(proc->fifo->read==proc->fifo->write)
+    int len;
+	if(proc->fifo->read == proc->fifo->write)
 		len = 0;
-	else if(proc->fifo->read<proc->fifo->write)
+	else if(proc->fifo->read < proc->fifo->write)
 		len = proc->fifo->write - proc->fifo->read;
 	else
 		len = proc->fifo->write - proc->fifo->read + proc->fifo->len;
   
 	// limit read data size
-	if(tord>len)
+	if(tord > len)
 		tord = len;
 
 	if(tord)
@@ -601,7 +602,7 @@ int fifo_read(TLVPHndl *proc,char *data,int tord,int *read)
 			blen_2 = tord - blen_1;
 		memcpy((void*)data,(void*)proc->fifo->read,blen_1);
 		proc->fifo->read += blen_1;
-		if(proc->fifo->read>=&proc->fifo->data[proc->fifo->len])
+		if(proc->fifo->read >= &proc->fifo->data[proc->fifo->len])
 			proc->fifo->read -= proc->fifo->len;
 
 		// read second block
@@ -696,12 +697,12 @@ DWORD WINAPI fifo_read_thread(LPVOID lpParam)
 
 		// update status?
 		LARGE_INTEGER t_new; QueryPerformanceCounter(&t_new);
-		if(time_get_ms(&t_last,&t_new,&freq)>=STDOUT_TH_UPDATE_TIME)
+        if(proc.cout && time_get_ms(&t_last,&t_new,&freq)>=STDOUT_TH_UPDATE_TIME)
 		{
 			wchar_t hdr[256];
             wcscpy_s(hdr,256,L"lv_proc.dll console (read only), stdout = ");
 			fmt_capacity(hdr,256,proc.fifo->c_stdout_bytes);
-			wcscpy_s(hdr,256,L", stdin = ");
+			wcscat_s(hdr,256,L", stdin = ");
 			fmt_capacity(hdr,256,proc.fifo->c_stdin_bytes);
 			SetConsoleTitle(hdr);
 			t_last = t_new;
@@ -722,7 +723,6 @@ BOOL WINAPI DllMain(HINSTANCE hinstDLL, DWORD fwdreason, LPVOID lpvReserved)
 	if(fwdreason == DLL_PROCESS_ATTACH)
 	{
 		// get DLL path
-		wchar_t dll_path[MAX_PATH];
 		GetModuleFileName((HMODULE)hinstDLL,dll_path,MAX_PATH);
 
         // get DLL folder
@@ -737,9 +737,9 @@ BOOL WINAPI DllMain(HINSTANCE hinstDLL, DWORD fwdreason, LPVOID lpvReserved)
 //  *str: string buffer to be filled with the version ASCII string
 //  maxlen: size of string buffer
 //---------------------------------------------------------------------------------------------------------------------
-void sb_get_dll_version(char *str,__int32 maxlen)
-{
-    strcpy_s(str,maxlen-1,"LV Process DLL interface by Stanislav Maslan, s.maslan@seznam.cz, V4.0, 2016-12-05");
+void proc_get_dll_version(char *str,__int32 maxlen)
+{    
+    strncpy_s(str,maxlen,"LV Process DLL interface by Stanislav Maslan, s.maslan@seznam.cz, V4.1, 2016-12-06",maxlen-1);
 }
 
 //---------------------------------------------------------------------------
@@ -789,7 +789,7 @@ __int32 proc_format_error(__int32 code,char *str,__int32 buflen)
 	}while(perr->code>0);
     
 	// try to return
-    strcpy_s(str,buflen,buf);
+    strncpy_s(str,buflen,buf,buflen-1);
 	if(strlen(buf) >= (unsigned)buflen)
 		return(LVP_EC_SMALL_BUF);
 
@@ -1183,7 +1183,7 @@ __int32 proc_wait_exit(TLVPHndl *proc,__int32 *code,__int32 time)
 		if(!ret)
 		{
 			// failed
-      debug_printf(proc," - reading exit code failed!\n");
+            debug_printf(proc," - reading exit code failed!\n");
 			ec = STILL_ACTIVE;
 			continue;
 		}
@@ -1293,7 +1293,10 @@ __int32 proc_flush_stdout(TLVPHndl *proc,__int32 *exit,__int32 rint)
 // Write to stdin pipe.
 //  *proc: lv process instance handle
 //  *buf: data to write
-//  towr: number of bytes to write
+//  towr: number of bytes to write, use negative number to take 'buf' as
+//        a null terminated string and detect size automatically, where the 
+//        absolute value of 'towr' is maximum expected size of 'buf' data
+//        (safety solution for strnlen_s())
 //  *written: returns number of actually written bytes (optional)
 //---------------------------------------------------------------------------
 __int32 proc_write_stdin(TLVPHndl *proc,char *buf,__int32 towr,__int32 *written)
@@ -1307,8 +1310,14 @@ __int32 proc_write_stdin(TLVPHndl *proc,char *buf,__int32 towr,__int32 *written)
 		return(LVP_EC_NO_BUF);
 
 	// leave if nothing to write
-	if(!towr)
+	if(towr == 0)
 		return(0);
+    else if(towr < 0)
+    {
+        // buffer is null terminated string - detect buffer size automatically
+        towr = strnlen_s(buf,-towr);
+    }
+       
 
 	debug_printf(proc,"writting data to stdin\n");
 
@@ -1318,7 +1327,7 @@ __int32 proc_write_stdin(TLVPHndl *proc,char *buf,__int32 towr,__int32 *written)
 
 	// return written count
 	if(written)
-		*written=(int)wrt;
+		*written = (int)wrt;
 
     // update stdin bytes counter
 	if(proc->fifo)
@@ -1327,7 +1336,7 @@ __int32 proc_write_stdin(TLVPHndl *proc,char *buf,__int32 towr,__int32 *written)
 	// write buffer to the console?
 	if(ret && proc->cout && proc->fifo)
 	{
-    debug_printf(proc," - writting copy to the console\n");
+        debug_printf(proc," - writting copy to the console\n");
 
 		EnterCriticalSection(&proc->fifo->cs);
 		SetConsoleTextAttribute(proc->cout,proc->clr_in);
@@ -1344,6 +1353,7 @@ __int32 proc_write_stdin(TLVPHndl *proc,char *buf,__int32 towr,__int32 *written)
 
 //---------------------------------------------------------------------------
 // Peek process stdout pipe, read upto 'blen' chars, return process status.
+// Automatically appends '\0' to the buffer data so maximum returned data are bsize - 1.
 //  *proc: lv process instance handle
 //  *exit: returns exit code if process returned (optional)
 //  *buf: read buffer
@@ -1361,7 +1371,7 @@ __int32 proc_peek_stdout(TLVPHndl *proc,__int32 *exit,char *buf,__int32 bsize,__
 	SetEvent(proc->rd_event);
 
 	// reserve '\0' in buffer size (string termination)
-	bsize=(bsize>0)?(bsize-1):0;
+	bsize = (bsize>0)?(bsize-1):0;
   
 	// read data from stdout fifo
     int read = 0;
@@ -1480,7 +1490,10 @@ int peek_stdout(TLVPHndl *proc,int *exit,char *buf,int bsize,int *rread,int *rto
 //  *proc: lv process instance handle
 //  *exit: returns exit code if process returned (optional)
 //  *cmd: data to write
-//  cmdlen: write data size [B]
+//  cmdlen: number of bytes to write, use negative number to take 'cmd' as
+//          a null terminated string and detect size automatically, where the 
+//          absolute value of 'cmdlen' is maximum expected size of 'cmd' data
+//          (safety solution for strnlen_s())
 //  *buf: read buffer
 //  buflen: read buffer size [B]
 //  *bufret: returnes bytes read (optional)
@@ -1503,16 +1516,16 @@ __int32 proc_command(TLVPHndl *proc,__int32 *exit,char *cmd,__int32 cmdlen,char 
 		return(LVP_EC_NO_BUF);
 
 	// error no space in read buffer
-	if(buflen<2)
+	if(buflen < 2)
 		return(LVP_EC_NO_LEN);
 
 	// nothing read yet
-	int dret=0;
+	int dret = 0;
 	if(bufret)
-		*bufret=0;
+		*bufret = '\0';
 
 	// --- flush stdout data ---
-	if(cmd && cmdlen)
+	if(cmd && cmdlen != 0)
 	{
 		debug_printf(proc,"sending command - flushing stdout\n");
 
@@ -1521,7 +1534,7 @@ __int32 proc_command(TLVPHndl *proc,__int32 *exit,char *cmd,__int32 cmdlen,char 
 
 		// return exit code status
 		if(exit)
-			*exit=done;
+			*exit = done;
 
 		// leave if process instance returned exit code
 		if(done && !exit)
@@ -1531,18 +1544,24 @@ __int32 proc_command(TLVPHndl *proc,__int32 *exit,char *cmd,__int32 cmdlen,char 
 	}
 
 	// --- write command ---
-	if(cmd && cmdlen)
+	if(cmd && cmdlen != 0)
 	{
 		debug_printf(proc,"sending command - writting new command\n");
 
-		// something to write
+        // something to write
 		int written;
-		ret=proc_write_stdin(proc,cmd,cmdlen,&written);
+		ret = proc_write_stdin(proc,cmd,cmdlen,&written);
 
+        if(cmdlen < 0)
+        {
+            // buffer is null terminated string - detect buffer size automatically
+            cmdlen = strnlen_s(cmd,-cmdlen);
+        }
+        
 		// general write fail
 		if(ret)
 			return(LVP_EC_WRITE_FAIL);
-		else if(cmdlen!=written)
+		else if(cmdlen != written)
 			return(LVP_EC_WRITE_INCOMPLETE);
 	}
 
@@ -1565,18 +1584,18 @@ __int32 proc_command(TLVPHndl *proc,__int32 *exit,char *cmd,__int32 cmdlen,char 
 		proc_peek_stdout(proc,&done,buf,buflen,&read,NULL);
 
 		// move return buffer pointer
-		buf+=read;
-		*buf='\0';
-		buflen-=read;
-		dret+=read;
+		buf += read;
+		*buf = '\0';
+		buflen -= read;
+		dret += read;
 
 		// return exit code status
 		if(exit)
-			*exit=done;
+			*exit = done;
 
 		// return read count
 		if(bufret)
-			*bufret=dret;
+			*bufret = dret;
 
 		// error if process returned exit code
 		if(done && !exit)
@@ -1585,7 +1604,7 @@ __int32 proc_command(TLVPHndl *proc,__int32 *exit,char *cmd,__int32 cmdlen,char 
 			return(0);
 
 		// full buffer - done
-		if(!buflen)
+		if(buflen < 1)
 			return(0);
 
 		// current time
@@ -1603,7 +1622,7 @@ __int32 proc_command(TLVPHndl *proc,__int32 *exit,char *cmd,__int32 cmdlen,char 
 		if(read)
 		{
 			// yaha - last time = new time
-			t_last=t_new;
+			t_last = t_new;
 		}
 
 		// read interval timeout?

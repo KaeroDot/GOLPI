@@ -4,7 +4,7 @@
 // Author: Stanislav Maslan
 // E-mail: s.maslan@seznam.cz, smaslan@cmi.cz
 // www: https://forums.ni.com/t5/Community-Documents/LV-Process-Windows-pipes-LabVIEW/tac-p/3497843/highlight/true
-// Revision: V4.0, 2016-12-05
+// Revision: V4.1, 2016-12-06
 //
 //
 // LICENSE:
@@ -30,7 +30,7 @@
 //
 // BRIEF DESCRIPTION:
 // ------------------
-// This library was developed for pipe communiation with console application. It is basically 
+// This library was developed for pipe communication with console application. It is basically 
 // just a wrapper for nasty WINAPIs dedicated for pipe handling and process execution. The wrapper
 // simplifies the whole operation to just a several functions with simple data types. So it can be 
 // easily linked also to LabVIEW (that is why it is called "LV Process").
@@ -46,7 +46,7 @@
 //    to terminate "cmd.exe". Then call "proc_wait_exit()" to wait for process end. If it does not do so,
 //    kill it with fire ... i mean "proc_terminate()". Eventually retrieve exit code by "proc_get_exit_code()".
 // 
-// There are several other functions exportet to DLL so follow the header file for details. 
+// There are several other functions exported to DLL so follow the header file for details. 
 //
 // The DLL also enables to create debug console. It is just a read console where you can check the stdin/stdout
 // traffic. Some day I will maybe add keyboard input too.
@@ -109,6 +109,7 @@
 #ifndef lv_procH
 #define lv_procH
 //---------------------------------------------------------------------------
+#include <windows.h>
 
 #ifdef _LVPDLLEXPORT
 #define DllExport __declspec(dllexport) 
@@ -243,7 +244,7 @@ int peek_stdout(TLVPHndl *proc,int *exit,char *buf,int bsize,int *rread,int *rto
 // fills the string with DLL version info
 //  *str: string buffer to be filled with the version ASCII string
 //  maxlen: size of string buffer
-DllExport void sb_get_dll_version(char *str,__int32 maxlen);
+DllExport void proc_get_dll_version(char *str,__int32 maxlen);
 //---------------------------------------------------------------------------
 // Formats error code to string buffer.
 //  code: lv proc error code

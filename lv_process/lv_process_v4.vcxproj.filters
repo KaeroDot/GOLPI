@@ -15,20 +15,20 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="read_me.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="lv_proc.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="lv_proc.cpp">
+    <ClCompile Include="lv_process\lv_proc.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="COPYING" />
-    <None Include="COPYING.LESSER" />
+    <ClInclude Include="lv_process\lv_proc.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="lv_process\COPYING" />
+    <None Include="lv_process\COPYING.LESSER" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="lv_process\read_me.txt" />
   </ItemGroup>
 </Project>

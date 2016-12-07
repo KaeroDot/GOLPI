@@ -4,7 +4,7 @@
 // Author: Stanislav Maslan
 // E-mail: s.maslan@seznam.cz, smaslan@cmi.cz
 // www: https://forums.ni.com/t5/Community-Documents/LV-Process-Windows-pipes-LabVIEW/tac-p/3497843/highlight/true
-// Revision: V4.0, 2016-12-05
+// Revision: V4.1, 2016-12-06
 //
 //
 // LICENSE:
@@ -51,9 +51,18 @@
 // The DLL also enables to create debug console. It is just a read console where you can check the stdin/stdout
 // traffic. Some day I will maybe add keyboard input too.
 // 
+// Demo
+// ----
+// Basic demo for testing LV process DLL is in directory test. It does:
+//  1) reads DLL version string
+//  2) opens 'cmd.exe' process
+//  3) sends command 'data /t' to get date string
+//  4) reads and prints response to the command
+//  5) sends 'exit' command to leave 'cmd.exe' process
+//  6) waits for 'cmd.exe' return code
 //
-// lv_proc.ini:
-//
+// lv_proc.ini
+// -----------
 //  If 'lv_proc.ini' config file is found in the folder with the 'lv_proc.dll' it will be used as a config file.
 //  Supported options of the *.ini file:
 //   [DEBUG]
