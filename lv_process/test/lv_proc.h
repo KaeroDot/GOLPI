@@ -245,15 +245,18 @@ int peek_stdout(TLVPHndl *proc,int *exit,char *buf,int bsize,int *rread,int *rto
 //  *str: string buffer to be filled with the version ASCII string
 //  maxlen: size of string buffer
 DllExport void proc_get_dll_version(char *str,__int32 maxlen);
+
 //---------------------------------------------------------------------------
 // Formats error code to string buffer.
 //  code: lv proc error code
 //  *str: string buffer
 //  buflen: string buffer size
 DllExport __int32 proc_format_error(__int32 code,char *str,__int32 buflen);
+
 //---------------------------------------------------------------------------
 // Return size of the lv process handle TPHndl in bytes (usefull in LabVIEW).
 DllExport __int32 proc_handle_size(void);
+
 
 //====== CREATE/KILL/CLEANUP ======
 //---------------------------------------------------------------------------
@@ -266,28 +269,34 @@ DllExport __int32 proc_handle_size(void);
 //  sterr: write 1 to combine stderr to stdout
 //  hide: write 1 to hide console
 DllExport __int32 proc_create(TLVPHndl *proc,char *folder,char *cmd,__int32 sterr,__int32 hide);
+
 //---------------------------------------------------------------------------
 // Close process instance handle. Call this to cleanup after the process has terminated.
 //  *proc: lv process instance handle
 DllExport __int32 proc_cleanup(TLVPHndl *proc);
+
 //---------------------------------------------------------------------------
 // Try to get process instance exit code.
 // Returns LVP_EC_NO_EXIT error if still running.
 //  *proc: lv process instance handle
 //  *code: pointer to variable that receives the exit code (optional)
 DllExport __int32 proc_get_exit_code(TLVPHndl *proc,__int32 *code);
+
 //---------------------------------------------------------------------------
 // Wait for process exit code. Set time to 0 if no timeout requested.
 //  *proc: lv process instance handle
 //  *code: variable that receives exit code (optional)
 //  time: timeout in ms, rather don't use 0 :)
 DllExport __int32 proc_wait_exit(TLVPHndl *proc,__int32 *code,__int32 time);
+
 //---------------------------------------------------------------------------
 // Harcore process termination. Call this when the process does not behave or it cannot be 
 // terminated at all.
 //  *proc: lv process instance handle
 //  time: timeout in ms
 DllExport __int32 proc_terminate(TLVPHndl *proc,__int32 time);
+
+
 
 //====== READ/WRITE ======
 //---------------------------------------------------------------------------
@@ -298,13 +307,18 @@ DllExport __int32 proc_terminate(TLVPHndl *proc,__int32 time);
 //  *exit: variable that receives exit code if process exited (optional)
 //  rint: maximum 'gap' between incomming stdout data in ms
 DllExport __int32 proc_flush_stdout(TLVPHndl *proc,__int32 *exit,__int32 r__int32);
+
 //---------------------------------------------------------------------------
 // Write to stdin pipe.
 //  *proc: lv process instance handle
 //  *buf: data to write
-//  towr: number of bytes to write
+//  towr: number of bytes to write, use negative number to take 'buf' as
+//        a null terminated string and detect size automatically, where the 
+//        absolute value of 'towr' is maximum expected size of 'buf' data
+//        (safety solution for strnlen_s())
 //  *written: returns number of actually written bytes (optional)
 DllExport __int32 proc_write_stdin(TLVPHndl *proc,char *buf,__int32 towr,__int32 *written);
+
 //---------------------------------------------------------------------------
 // Peek process stdout pipe, read upto 'blen' chars, return process status.
 //  *proc: lv process instance handle
@@ -314,13 +328,17 @@ DllExport __int32 proc_write_stdin(TLVPHndl *proc,char *buf,__int32 towr,__int32
 //  *rread: returns total read bytes (optional)
 //  *rtord: returns remaining bytes to read (optional)
 DllExport __int32 proc_peek_stdout(TLVPHndl *proc,__int32 *exit,char *buf,__int32 bsize,__int32 *rread,__int32 *rtord);
+
 //---------------------------------------------------------------------------
 // Flush input pipe, send command buffer, wait for process instance answer,
 // read output pipe.
 //  *proc: lv process instance handle
 //  *exit: returns exit code if process returned (optional)
 //  *cmd: data to write
-//  cmdlen: write data size [B]
+//  cmdlen: number of bytes to write, use negative number to take 'cmd' as
+//          a null terminated string and detect size automatically, where the 
+//          absolute value of 'cmdlen' is maximum expected size of 'cmd' data
+//          (safety solution for strnlen_s())
 //  *buf: read buffer
 //  buflen: read buffer size [B]
 //  *bufret: returnes bytes read (optional)

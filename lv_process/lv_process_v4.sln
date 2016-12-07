@@ -7,6 +7,13 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "test", "test\test.vcxproj",
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "lv_process", "lv_process\lv_process.vcxproj", "{22E84E41-924A-4AE4-8500-D22BAB797D74}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "licence", "licence", "{E79A77A4-BEDE-4B78-958B-D55DF6AC532B}"
+	ProjectSection(SolutionItems) = preProject
+		COPYING = COPYING
+		COPYING.LESSER = COPYING.LESSER
+		read_me.txt = read_me.txt
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32

@@ -24,11 +24,4 @@
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
-  <ItemGroup>
-    <None Include="COPYING" />
-    <None Include="COPYING.LESSER" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="read_me.txt" />
-  </ItemGroup>
 </Project>

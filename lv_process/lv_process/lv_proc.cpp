@@ -371,7 +371,7 @@ int fifo_alloc(TLVPHndl *proc,int size)
 	proc->fifo->read = proc->fifo->data;
 	proc->fifo->write = proc->fifo->data;
 
-  // clear transfered data counters
+    // clear transfered data counters
 	proc->fifo->c_stdout_bytes = 0;
 	proc->fifo->c_stdin_bytes = 0;
 
@@ -631,11 +631,11 @@ wchar_t *fmt_capacity(wchar_t *str,int maxstr,int size)
 {
 	wchar_t tmp[64];
 	if(size < 10000)
-		wprintf_s(tmp,64,L"%dB",size);
+		swprintf(tmp,sizeof(tmp)-1,L"%dB",size);
 	else if(size < 1000000)
-		wprintf_s(tmp,64,L"%.02fkB",(double)size/1024);
+        swprintf(tmp,sizeof(tmp)-1,L"%.02fkB",(double)size/1024);
 	else
-		wprintf_s(tmp,64,L"%.02fMB",(double)size/1048576);
+        swprintf(tmp,sizeof(tmp)-1,L"%.02fMB",(double)size/1048576);
 	wcscat_s(str,maxstr,tmp);
 	return(str);
 }
@@ -1077,7 +1077,7 @@ __int32 proc_cleanup(TLVPHndl *proc)
 		{
 			// timeout - terminate
 			TerminateThread(proc->fifo->th,0);
-      debug_printf(proc," - stdout readout thread terminated!\n");
+            debug_printf(proc," - stdout readout thread terminated!\n");
 		}
 		CloseHandle(proc->fifo->th);
 	}
@@ -1340,7 +1340,7 @@ __int32 proc_write_stdin(TLVPHndl *proc,char *buf,__int32 towr,__int32 *written)
 
 		EnterCriticalSection(&proc->fifo->cs);
 		SetConsoleTextAttribute(proc->cout,proc->clr_in);
-		WriteConsole(proc->cout,(void*)buf,wrt,NULL,NULL);
+		WriteConsoleA(proc->cout,(void*)buf,wrt,NULL,NULL);
 		LeaveCriticalSection(&proc->fifo->cs);
 	}
 
@@ -1442,7 +1442,7 @@ int peek_stdout(TLVPHndl *proc,int *exit,char *buf,int bsize,int *rread,int *rto
 			if(bread && proc->cout)
 			{
 				SetConsoleTextAttribute(proc->cout,proc->clr_out);
-				WriteConsole(proc->cout,(void*)buf,bread,NULL,NULL);
+				WriteConsoleA(proc->cout,(void*)buf,bread,NULL,NULL);
 			}
 
 			bsize-=bread;
