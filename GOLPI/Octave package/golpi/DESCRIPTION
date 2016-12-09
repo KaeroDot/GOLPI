@@ -1,0 +1,11 @@
+Name: golpi
+Version: 1.1.0
+Date: 2016-12-07
+Author: Stanislav Mašláň
+Maintainer: Martin Šíra
+Title: GNU Octave to LabVIEW Pipes Interface Package
+Description: Library of functions for GNU Octave to LabVIEW Pipes Interface.
+Depends: octave (>= 3.6.4)
+Autoload: yes
+License: LGPLv3
+Url: https://github.com/KaeroDot/GOLPI
