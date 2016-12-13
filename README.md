@@ -56,10 +56,10 @@ Block diagram of very simple demonstration:
 
 ## Download
 - [source codes - GOLPI GitHub repository](https://github.com/KaeroDot/GOLPI)
-- [GOLPI 0.4.1.1 packed library](https://github.com/KaeroDot/GOLPI/tree/master/builds/GOLPI%200.4.1.1)
-- [GOLPI 0.4.1.1 VI Package](https://github.com/KaeroDot/GOLPI/blob/master/builds/golpi_lvlib-0.4.1.1.vip)
-- [LV Process 0.5.2.1 packed library](https://github.com/KaeroDot/GOLPI/tree/master/builds/LV%20Process%200.5.2.1)
-- [LV Process 0.5.2.1 VI Package](https://github.com/KaeroDot/GOLPI/blob/master/builds/lv_process_lvlib-0.5.2.1.vip)
+- [GOLPI 0.5.0.1 packed library](https://github.com/KaeroDot/GOLPI/tree/master/builds/GOLPI%200.5.0.1)
+- [GOLPI 0.5.0.1 VI Package](https://github.com/KaeroDot/GOLPI/blob/master/builds/golpi_lvlib-0.5.0.1.vip?raw=true)
+- [LV Process 0.6.0.1 packed library](https://github.com/KaeroDot/GOLPI/tree/master/builds/LV%20Process%200.6.0.1)
+- [LV Process 0.6.0.1 VI Package](https://github.com/KaeroDot/GOLPI/blob/master/builds/lv_process_lvlib-0.6.0.1.vip?raw=true)
 
 ## Installation & use
 Download packed library or all source codes. Copy into your LabVIEW project. Put lv_proc.dll into
