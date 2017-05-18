@@ -55,10 +55,10 @@ Block diagram of very simple demonstration:
 ![GOLPI block diagram](GOLPI_Demo_-_Simple_Use.png?raw=true "GOLPI block diagram")
 
 ## Download
-- [source codes - GOLPI GitHub repository](https://github.com/KaeroDot/GOLPI)
-- [GOLPI 0.5.0.1 packed library](https://github.com/KaeroDot/GOLPI/tree/master/builds/GOLPI%200.5.0.1)
+- [source codes - GOLPI GitHub repository](https://github.com/KaeroDot/GOLPI) ... [(zip)](https://github.com/KaeroDot/GOLPI/zipball/master")
+- [GOLPI 0.5.0.1 packed library](https://github.com/KaeroDot/GOLPI/tree/master/builds/GOLPI%200.5.0.1) ... [(zip)](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/KaeroDot/GOLPI/tree/master/builds/GOLPI%200.5.0.1)
 - [GOLPI 0.5.0.1 VI Package](https://github.com/KaeroDot/GOLPI/blob/master/builds/golpi_lvlib-0.5.0.1.vip?raw=true)
-- [LV Process 0.6.0.1 packed library](https://github.com/KaeroDot/GOLPI/tree/master/builds/LV%20Process%200.6.0.1)
+- [LV Process 0.6.0.1 packed library](https://github.com/KaeroDot/GOLPI/tree/master/builds/LV%20Process%200.6.0.1) ... [(zip)](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/KaeroDot/GOLPI/tree/master/builds/LV%20Process%200.6.0.1)
 - [LV Process 0.6.0.1 VI Package](https://github.com/KaeroDot/GOLPI/blob/master/builds/lv_process_lvlib-0.6.0.1.vip?raw=true)
 
 ## Installation & use
