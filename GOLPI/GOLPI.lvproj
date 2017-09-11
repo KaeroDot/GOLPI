@@ -4,6 +4,7 @@
 	<Property Name="NI.LV.All.SourceOnly" Type="Bool">true</Property>
 	<Property Name="NI.Project.Description" Type="Str"></Property>
 	<Item Name="My Computer" Type="My Computer">
+		<Property Name="NI.SortType" Type="Int">3</Property>
 		<Property Name="server.app.propertiesEnabled" Type="Bool">true</Property>
 		<Property Name="server.control.propertiesEnabled" Type="Bool">true</Property>
 		<Property Name="server.tcp.enabled" Type="Bool">false</Property>
@@ -13,17 +14,12 @@
 		<Property Name="server.vi.callsEnabled" Type="Bool">true</Property>
 		<Property Name="server.vi.propertiesEnabled" Type="Bool">true</Property>
 		<Property Name="specify.custom.address" Type="Bool">false</Property>
-		<Item Name="matfilerw" Type="Folder">
-			<Item Name="MAT Determine Data Type.vi" Type="VI" URL="../matfilerw/MAT Determine Data Type.vi"/>
-			<Item Name="MAT File Header.vi" Type="VI" URL="../matfilerw/MAT File Header.vi"/>
-			<Item Name="MAT Read Matrix Header.vi" Type="VI" URL="../matfilerw/MAT Read Matrix Header.vi"/>
-			<Item Name="MAT Read Matrix.vi" Type="VI" URL="../matfilerw/MAT Read Matrix.vi"/>
-			<Item Name="MAT Save Matrix Header.vi" Type="VI" URL="../matfilerw/MAT Save Matrix Header.vi"/>
-			<Item Name="MAT Save Matrix.vi" Type="VI" URL="../matfilerw/MAT Save Matrix.vi"/>
-			<Item Name="MAT Save-Read Example.vi" Type="VI" URL="../matfilerw/MAT Save-Read Example.vi"/>
-			<Item Name="MAT Type Representation.ctl" Type="VI" URL="../matfilerw/MAT Type Representation.ctl"/>
-		</Item>
+		<Item Name="LV Process library.lvlib" Type="Library" URL="../LV Process source distribution/LV Process library.lvlib"/>
 		<Item Name="GOLPI library.lvlib" Type="Library" URL="../GOLPI library.lvlib"/>
+		<Item Name="COPYING" Type="Document" URL="../COPYING"/>
+		<Item Name="COPYING.LESSER" Type="Document" URL="../COPYING.LESSER"/>
+		<Item Name="lv_proc.dll" Type="Document" URL="../lv_proc.dll"/>
+		<Item Name="golpi-1.2.0.tar.gz" Type="Document" URL="../Octave package/golpi-1.2.0.tar.gz"/>
 		<Item Name="Dependencies" Type="Dependencies">
 			<Item Name="vi.lib" Type="Folder">
 				<Item Name="Application Directory.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/file.llb/Application Directory.vi"/>
@@ -67,7 +63,6 @@
 				<Item Name="Trim Whitespace.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/Trim Whitespace.vi"/>
 				<Item Name="whitespace.ctl" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/whitespace.ctl"/>
 			</Item>
-			<Item Name="LV Process library.lvlib" Type="Library" URL="../LV Process source distribution/LV Process library.lvlib"/>
 		</Item>
 		<Item Name="Build Specifications" Type="Build">
 			<Item Name="Packed library" Type="Packed Library">
@@ -77,7 +72,7 @@
 				<Property Name="Bld_localDestDir" Type="Path">../builds/GOLPI [VersionNumber]</Property>
 				<Property Name="Bld_localDestDirType" Type="Str">relativeToCommon</Property>
 				<Property Name="Bld_previewCacheID" Type="Str">{369EFAE7-7719-4A46-B6B4-E54D725C2DB5}</Property>
-				<Property Name="Bld_version.build" Type="Int">1</Property>
+				<Property Name="Bld_version.build" Type="Int">2</Property>
 				<Property Name="Bld_version.minor" Type="Int">5</Property>
 				<Property Name="Destination[0].destName" Type="Str">GOLPI Library.lvlibp</Property>
 				<Property Name="Destination[0].path" Type="Path">../builds/GOLPI [VersionNumber]/GOLPI Library.lvlibp</Property>
@@ -87,7 +82,7 @@
 				<Property Name="Destination[1].path" Type="Path">../builds/GOLPI [VersionNumber]</Property>
 				<Property Name="DestinationCount" Type="Int">2</Property>
 				<Property Name="PackedLib_callersAdapt" Type="Bool">true</Property>
-				<Property Name="Source[0].itemID" Type="Str">{2840EC41-C318-4348-8BCD-472E9B8C49F9}</Property>
+				<Property Name="Source[0].itemID" Type="Str">{287BBFF4-C662-4615-8146-C5A34E800E1D}</Property>
 				<Property Name="Source[0].type" Type="Str">Container</Property>
 				<Property Name="Source[1].destinationIndex" Type="Int">0</Property>
 				<Property Name="Source[1].itemID" Type="Ref">/My Computer/GOLPI library.lvlib</Property>
@@ -97,12 +92,24 @@
 				<Property Name="Source[1].preventRename" Type="Bool">true</Property>
 				<Property Name="Source[1].sourceInclusion" Type="Str">TopLevel</Property>
 				<Property Name="Source[1].type" Type="Str">Library</Property>
-				<Property Name="SourceCount" Type="Int">2</Property>
+				<Property Name="Source[2].destinationIndex" Type="Int">0</Property>
+				<Property Name="Source[2].itemID" Type="Ref">/My Computer/COPYING</Property>
+				<Property Name="Source[2].sourceInclusion" Type="Str">Include</Property>
+				<Property Name="Source[3].destinationIndex" Type="Int">0</Property>
+				<Property Name="Source[3].itemID" Type="Ref">/My Computer/golpi-1.2.0.tar.gz</Property>
+				<Property Name="Source[3].sourceInclusion" Type="Str">Include</Property>
+				<Property Name="Source[4].destinationIndex" Type="Int">0</Property>
+				<Property Name="Source[4].itemID" Type="Ref">/My Computer/COPYING.LESSER</Property>
+				<Property Name="Source[4].sourceInclusion" Type="Str">Include</Property>
+				<Property Name="Source[5].destinationIndex" Type="Int">0</Property>
+				<Property Name="Source[5].itemID" Type="Ref">/My Computer/lv_proc.dll</Property>
+				<Property Name="Source[5].sourceInclusion" Type="Str">Include</Property>
+				<Property Name="SourceCount" Type="Int">6</Property>
 				<Property Name="TgtF_companyName" Type="Str">CMI</Property>
 				<Property Name="TgtF_enableDebugging" Type="Bool">true</Property>
 				<Property Name="TgtF_fileDescription" Type="Str">GNU Octave to Labview Pipes Interface</Property>
 				<Property Name="TgtF_internalName" Type="Str">GOLPI</Property>
-				<Property Name="TgtF_legalCopyright" Type="Str">Copyright © 2013 CMI</Property>
+				<Property Name="TgtF_legalCopyright" Type="Str">Copyright © 2013 - 2017 CMI</Property>
 				<Property Name="TgtF_productName" Type="Str">GOLPI</Property>
 				<Property Name="TgtF_targetfileGUID" Type="Str">{2F2E515A-2FD4-4DD9-8DED-E33A0170DF60}</Property>
 				<Property Name="TgtF_targetfileName" Type="Str">GOLPI Library.lvlibp</Property>

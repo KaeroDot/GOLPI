@@ -46,6 +46,16 @@ GOLPI works only with lv_proc.dll library, which is part of vipm package or shou
 			<Item Name="Get 2D Array Double.vi" Type="VI" URL="../Private/Get Variable - polymorph parts/Get 2D Array Double.vi"/>
 			<Item Name="Get 2D Array Double Complex.vi" Type="VI" URL="../Private/Get Variable - polymorph parts/Get 2D Array Double Complex.vi"/>
 		</Item>
+		<Item Name="matfilerw" Type="Folder">
+			<Item Name="MAT Determine Data Type.vi" Type="VI" URL="../matfilerw/MAT Determine Data Type.vi"/>
+			<Item Name="MAT File Header.vi" Type="VI" URL="../matfilerw/MAT File Header.vi"/>
+			<Item Name="MAT Read Matrix Header.vi" Type="VI" URL="../matfilerw/MAT Read Matrix Header.vi"/>
+			<Item Name="MAT Read Matrix.vi" Type="VI" URL="../matfilerw/MAT Read Matrix.vi"/>
+			<Item Name="MAT Save Matrix Header.vi" Type="VI" URL="../matfilerw/MAT Save Matrix Header.vi"/>
+			<Item Name="MAT Save Matrix.vi" Type="VI" URL="../matfilerw/MAT Save Matrix.vi"/>
+			<Item Name="MAT Save-Read Example.vi" Type="VI" URL="../matfilerw/MAT Save-Read Example.vi"/>
+			<Item Name="MAT Type Representation.ctl" Type="VI" URL="../matfilerw/MAT Type Representation.ctl"/>
+		</Item>
 		<Item Name="Set Variable - auxiliary" Type="Folder">
 			<Item Name="Set Matrix - file.vi" Type="VI" URL="../Private/Set Variable - auxiliary/Set Matrix - file.vi"/>
 			<Item Name="Set Matrix - stdin.vi" Type="VI" URL="../Private/Set Variable - auxiliary/Set Matrix - stdin.vi"/>
@@ -61,11 +71,24 @@ GOLPI works only with lv_proc.dll library, which is part of vipm package or shou
 			<Item Name="Set 2D Array Double.vi" Type="VI" URL="../Private/Set Variable - polymorph parts/Set 2D Array Double.vi"/>
 			<Item Name="Set 2D Array Double Complex.vi" Type="VI" URL="../Private/Set Variable - polymorph parts/Set 2D Array Double Complex.vi"/>
 		</Item>
+		<Item Name="Struct" Type="Folder">
+			<Property Name="NI.SortType" Type="Int">3</Property>
+			<Item Name="Struct Data Types.ctl" Type="VI" URL="../Private/Struct/Struct Data Types.ctl"/>
+			<Item Name="Struct Item Record.ctl" Type="VI" URL="../Private/Struct/Struct Item Record.ctl"/>
+			<Item Name="Struct Item Types.ctl" Type="VI" URL="../Private/Struct/Struct Item Types.ctl"/>
+			<Item Name="Struct Fill Cluster By Items Record.vi" Type="VI" URL="../Private/Struct/Struct Fill Cluster By Items Record.vi"/>
+			<Item Name="Struct Get.vi" Type="VI" URL="../Private/Struct/Struct Get.vi"/>
+			<Item Name="Struct Parse Binary.vi" Type="VI" URL="../Private/Struct/Struct Parse Binary.vi"/>
+			<Item Name="Struct Parse Variable Type.vi" Type="VI" URL="../Private/Struct/Struct Parse Variable Type.vi"/>
+			<Item Name="golpi_struct_assign_test.vi" Type="VI" URL="../Private/Struct/golpi_struct_assign_test.vi"/>
+			<Item Name="golpi_struct_test2.vi" Type="VI" URL="../Private/Struct/golpi_struct_test2.vi"/>
+		</Item>
 		<Item Name="testing" Type="Folder">
 			<Item Name="GOLPI full test - part test vector complex.vi" Type="VI" URL="../Private/testing/GOLPI full test - part test vector complex.vi"/>
 			<Item Name="GOLPI full test - part test vector double.vi" Type="VI" URL="../Private/testing/GOLPI full test - part test vector double.vi"/>
 			<Item Name="GOLPI full test.vi" Type="VI" URL="../Private/testing/GOLPI full test.vi"/>
 			<Item Name="GOLPI simple testing.vi" Type="VI" URL="../Private/testing/GOLPI simple testing.vi"/>
+			<Item Name="GOLPI struct test.vi" Type="VI" URL="../Private/testing/GOLPI struct test.vi"/>
 		</Item>
 		<Item Name="Type Definitions" Type="Folder">
 			<Item Name="Bitstream Data Type.ctl" Type="VI" URL="../Private/Type Definitions/Bitstream Data Type.ctl"/>
@@ -106,6 +129,7 @@ GOLPI works only with lv_proc.dll library, which is part of vipm package or shou
 		</Item>
 		<Item Name="Utility" Type="Folder">
 			<Item Name="Set Bitstream Mode.vi" Type="VI" URL="../Public/Utility/Set Bitstream Mode.vi"/>
+			<Item Name="Set Struct Transfer Mode.vi" Type="VI" URL="../Public/Utility/Set Struct Transfer Mode.vi"/>
 			<Item Name="Check Output For Octave Errors.vi" Type="VI" URL="../Public/Utility/Check Output For Octave Errors.vi"/>
 			<Item Name="Check Status.vi" Type="VI" URL="../Public/Utility/Check Status.vi"/>
 			<Item Name="Set Debug Mode.vi" Type="VI" URL="../Public/Utility/Set Debug Mode.vi"/>
@@ -115,8 +139,4 @@ GOLPI works only with lv_proc.dll library, which is part of vipm package or shou
 		<Item Name="Quit GNU Octave.vi" Type="VI" URL="../Public/Quit GNU Octave.vi"/>
 		<Item Name="VI Tree.vi" Type="VI" URL="../Public/VI Tree.vi"/>
 	</Item>
-	<Item Name="COPYING" Type="Document" URL="../COPYING"/>
-	<Item Name="COPYING.LESSER" Type="Document" URL="../COPYING.LESSER"/>
-	<Item Name="golpi-1.1.0.tar.gz" Type="Document" URL="../Octave package/golpi-1.1.0.tar.gz"/>
-	<Item Name="HELP.html" Type="Document" URL="../documentation/HELP.html"/>
 </Library>

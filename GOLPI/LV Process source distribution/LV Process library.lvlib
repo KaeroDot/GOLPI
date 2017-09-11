@@ -30,5 +30,4 @@
 		<Item Name="Write Stdin.vi" Type="VI" URL="../Write Stdin.vi"/>
 	</Item>
 	<Item Name="license.txt" Type="Document" URL="../license.txt"/>
-	<Item Name="lv_proc.dll" Type="Document" URL="../../lv_proc.dll"/>
 </Library>

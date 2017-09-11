@@ -1,13 +1,9 @@
 [ProjectWindow_Data]
-ProjectExplorer.ClassicPosition[String] = "31,15,656,352"
+ProjectExplorer.ClassicPosition[String] = "31,13,656,403"
 
 [AB_Cache_{7DE983DA-D699-4748-8190-D73AFF3CD1BC}]
-Cache_Path[Path] Line0001 = "/C/Documents and Settings/msira/Local Settings/Tem"
-Cache_Path[Path] Line0002 = "p/AB_Cache_{7DE983DA-D699-4748-8190-D73AFF3CD1BC}."
-Cache_Path[Path] Line0003 = "txt"
+Cache_Path[Path] = "/G/TEMP/AB_Cache_{7DE983DA-D699-4748-8190-D73AFF3CD1BC}.txt"
 
 [AB_Cache_{369EFAE7-7719-4A46-B6B4-E54D725C2DB5}]
-Cache_Path[Path] Line0001 = "/C/Documents and Settings/msira/Local Settings/Tem"
-Cache_Path[Path] Line0002 = "p/AB_Cache_{369EFAE7-7719-4A46-B6B4-E54D725C2DB5}."
-Cache_Path[Path] Line0003 = "txt"
+Cache_Path[Path] = "/G/TEMP/AB_Cache_{369EFAE7-7719-4A46-B6B4-E54D725C2DB5}.txt"
 
