@@ -1,4 +1,4 @@
-## Copyright 2017 Stanislav Maöl·Ú
+## Copyright 2017 Stanislav Ma≈°l√°≈à
 ## This program is free software: you can redistribute it and/or modify
 ## it under the terms of the GNU Lesser General Public License as published by
 ## the Free Software Foundation version 3 of the License.
@@ -13,40 +13,57 @@
 ##
 
 ## -*- texinfo -*-
-## @deftypefn {Function file} golpi_conv_struct (@var{Data}} )
-## Function codes structure content into binary stream of 'uint8'.
+## @deftypefn {Function file} @var{BIN} = golpi_conv_struct (@var{Data} )
+## Function codes structure content into binary stream @var{BIN} of 'uint8'.
 ## This is useful for simple transfer of structures to LabVIEW via GOLPI 
-## (Gnu Octave to Labview Pipes Interface). It is recoursive function
-## so it is possible to transfer nested structures. 
+## (Gnu Octave to Labview Pipes Interface). It is recursive function
+## so it is possible to transfer nested structures. Function can process
+## only two dimensional matrices/arrays.
 ##
 ## Format of the output stream:
-##  uint32(number of items in the structure),
-##  for each item:
-##   uint8(length of name of the item)
-##   string(name of the item with no '\0' at the end, if @var{Data} was char
-##          string this string will be empty)
-##   uint8(item data type)
-##   uint32(rows count)
-##   uint32(columns count)
-##   optional for array/cell array of items - for each cell/array item:
-##    uint32(relative byte offset from item record start to binary item data)
-##   uint8(item data converted to uint8, little-endian)
+## Stream starts with uint32, which is the number of items in the @var{DATA}).
+## Stream continues with items, each item contains:
+## @table @asis
+## @item uint8 - length of name of the item,
+## @item string - name of the item with no '\0' at the end, if @var{Data} was char
+## @item        string this string will be empty,
+## @item uint8 - item data type format (see lower),
+## @item uint32 - rows count,
+## @item uint32 - columns count,
+## @item optional for array/cell array of items - for each cell/array item:
+## @table @asis
+## @item uint32 - relative byte offset from item record start to binary item data,
+## @end table
+## @item uint8 - item data converted to uint8, little-endian.
+## @end table
 ##
 ## The output stream is returned converted to vector of uint8.
 ##
 ## Item data type format 0bC000TTTT:
-##  C    - is complex
-##  TTTT - data type:
-##   0 - int32
-##   2 - single real
-##   3 - double real
-##   4 - single string
-##   5 - array or cell array of items
+## @table @asis
+## @item C    - is complex
+## @item TTTT - data type:
+## @item  0 - int32
+## @item  2 - single real
+## @item  3 - double real
+## @item  4 - single string
+## @item  5 - array or cell array of items
+## @end table
 ##
 ## When structure item is another structure or array of structures or 
 ## cell array of anything the function is called recoursively, i.e.
 ## the binary item data will be output of the nested call of this function.
 ## Unlimited nested structures are supported.     
+##
+## Example:
+## @example
+## s.a=5; s.b = "test";
+## golpi_conv_struct(s)
+## @end example
+## @end deftypefn
+
+
+## @end deftypefn
 
 function [bin] = golpi_conv_struct(data)  
   
