@@ -1,6 +1,6 @@
 Name: golpi
-Version: 1.2.0
-Date: 2017-12-07
+Version: 1.2.1
+Date: 2017-09-26
 Author: Stanislav Mašláň
 Maintainer: Martin Šíra
 Title: GNU Octave to LabVIEW Pipes Interface Package
