@@ -23,6 +23,7 @@ outputs, repeat as you like, if you are finished you quit it.
 - Pipes (stdin and stdout) are used for communication to and from GNU Octave.
 - Polymorphic VI for reading a value of a variable (by means of stdout or temporary file for large amount of data).
 - Polymorphic VI for seting a value to a variable (by means of stdout or temporary file for large amount of data).
+- Reading and setting works also for structures (GNU Octave) from/to clusters (LabVIEW) (requires golpi package for GNU Octave).
 - Can check if GNU Octave is still running.
 - Debug mode can store all communication going through pipes.
 - Debug console can be shown to view ongoing communication.
@@ -34,6 +35,7 @@ outputs, repeat as you like, if you are finished you quit it.
 - **lv_process**: C++ library which handles pipes.
 - **LV Process**: LabVIEW interface for lv_process
 - **GOLPI**: starts GNU Octave, send commands, read commands etc.
+- **golpi**: GNU Octave package with utilities for fast data trasnfer GNU Octave <-> LabVIEW and for transfer of GNU Octave structures from/to LabVIEW clusters (optional).
 
 ## LV Process, lv_process
 Yet another implementation of pipes in LabVIEW for Windows operating system. (OpenG implementation
