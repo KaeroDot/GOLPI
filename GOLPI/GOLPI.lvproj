@@ -18,7 +18,6 @@
 		<Item Name="GOLPI library.lvlib" Type="Library" URL="../GOLPI library.lvlib"/>
 		<Item Name="COPYING" Type="Document" URL="../COPYING"/>
 		<Item Name="COPYING.LESSER" Type="Document" URL="../COPYING.LESSER"/>
-		<Item Name="lv_proc.dll" Type="Document" URL="../lv_proc.dll"/>
 		<Item Name="golpi-1.2.0.tar.gz" Type="Document" URL="../Octave package/golpi-1.2.0.tar.gz"/>
 		<Item Name="Dependencies" Type="Dependencies">
 			<Item Name="vi.lib" Type="Folder">
@@ -102,7 +101,7 @@
 				<Property Name="Source[4].itemID" Type="Ref">/My Computer/COPYING.LESSER</Property>
 				<Property Name="Source[4].sourceInclusion" Type="Str">Include</Property>
 				<Property Name="Source[5].destinationIndex" Type="Int">0</Property>
-				<Property Name="Source[5].itemID" Type="Ref">/My Computer/lv_proc.dll</Property>
+				<Property Name="Source[5].itemID" Type="Ref">/My Computer/LV Process library.lvlib/lv_proc.dll</Property>
 				<Property Name="Source[5].sourceInclusion" Type="Str">Include</Property>
 				<Property Name="SourceCount" Type="Int">6</Property>
 				<Property Name="TgtF_companyName" Type="Str">CMI</Property>

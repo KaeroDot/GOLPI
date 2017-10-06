@@ -30,6 +30,12 @@ GOLPI works only with lv_proc.dll library, which is part of vipm package or shou
 			<Item Name="Bitstream to Bytes.vi" Type="VI" URL="../Private/Bitstream/Bitstream to Bytes.vi"/>
 		</Item>
 		<Item Name="Get Variable - auxiliary" Type="Folder">
+			<Item Name="Struct" Type="Folder">
+				<Property Name="NI.SortType" Type="Int">3</Property>
+				<Item Name="Struct Fill Cluster By Items Record.vi" Type="VI" URL="../Private/Get Variable - auxiliary/Struct/Struct Fill Cluster By Items Record.vi"/>
+				<Item Name="Struct Parse Binary.vi" Type="VI" URL="../Private/Get Variable - auxiliary/Struct/Struct Parse Binary.vi"/>
+				<Item Name="Struct Parse Variable Type.vi" Type="VI" URL="../Private/Get Variable - auxiliary/Struct/Struct Parse Variable Type.vi"/>
+			</Item>
 			<Item Name="Check and Get Sizes.vi" Type="VI" URL="../Private/Get Variable - auxiliary/Check and Get Sizes.vi"/>
 			<Item Name="Get Matrix - bitstream.vi" Type="VI" URL="../Private/Get Variable - auxiliary/Get Matrix - bitstream.vi"/>
 			<Item Name="Get Matrix - file.vi" Type="VI" URL="../Private/Get Variable - auxiliary/Get Matrix - file.vi"/>
@@ -37,6 +43,7 @@ GOLPI works only with lv_proc.dll library, which is part of vipm package or shou
 		</Item>
 		<Item Name="Get Variable - polymorph parts" Type="Folder">
 			<Property Name="NI.SortType" Type="Int">3</Property>
+			<Item Name="Get Struct.vi" Type="VI" URL="../Private/Get Variable - polymorph parts/Get Struct.vi"/>
 			<Item Name="Get String.vi" Type="VI" URL="../Private/Get Variable - polymorph parts/Get String.vi"/>
 			<Item Name="Get Double.vi" Type="VI" URL="../Private/Get Variable - polymorph parts/Get Double.vi"/>
 			<Item Name="Get Double Complex.vi" Type="VI" URL="../Private/Get Variable - polymorph parts/Get Double Complex.vi"/>
@@ -71,29 +78,20 @@ GOLPI works only with lv_proc.dll library, which is part of vipm package or shou
 			<Item Name="Set 2D Array Double.vi" Type="VI" URL="../Private/Set Variable - polymorph parts/Set 2D Array Double.vi"/>
 			<Item Name="Set 2D Array Double Complex.vi" Type="VI" URL="../Private/Set Variable - polymorph parts/Set 2D Array Double Complex.vi"/>
 		</Item>
-		<Item Name="Struct" Type="Folder">
-			<Property Name="NI.SortType" Type="Int">3</Property>
-			<Item Name="Struct Data Types.ctl" Type="VI" URL="../Private/Struct/Struct Data Types.ctl"/>
-			<Item Name="Struct Item Record.ctl" Type="VI" URL="../Private/Struct/Struct Item Record.ctl"/>
-			<Item Name="Struct Item Types.ctl" Type="VI" URL="../Private/Struct/Struct Item Types.ctl"/>
-			<Item Name="Struct Fill Cluster By Items Record.vi" Type="VI" URL="../Private/Struct/Struct Fill Cluster By Items Record.vi"/>
-			<Item Name="Struct Get.vi" Type="VI" URL="../Private/Struct/Struct Get.vi"/>
-			<Item Name="Struct Parse Binary.vi" Type="VI" URL="../Private/Struct/Struct Parse Binary.vi"/>
-			<Item Name="Struct Parse Variable Type.vi" Type="VI" URL="../Private/Struct/Struct Parse Variable Type.vi"/>
-			<Item Name="golpi_struct_assign_test.vi" Type="VI" URL="../Private/Struct/golpi_struct_assign_test.vi"/>
-			<Item Name="golpi_struct_test2.vi" Type="VI" URL="../Private/Struct/golpi_struct_test2.vi"/>
-		</Item>
 		<Item Name="testing" Type="Folder">
+			<Item Name="GOLPI full test - part structure.vi" Type="VI" URL="../Private/testing/GOLPI full test - part structure.vi"/>
 			<Item Name="GOLPI full test - part test vector complex.vi" Type="VI" URL="../Private/testing/GOLPI full test - part test vector complex.vi"/>
 			<Item Name="GOLPI full test - part test vector double.vi" Type="VI" URL="../Private/testing/GOLPI full test - part test vector double.vi"/>
 			<Item Name="GOLPI full test.vi" Type="VI" URL="../Private/testing/GOLPI full test.vi"/>
 			<Item Name="GOLPI simple testing.vi" Type="VI" URL="../Private/testing/GOLPI simple testing.vi"/>
-			<Item Name="GOLPI struct test.vi" Type="VI" URL="../Private/testing/GOLPI struct test.vi"/>
 		</Item>
 		<Item Name="Type Definitions" Type="Folder">
 			<Item Name="Bitstream Data Type.ctl" Type="VI" URL="../Private/Type Definitions/Bitstream Data Type.ctl"/>
 			<Item Name="Bitstream Data.ctl" Type="VI" URL="../Private/Type Definitions/Bitstream Data.ctl"/>
 			<Item Name="Custom Error Codes Enum Type Def.vi" Type="VI" URL="../Private/Type Definitions/Custom Error Codes Enum Type Def.vi"/>
+			<Item Name="Struct Data Types.ctl" Type="VI" URL="../Private/Type Definitions/Struct Data Types.ctl"/>
+			<Item Name="Struct Item Record.ctl" Type="VI" URL="../Private/Type Definitions/Struct Item Record.ctl"/>
+			<Item Name="Struct Item Types.ctl" Type="VI" URL="../Private/Type Definitions/Struct Item Types.ctl"/>
 		</Item>
 		<Item Name="Utilities" Type="Folder">
 			<Property Name="NI.SortType" Type="Int">3</Property>
