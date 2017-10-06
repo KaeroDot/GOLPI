@@ -11,23 +11,19 @@ Cache_Path[Path] Line0001 = "/C/Documents and Settings/msira/Local Settings/Tem"
 Cache_Path[Path] Line0002 = "p/AB_Cache_{6840B92B-B011-4CF9-9295-53454985C3BD}."
 Cache_Path[Path] Line0003 = "txt"
 
-[AB_Cache_{220D3424-86F9-4A74-B4F9-F822E8E0C6F6}]
-Cache_Path[Path] Line0001 = "/C/Documents and Settings/msira/Local Settings/Tem"
-Cache_Path[Path] Line0002 = "p/AB_Cache_{220D3424-86F9-4A74-B4F9-F822E8E0C6F6}."
-Cache_Path[Path] Line0003 = "txt"
-
-[AB_Cache_{62CC9E57-F4E6-467D-8B21-728623B38787}]
-Cache_Path[Path] Line0001 = "/C/Documents and Settings/msira/Local Settings/Tem"
-Cache_Path[Path] Line0002 = "p/AB_Cache_{62CC9E57-F4E6-467D-8B21-728623B38787}."
-Cache_Path[Path] Line0003 = "txt"
-
 [AB_Cache_{839D8AB7-5C35-4111-A963-084757CB997B}]
-Cache_Path[Path] Line0001 = "/C/Documents and Settings/msira/Local Settings/Tem"
-Cache_Path[Path] Line0002 = "p/AB_Cache_{839D8AB7-5C35-4111-A963-084757CB997B}."
-Cache_Path[Path] Line0003 = "txt"
+Cache_Path[Path] Line0001 = "/C/Users/labina/AppData/Local/Temp/AB_Cache_{839D8"
+Cache_Path[Path] Line0002 = "AB7-5C35-4111-A963-084757CB997B}.txt"
 
 [AB_Cache_{9A7296D5-193A-4BE7-B19A-B969D6355041}]
-Cache_Path[Path] Line0001 = "/C/Documents and Settings/msira/Local Settings/Tem"
-Cache_Path[Path] Line0002 = "p/AB_Cache_{9A7296D5-193A-4BE7-B19A-B969D6355041}."
-Cache_Path[Path] Line0003 = "txt"
+Cache_Path[Path] Line0001 = "/C/Users/labina/AppData/Local/Temp/AB_Cache_{9A729"
+Cache_Path[Path] Line0002 = "6D5-193A-4BE7-B19A-B969D6355041}.txt"
+
+[AB_Cache_{220D3424-86F9-4A74-B4F9-F822E8E0C6F6}]
+Cache_Path[Path] Line0001 = "/C/Users/labina/AppData/Local/Temp/AB_Cache_{220D3"
+Cache_Path[Path] Line0002 = "424-86F9-4A74-B4F9-F822E8E0C6F6}.txt"
+
+[AB_Cache_{62CC9E57-F4E6-467D-8B21-728623B38787}]
+Cache_Path[Path] Line0001 = "/C/Users/labina/AppData/Local/Temp/AB_Cache_{62CC9"
+Cache_Path[Path] Line0002 = "E57-F4E6-467D-8B21-728623B38787}.txt"
 
