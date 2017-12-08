@@ -32,6 +32,7 @@ outputs, repeat as you like, when you finished you quit it.
 - 3 different methods to transfer data form/to GNU Octave: normal method use using stdin/stdout,
   temporary file method use file with mat4 format, bitstream method using optimized stdin/stdout. For
   comparisons see examples.
+- From version 0.7, GOLPI can also communicate with Matlab (based on popular request of our partners)
 
 ## Four components:
 
@@ -78,8 +79,8 @@ Block diagram of very simple demonstration:
 
 ## Download
 - [source codes - GOLPI GitHub repository](https://github.com/KaeroDot/GOLPI) ... [(zip)](https://github.com/KaeroDot/GOLPI/zipball/master)
-- [GOLPI 0.6.0.1 packed library](https://github.com/KaeroDot/GOLPI/tree/master/builds/GOLPI%200.6.0.1) ... [(zip)](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/KaeroDot/GOLPI/tree/master/builds/GOLPI%200.6.0.1)
-- [GOLPI 0.6.0.1 VI Package](https://github.com/KaeroDot/GOLPI/blob/master/builds/golpi_lvlib-0.6.0.1.vip?raw=true)
+- [GOLPI 0.7.0.1 packed library](https://github.com/KaeroDot/GOLPI/tree/master/builds/GOLPI%200.7.0.1) ... [(zip)](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/KaeroDot/GOLPI/tree/master/builds/GOLPI%200.7.0.1)
+- [GOLPI 0.7.0.1 VI Package](https://github.com/KaeroDot/GOLPI/blob/master/builds/golpi_lvlib-0.7.0.1.vip?raw=true)
 - [LV Process 0.6.0.1 packed library](https://github.com/KaeroDot/GOLPI/tree/master/builds/LV%20Process%200.6.0.1) ... [(zip)](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/KaeroDot/GOLPI/tree/master/builds/LV%20Process%200.6.0.1)
 - [LV Process 0.6.0.1 VI Package](https://github.com/KaeroDot/GOLPI/blob/master/builds/lv_process_lvlib-0.6.0.1.vip?raw=true)
 
