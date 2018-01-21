@@ -75,8 +75,8 @@
 				<Property Name="Bld_localDestDir" Type="Path">../builds/GOLPI [VersionNumber]</Property>
 				<Property Name="Bld_localDestDirType" Type="Str">relativeToCommon</Property>
 				<Property Name="Bld_previewCacheID" Type="Str">{369EFAE7-7719-4A46-B6B4-E54D725C2DB5}</Property>
-				<Property Name="Bld_version.build" Type="Int">1</Property>
 				<Property Name="Bld_version.minor" Type="Int">7</Property>
+				<Property Name="Bld_version.patch" Type="Int">1</Property>
 				<Property Name="Destination[0].destName" Type="Str">GOLPI Library.lvlibp</Property>
 				<Property Name="Destination[0].path" Type="Path">../builds/GOLPI [VersionNumber]/GOLPI Library.lvlibp</Property>
 				<Property Name="Destination[0].preserveHierarchy" Type="Bool">true</Property>
@@ -85,7 +85,7 @@
 				<Property Name="Destination[1].path" Type="Path">../builds/GOLPI [VersionNumber]</Property>
 				<Property Name="DestinationCount" Type="Int">2</Property>
 				<Property Name="PackedLib_callersAdapt" Type="Bool">true</Property>
-				<Property Name="Source[0].itemID" Type="Str">{AE846FA4-59A3-4680-AB87-97D79881DF37}</Property>
+				<Property Name="Source[0].itemID" Type="Str">{3DD6D978-760D-4241-AD6F-BE23771BAF26}</Property>
 				<Property Name="Source[0].type" Type="Str">Container</Property>
 				<Property Name="Source[1].destinationIndex" Type="Int">0</Property>
 				<Property Name="Source[1].itemID" Type="Ref">/My Computer/GOLPI library.lvlib</Property>
@@ -112,7 +112,7 @@
 				<Property Name="TgtF_enableDebugging" Type="Bool">true</Property>
 				<Property Name="TgtF_fileDescription" Type="Str">GNU Octave to Labview Pipes Interface</Property>
 				<Property Name="TgtF_internalName" Type="Str">GOLPI</Property>
-				<Property Name="TgtF_legalCopyright" Type="Str">Copyright © 2013 - 2017 CMI</Property>
+				<Property Name="TgtF_legalCopyright" Type="Str">Copyright © 2013 - 2018 CMI</Property>
 				<Property Name="TgtF_productName" Type="Str">GOLPI</Property>
 				<Property Name="TgtF_targetfileGUID" Type="Str">{2F2E515A-2FD4-4DD9-8DED-E33A0170DF60}</Property>
 				<Property Name="TgtF_targetfileName" Type="Str">GOLPI Library.lvlibp</Property>
