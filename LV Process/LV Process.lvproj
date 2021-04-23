@@ -1,5 +1,5 @@
 ﻿<?xml version='1.0' encoding='UTF-8'?>
-<Project Type="Project" LVVersion="19008000">
+<Project Type="Project" LVVersion="20008000">
 	<Property Name="CCSymbols" Type="Str"></Property>
 	<Property Name="NI.LV.All.SourceOnly" Type="Bool">true</Property>
 	<Property Name="NI.Project.Description" Type="Str">Library to communicate with processes by means of stdin and stdout for Windows OS. VIs call external library lv_process.dll to start a process, send and receive data through stdin and stdout and close process. In LabVIEW a pipe is represented by a cluster containing handlers and setting. User can change the cluster values as required (be careful). All traffic can be logged if debug mode is started. Debug console can be shown on the background.</Property>
@@ -34,7 +34,7 @@
 				<Property Name="Bld_excludeInlineSubVIs" Type="Bool">true</Property>
 				<Property Name="Bld_excludeLibraryItems" Type="Bool">true</Property>
 				<Property Name="Bld_excludePolymorphicVIs" Type="Bool">true</Property>
-				<Property Name="Bld_localDestDir" Type="Path">../builds/LV Process [VersionNumber] LV 19.0 32 bit</Property>
+				<Property Name="Bld_localDestDir" Type="Path">../builds/LV Process [VersionNumber] LV 20.0 32 bit</Property>
 				<Property Name="Bld_localDestDirType" Type="Str">relativeToCommon</Property>
 				<Property Name="Bld_modifyLibraryFile" Type="Bool">true</Property>
 				<Property Name="Bld_previewCacheID" Type="Str">{62CC9E57-F4E6-467D-8B21-728623B38787}</Property>
@@ -42,14 +42,14 @@
 				<Property Name="Bld_version.minor" Type="Int">6</Property>
 				<Property Name="Bld_version.patch" Type="Int">1</Property>
 				<Property Name="Destination[0].destName" Type="Str">LV Process.lvlibp</Property>
-				<Property Name="Destination[0].path" Type="Path">../builds/LV Process [VersionNumber] LV 19.0 32 bit/NI_AB_PROJECTNAME.lvlibp</Property>
+				<Property Name="Destination[0].path" Type="Path">../builds/LV Process [VersionNumber] LV 20.0 32 bit/NI_AB_PROJECTNAME.lvlibp</Property>
 				<Property Name="Destination[0].preserveHierarchy" Type="Bool">true</Property>
 				<Property Name="Destination[0].type" Type="Str">App</Property>
 				<Property Name="Destination[1].destName" Type="Str">Support Directory</Property>
-				<Property Name="Destination[1].path" Type="Path">../builds/LV Process [VersionNumber] LV 19.0 32 bit</Property>
+				<Property Name="Destination[1].path" Type="Path">../builds/LV Process [VersionNumber] LV 20.0 32 bit</Property>
 				<Property Name="DestinationCount" Type="Int">2</Property>
 				<Property Name="PackedLib_callersAdapt" Type="Bool">true</Property>
-				<Property Name="Source[0].itemID" Type="Str">{6ECC20B9-87C0-4B50-8C04-48B4E03ABA98}</Property>
+				<Property Name="Source[0].itemID" Type="Str">{E85B0239-B9BC-4111-A44C-5810C1A063BE}</Property>
 				<Property Name="Source[0].type" Type="Str">Container</Property>
 				<Property Name="Source[1].destinationIndex" Type="Int">0</Property>
 				<Property Name="Source[1].itemID" Type="Ref">/My Computer/LV Process library.lvlib/Public/Pipe Handle.ctl</Property>
