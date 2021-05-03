@@ -75,21 +75,20 @@
 				<Property Name="Bld_buildCacheID" Type="Str">{7DE983DA-D699-4748-8190-D73AFF3CD1BC}</Property>
 				<Property Name="Bld_buildSpecName" Type="Str">Packed library</Property>
 				<Property Name="Bld_excludeInlineSubVIs" Type="Bool">true</Property>
-				<Property Name="Bld_localDestDir" Type="Path">../builds/GOLPI [VersionNumber] LV 19.0 32 bit</Property>
+				<Property Name="Bld_localDestDir" Type="Path">../builds/GOLPI [VersionNumber] packed library LV 20.0 32 bit</Property>
 				<Property Name="Bld_localDestDirType" Type="Str">relativeToCommon</Property>
 				<Property Name="Bld_previewCacheID" Type="Str">{369EFAE7-7719-4A46-B6B4-E54D725C2DB5}</Property>
-				<Property Name="Bld_version.build" Type="Int">1</Property>
 				<Property Name="Bld_version.minor" Type="Int">7</Property>
-				<Property Name="Bld_version.patch" Type="Int">1</Property>
+				<Property Name="Bld_version.patch" Type="Int">2</Property>
 				<Property Name="Destination[0].destName" Type="Str">GOLPI Library.lvlibp</Property>
-				<Property Name="Destination[0].path" Type="Path">../builds/GOLPI [VersionNumber] LV 19.0 32 bit/GOLPI Library.lvlibp</Property>
+				<Property Name="Destination[0].path" Type="Path">../builds/GOLPI [VersionNumber] packed library LV 20.0 32 bit/GOLPI Library.lvlibp</Property>
 				<Property Name="Destination[0].preserveHierarchy" Type="Bool">true</Property>
 				<Property Name="Destination[0].type" Type="Str">App</Property>
 				<Property Name="Destination[1].destName" Type="Str">Support Directory</Property>
-				<Property Name="Destination[1].path" Type="Path">../builds/GOLPI [VersionNumber] LV 19.0 32 bit</Property>
+				<Property Name="Destination[1].path" Type="Path">../builds/GOLPI [VersionNumber] packed library LV 20.0 32 bit</Property>
 				<Property Name="DestinationCount" Type="Int">2</Property>
 				<Property Name="PackedLib_callersAdapt" Type="Bool">true</Property>
-				<Property Name="Source[0].itemID" Type="Str">{14379A90-2059-4AC6-85C8-87AFA3083F55}</Property>
+				<Property Name="Source[0].itemID" Type="Str">{D3DFC21B-E416-4F0F-943E-B84EC455EE1C}</Property>
 				<Property Name="Source[0].type" Type="Str">Container</Property>
 				<Property Name="Source[1].destinationIndex" Type="Int">0</Property>
 				<Property Name="Source[1].itemID" Type="Ref">/My Computer/GOLPI library.lvlib</Property>
@@ -116,10 +115,44 @@
 				<Property Name="TgtF_enableDebugging" Type="Bool">true</Property>
 				<Property Name="TgtF_fileDescription" Type="Str">GNU Octave to Labview Pipes Interface</Property>
 				<Property Name="TgtF_internalName" Type="Str">GOLPI</Property>
-				<Property Name="TgtF_legalCopyright" Type="Str">Copyright © 2013 - 2017 CMI</Property>
+				<Property Name="TgtF_legalCopyright" Type="Str">Copyright © 2013 - 2021 CMI</Property>
 				<Property Name="TgtF_productName" Type="Str">GOLPI</Property>
 				<Property Name="TgtF_targetfileGUID" Type="Str">{2F2E515A-2FD4-4DD9-8DED-E33A0170DF60}</Property>
 				<Property Name="TgtF_targetfileName" Type="Str">GOLPI Library.lvlibp</Property>
+			</Item>
+			<Item Name="Source Distribution" Type="Source Distribution">
+				<Property Name="Bld_buildCacheID" Type="Str">{EF2E6089-526C-442E-8135-8067CDC0D107}</Property>
+				<Property Name="Bld_buildSpecName" Type="Str">Source Distribution</Property>
+				<Property Name="Bld_excludedDirectory[0]" Type="Path">vi.lib</Property>
+				<Property Name="Bld_excludedDirectory[0].pathType" Type="Str">relativeToAppDir</Property>
+				<Property Name="Bld_excludedDirectory[1]" Type="Path">resource/objmgr</Property>
+				<Property Name="Bld_excludedDirectory[1].pathType" Type="Str">relativeToAppDir</Property>
+				<Property Name="Bld_excludedDirectory[2]" Type="Path">/C/ProgramData/National Instruments/InstCache/20.0</Property>
+				<Property Name="Bld_excludedDirectory[3]" Type="Path">/C/Users/labina/Documents/LabVIEW Data/2020(32-bit)/ExtraVILib</Property>
+				<Property Name="Bld_excludedDirectory[4]" Type="Path">instr.lib</Property>
+				<Property Name="Bld_excludedDirectory[4].pathType" Type="Str">relativeToAppDir</Property>
+				<Property Name="Bld_excludedDirectory[5]" Type="Path">user.lib</Property>
+				<Property Name="Bld_excludedDirectory[5].pathType" Type="Str">relativeToAppDir</Property>
+				<Property Name="Bld_excludedDirectoryCount" Type="Int">6</Property>
+				<Property Name="Bld_localDestDir" Type="Path">../builds/GOLPI [VersionNumber] source distribution LV 20.0 32 bit</Property>
+				<Property Name="Bld_localDestDirType" Type="Str">relativeToCommon</Property>
+				<Property Name="Bld_previewCacheID" Type="Str">{9C95E501-5666-464B-A385-298EA05C07F9}</Property>
+				<Property Name="Bld_removeVIObj" Type="Int">1</Property>
+				<Property Name="Bld_version.minor" Type="Int">7</Property>
+				<Property Name="Bld_version.patch" Type="Int">2</Property>
+				<Property Name="Destination[0].destName" Type="Str">Destination Directory</Property>
+				<Property Name="Destination[0].path" Type="Path">../builds/GOLPI [VersionNumber] source distribution LV 20.0 32 bit</Property>
+				<Property Name="Destination[1].destName" Type="Str">Support Directory</Property>
+				<Property Name="Destination[1].path" Type="Path">../builds/GOLPI [VersionNumber] source distribution LV 20.0 32 bit/data</Property>
+				<Property Name="DestinationCount" Type="Int">2</Property>
+				<Property Name="Source[0].itemID" Type="Str">{D3DFC21B-E416-4F0F-943E-B84EC455EE1C}</Property>
+				<Property Name="Source[0].type" Type="Str">Container</Property>
+				<Property Name="Source[1].destinationIndex" Type="Int">0</Property>
+				<Property Name="Source[1].itemID" Type="Ref">/My Computer/GOLPI library.lvlib</Property>
+				<Property Name="Source[1].Library.allowMissingMembers" Type="Bool">true</Property>
+				<Property Name="Source[1].sourceInclusion" Type="Str">Include</Property>
+				<Property Name="Source[1].type" Type="Str">Library</Property>
+				<Property Name="SourceCount" Type="Int">2</Property>
 			</Item>
 		</Item>
 	</Item>

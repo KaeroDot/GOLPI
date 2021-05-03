@@ -142,6 +142,6 @@ GOLPI works only with lv_proc.dll library, which is part of vipm package or shou
 		<Item Name="GOLPI reference Type Def.ctl" Type="VI" URL="../Public/GOLPI reference Type Def.ctl"/>
 		<Item Name="Start GNU Octave.vi" Type="VI" URL="../Public/Start GNU Octave.vi"/>
 		<Item Name="Quit GNU Octave.vi" Type="VI" URL="../Public/Quit GNU Octave.vi"/>
-		<Item Name="VI Tree.vi" Type="VI" URL="../Public/VI Tree.vi"/>
+		<Item Name="VI Tree - GOLPI.vi" Type="VI" URL="../Public/VI Tree - GOLPI.vi"/>
 	</Item>
 </Library>
