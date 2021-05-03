@@ -78,6 +78,7 @@
 				<Property Name="Bld_localDestDir" Type="Path">../builds/GOLPI [VersionNumber] packed library LV 20.0 32 bit</Property>
 				<Property Name="Bld_localDestDirType" Type="Str">relativeToCommon</Property>
 				<Property Name="Bld_previewCacheID" Type="Str">{369EFAE7-7719-4A46-B6B4-E54D725C2DB5}</Property>
+				<Property Name="Bld_version.build" Type="Int">1</Property>
 				<Property Name="Bld_version.minor" Type="Int">7</Property>
 				<Property Name="Bld_version.patch" Type="Int">2</Property>
 				<Property Name="Destination[0].destName" Type="Str">GOLPI Library.lvlibp</Property>
@@ -88,7 +89,7 @@
 				<Property Name="Destination[1].path" Type="Path">../builds/GOLPI [VersionNumber] packed library LV 20.0 32 bit</Property>
 				<Property Name="DestinationCount" Type="Int">2</Property>
 				<Property Name="PackedLib_callersAdapt" Type="Bool">true</Property>
-				<Property Name="Source[0].itemID" Type="Str">{D3DFC21B-E416-4F0F-943E-B84EC455EE1C}</Property>
+				<Property Name="Source[0].itemID" Type="Str">{07448286-0BE6-486C-BFD9-AA4D52CC5277}</Property>
 				<Property Name="Source[0].type" Type="Str">Container</Property>
 				<Property Name="Source[1].destinationIndex" Type="Int">0</Property>
 				<Property Name="Source[1].itemID" Type="Ref">/My Computer/GOLPI library.lvlib</Property>
@@ -138,6 +139,7 @@
 				<Property Name="Bld_localDestDirType" Type="Str">relativeToCommon</Property>
 				<Property Name="Bld_previewCacheID" Type="Str">{9C95E501-5666-464B-A385-298EA05C07F9}</Property>
 				<Property Name="Bld_removeVIObj" Type="Int">1</Property>
+				<Property Name="Bld_version.build" Type="Int">1</Property>
 				<Property Name="Bld_version.minor" Type="Int">7</Property>
 				<Property Name="Bld_version.patch" Type="Int">2</Property>
 				<Property Name="Destination[0].destName" Type="Str">Destination Directory</Property>
@@ -145,7 +147,7 @@
 				<Property Name="Destination[1].destName" Type="Str">Support Directory</Property>
 				<Property Name="Destination[1].path" Type="Path">../builds/GOLPI [VersionNumber] source distribution LV 20.0 32 bit/data</Property>
 				<Property Name="DestinationCount" Type="Int">2</Property>
-				<Property Name="Source[0].itemID" Type="Str">{D3DFC21B-E416-4F0F-943E-B84EC455EE1C}</Property>
+				<Property Name="Source[0].itemID" Type="Str">{07448286-0BE6-486C-BFD9-AA4D52CC5277}</Property>
 				<Property Name="Source[0].type" Type="Str">Container</Property>
 				<Property Name="Source[1].destinationIndex" Type="Int">0</Property>
 				<Property Name="Source[1].itemID" Type="Ref">/My Computer/GOLPI library.lvlib</Property>
